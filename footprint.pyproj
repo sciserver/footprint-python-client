@@ -25,21 +25,22 @@
     <Compile Include="config\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="footprint\restclient.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="footprint\editorservice.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="footprint\footprintservice.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="footprint\sciserverauthentication.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="footprint\shapes.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="footprint\api\editor_api.py" />
+    <Compile Include="footprint\api\footprint_api.py" />
+    <Compile Include="footprint\api_client.py" />
+    <Compile Include="footprint\configuration.py" />
+    <Compile Include="footprint\models\equatorial_point.py" />
+    <Compile Include="footprint\models\footprint.py" />
+    <Compile Include="footprint\models\footprint_list_response.py" />
+    <Compile Include="footprint\models\footprint_region.py" />
+    <Compile Include="footprint\models\footprint_region_list_response.py" />
+    <Compile Include="footprint\models\footprint_region_request.py" />
+    <Compile Include="footprint\models\footprint_region_response.py" />
+    <Compile Include="footprint\models\footprint_request.py" />
+    <Compile Include="footprint\models\footprint_response.py" />
+    <Compile Include="footprint\models\links.py" />
+    <Compile Include="footprint\models\rest_error.py" />
+    <Compile Include="footprint\rest.py" />
     <Compile Include="footprint\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -47,23 +48,52 @@
     <Compile Include="config\config.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tests\test_EditorService.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tests\test_RestClient.py" />
-    <Compile Include="tests\__init__.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="test\test_editor_api.py" />
+    <Compile Include="test\test_equatorial_point.py" />
+    <Compile Include="test\test_footprint.py" />
+    <Compile Include="test\test_footprint_api.py" />
+    <Compile Include="test\test_footprint_list_response.py" />
+    <Compile Include="test\test_footprint_region.py" />
+    <Compile Include="test\test_footprint_region_list_response.py" />
+    <Compile Include="test\test_footprint_region_request.py" />
+    <Compile Include="test\test_footprint_region_response.py" />
+    <Compile Include="test\test_footprint_request.py" />
+    <Compile Include="test\test_footprint_response.py" />
+    <Compile Include="test\test_links.py" />
+    <Compile Include="test\test_rest_error.py" />
+    <Compile Include="test\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
     <Folder Include="footprint\" />
     <Folder Include="docs\" />
     <Folder Include="examples\" />
-    <Folder Include="tests\" />
+    <Folder Include="footprint\api\" />
+    <Folder Include="footprint\models\" />
+    <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build.ps1" />
+    <Content Include="docs\EditorApi.md" />
+    <Content Include="docs\EquatorialPoint.md" />
+    <Content Include="docs\Footprint.md" />
+    <Content Include="docs\FootprintApi.md" />
+    <Content Include="docs\FootprintListResponse.md" />
+    <Content Include="docs\FootprintRegion.md" />
+    <Content Include="docs\FootprintRegionListResponse.md" />
+    <Content Include="docs\FootprintRegionRequest.md" />
+    <Content Include="docs\FootprintRegionResponse.md" />
+    <Content Include="docs\FootprintRequest.md" />
+    <Content Include="docs\FootprintResponse.md" />
+    <Content Include="docs\Links.md" />
+    <Content Include="docs\RestError.md" />
+    <Content Include="footprint.json" />
+    <Content Include="README.md" />
+    <Content Include="requirements.txt" />
+    <Content Include="test-requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
