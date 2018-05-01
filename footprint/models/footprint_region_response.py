@@ -16,7 +16,7 @@ import re  # noqa: F401
 
 import six
 
-from footprint.models.definitionfootprint_region import DefinitionfootprintRegion  # noqa: F401,E501
+from footprint.models.footprint_region import FootprintRegion  # noqa: F401,E501
 
 
 class FootprintRegionResponse(object):
@@ -33,7 +33,7 @@ class FootprintRegionResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'region': 'DefinitionfootprintRegion'
+        'region': 'FootprintRegion'
     }
 
     attribute_map = {
@@ -55,7 +55,7 @@ class FootprintRegionResponse(object):
 
 
         :return: The region of this FootprintRegionResponse.  # noqa: E501
-        :rtype: DefinitionfootprintRegion
+        :rtype: FootprintRegion
         """
         return self._region
 
@@ -65,7 +65,7 @@ class FootprintRegionResponse(object):
 
 
         :param region: The region of this FootprintRegionResponse.  # noqa: E501
-        :type: DefinitionfootprintRegion
+        :type: FootprintRegion
         """
 
         self._region = region

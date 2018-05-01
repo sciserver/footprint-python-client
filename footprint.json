@@ -5,7 +5,7 @@
     "title": null
   },
   "host": "localhost",
-  "basePath": "/dobos/footprint-v2.0/Api/V1/",
+  "basePath": "/dobos/footprint-v2.0/Api/",
   "schemes": [
     "http",
     "https"
@@ -17,25 +17,29 @@
     "application/json"
   ],
   "paths": {
-    "/footprint": {
+    "V1/Editor.svc/footprint": {
       "get": {
         "summary": "Returns the header information of the edited footprint",
         "operationId": "GetFootprint",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintResponse"
             }
           }
         }
@@ -46,11 +50,10 @@
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [],
         "parameters": [],
         "responses": {
-          "200": {
-            "description": ""
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
@@ -60,43 +63,16 @@
         }
       }
     },
-    "/footprint/regions/{regionName}": {
+    "V1/Editor.svc/footprint/regions/{regionName}": {
       "get": {
         "summary": "Returns the header information of a region.",
         "operationId": "GetFootprintRegion",
         "tags": [
           "Editor"
         ],
-        "parameters": [
-          {
-            "name": "regionName",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionResponse"
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "schema": {
-              "$ref": "#/definitions/RestError"
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Create new region.",
-        "operationId": "CreateFootprintRegion",
-        "tags": [
-          "Editor"
+        "consumes": [],
+        "produces": [
+          "application/json"
         ],
         "parameters": [
           {
@@ -104,30 +80,38 @@
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionResponse"
             }
           }
         }
       },
       "put": {
-        "summary": "Modify a region.",
-        "operationId": "ModifyFootprintRegion",
+        "summary": "Create new region.",
+        "operationId": "CreateFootprintRegion",
         "tags": [
           "Editor"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
         ],
         "parameters": [
           {
@@ -135,21 +119,80 @@
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionResponse"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Modify a region.",
+        "operationId": "ModifyFootprintRegion",
+        "tags": [
+          "Editor"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "regionName",
+            "in": "path",
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionResponse"
             }
           }
         }
@@ -160,20 +203,21 @@
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": ""
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
@@ -183,18 +227,33 @@
         }
       }
     },
-    "/footprint/regions": {
+    "V1/Editor.svc/footprint/regions": {
       "delete": {
         "summary": "Deletes multiple regions.",
         "operationId": "DeleteFootprintRegions",
         "tags": [
           "Editor"
         ],
-        "parameters": [],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "regionNames",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        ],
         "responses": {
-          "200": {
-            "description": ""
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
@@ -209,29 +268,39 @@
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionListResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionListResponse"
+            }
           }
         }
       }
     },
-    "/footprint/regions/{regionName}?op={operation}&keepOrig={keepOriginal}": {
+    "V1/Editor.svc/footprint/regions/{regionName}?op={operation}&keepOrig={keepOriginal}": {
       "post": {
         "summary": "Compute union, intersection or difference of regions.",
         "operationId": "CombineFootprintRegions",
         "tags": [
           "Editor"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
         ],
         "parameters": [
           {
@@ -239,96 +308,125 @@
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "operation",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "keepOriginal",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "boolean",
-            "format": "boolean"
+            "schema": {
+              "type": "boolean",
+              "format": "boolean"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionResponse"
+            }
           }
         }
       }
     },
-    "/footprint/shape": {
+    "V1/Editor.svc/footprint/shape": {
       "get": {
         "summary": "Returns the shape description of the footprint.",
         "operationId": "GetFootprintShape",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain",
+          "application/octet-stream",
+          "text/xml"
+        ],
         "parameters": [],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/outline": {
+    "V1/Editor.svc/footprint/outline": {
       "get": {
         "summary": "Returns the outline of the footprint.",
         "operationId": "GetFootprintOutline",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/outline/points?res={resolution}": {
+    "V1/Editor.svc/footprint/outline/points?res={resolution}": {
       "get": {
         "summary": "Returns the points of the outline of the footprint.",
         "operationId": "GetFootprintOutlinePoints",
         "tags": [
           "Editor"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json"
         ],
         "parameters": [
           {
@@ -336,232 +434,302 @@
             "in": "query",
             "description": null,
             "required": false,
-            "type": "number",
-            "format": "double"
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EquatorialPoint"
+            }
           }
         }
       }
     },
-    "/footprint/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}&highlights={highlights}": {
+    "V1/Editor.svc/footprint/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}&highlights={highlights}": {
       "get": {
         "summary": "Plots the footprint",
         "operationId": "PlotFootprint",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
         "parameters": [
           {
             "name": "projection",
-            "in": "query",
+            "in": null,
             "description": null,
             "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "sys",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "ra",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "dec",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "l",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "width",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "height",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "colorTheme",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoZoom",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoRotate",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "grid",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "degreeStyle",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "highlights",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "sys",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "ra",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "dec",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "b",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "l",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "width",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "height",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "colorTheme",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoZoom",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoRotate",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "grid",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "degreeStyle",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "highlights",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/plot": {
+    "V1/Editor.svc/footprint/plot": {
       "post": {
         "summary": "Plots the footprint, with advanced parameters",
         "operationId": "PlotFootprintAdvanced",
         "tags": [
           "Editor"
         ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
+        "consumes": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
+        "parameters": [
+          {
+            "name": "plotParameters",
+            "in": null,
+            "description": null,
+            "required": true,
             "schema": {
               "type": "file"
             }
-          },
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/thumbnail": {
+    "V1/Editor.svc/footprint/thumbnail": {
       "get": {
         "summary": "Gets the thumbnail of the footprint.",
         "operationId": "GetFootprintThumbnail",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/regions/{regionName}/shape": {
+    "V1/Editor.svc/footprint/regions/{regionName}/shape": {
       "post": {
         "summary": "Upload a region shape binary or other representation",
         "operationId": "SetFootprintRegionShape",
         "tags": [
           "Editor"
         ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "stream",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": ""
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
@@ -576,315 +744,397 @@
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain",
+          "application/octet-stream",
+          "text/xml"
+        ],
         "parameters": [
           {
             "name": "regionName",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
-          },
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/regions/{regionName}/outline": {
+    "V1/Editor.svc/footprint/regions/{regionName}/outline": {
       "get": {
         "summary": "Returns the outline of the footprint.",
         "operationId": "GetFootprintRegionOutline",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "name": "regionName",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
-          },
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/regions/{regionName}/outline/points?res={resolution}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/outline/points?res={resolution}": {
       "get": {
         "summary": "Returns the points of the outline of the footprint.",
         "operationId": "GetFootprintRegionOutlinePoints",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "resolution",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "number",
-            "format": "double"
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EquatorialPoint"
+            }
           }
         }
       }
     },
-    "/footprint/regions/{regionName}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
       "get": {
         "summary": "Plots a footprint region.",
         "operationId": "PlotFootprintRegion",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
         "parameters": [
           {
             "name": "regionName",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "projection",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "sys",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "ra",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "dec",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "l",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "width",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "height",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "colorTheme",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoZoom",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoRotate",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "grid",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "degreeStyle",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "projection",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "sys",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "ra",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "dec",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "b",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "l",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "width",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "height",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "colorTheme",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoZoom",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoRotate",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "grid",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "degreeStyle",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/regions/{regionName}/plot": {
+    "V1/Editor.svc/footprint/regions/{regionName}/plot": {
       "post": {
         "summary": "Plots a footprint region.",
         "operationId": "PlotFootprintRegionAdvanced",
         "tags": [
           "Editor"
         ],
+        "consumes": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
         "parameters": [
           {
             "name": "regionName",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "plotParameters",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/footprint/regions/{regionName}/thumbnail": {
+    "V1/Editor.svc/footprint/regions/{regionName}/thumbnail": {
       "get": {
         "summary": "Gets the thumbnail of a footprint region.",
         "operationId": "GetFootprintRegionThumbnail",
         "tags": [
           "Editor"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}": {
       "get": {
         "summary": "Returns the header information of a footprint.",
         "operationId": "GetUserFootprint",
         "tags": [
           "Footprint"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json"
         ],
         "parameters": [
           {
@@ -892,29 +1142,33 @@
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintResponse"
             }
           }
         }
@@ -925,35 +1179,54 @@
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintResponse"
             }
           }
         }
@@ -964,35 +1237,54 @@
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintResponse"
             }
           }
         }
@@ -1003,28 +1295,31 @@
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": ""
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
@@ -1034,232 +1329,293 @@
         }
       }
     },
-    "/users/{owner}/footprints/{name}?op=copy": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}?op=copy": {
       "post": {
         "summary": "Copy from and existing footprint.",
         "operationId": "CopyUserFootprint",
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintResponse"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints?name={name}&from={from}&max={max}": {
+    "V1/Footprint.svc/users/{owner}/footprints?name={name}&from={from}&max={max}": {
       "get": {
         "summary": "Returns the list of footprints of the user.",
         "operationId": "FindUserFootprints",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "from",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "max",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintListResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintListResponse"
+            }
           }
         }
       }
     },
-    "/footprints?owner={owner}&name={name}&from={from}&max={max}": {
+    "V1/Footprint.svc/footprints?owner={owner}&name={name}&from={from}&max={max}": {
       "get": {
         "summary": "Returns the list of footprints of the user.",
         "operationId": "FindFootprints",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "from",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "max",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintListResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintListResponse"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions?regionName={regionName}&from={from}&max={max}": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions?regionName={regionName}&from={from}&max={max}": {
       "get": {
         "summary": "Returns the list of the regions of a footprint.",
         "operationId": "FindUserFootprintRegions",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "from",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "max",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionListResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionListResponse"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions/{regionName}": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}": {
       "get": {
         "summary": "Returns the header information of a region.",
         "operationId": "GetUserFootprintRegion",
         "tags": [
           "Footprint"
+        ],
+        "consumes": [],
+        "produces": [
+          "application/json"
         ],
         "parameters": [
           {
@@ -1267,37 +1623,43 @@
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionResponse"
             }
           }
         }
@@ -1308,43 +1670,64 @@
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionResponse"
             }
           }
         }
@@ -1355,43 +1738,64 @@
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": null,
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definition/FootprintRegionResponse"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FootprintRegionResponse"
             }
           }
         }
@@ -1402,36 +1806,41 @@
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": ""
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
@@ -1441,401 +1850,503 @@
         }
       }
     },
-    "/users/{owner}/footprints/{name}/shape": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/shape": {
       "get": {
         "summary": "Returns the shape description of a footprint.",
         "operationId": "GetUserFootprintShape",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain",
+          "application/octet-stream",
+          "text/xml"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/outline": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/outline": {
       "get": {
         "summary": "Returns the outline a footprint.",
         "operationId": "GetUserFootprintOutline",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/outline/points?res={resolution}": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/outline/points?res={resolution}": {
       "get": {
         "summary": "Returns the points of the outline of a footprint.",
         "operationId": "GetUserFootprintOutlinePoints",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "resolution",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "number",
-            "format": "double"
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EquatorialPoint"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
       "get": {
         "summary": "Plots a footprint",
         "operationId": "PlotUserFootprint",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "projection",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "sys",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "ra",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "dec",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "l",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "width",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "height",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "colorTheme",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoZoom",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoRotate",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "grid",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "degreeStyle",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "projection",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "sys",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "ra",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "dec",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "b",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "l",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "width",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "height",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "colorTheme",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoZoom",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoRotate",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "grid",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "degreeStyle",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/plot": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/plot": {
       "post": {
         "summary": "Plots a footprint, with advanced parameters",
         "operationId": "PlotUserFootprintAdvanced",
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "plotParameters",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/thumbnail": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/thumbnail": {
       "get": {
         "summary": "Get the thumbnail of a footprint.",
         "operationId": "GetUserFootprintThumbnail",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions/{regionName}/shape": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/shape": {
       "post": {
         "summary": "Upload region shape binary or other representation",
         "operationId": "SetUserFootprintRegionShape",
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "stream",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": ""
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
@@ -1850,400 +2361,494 @@
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain",
+          "application/octet-stream",
+          "text/xml"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "regionName",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "regionName",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions/{regionName}/outline": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/outline": {
       "get": {
         "summary": "Returns the outline a footprint.",
         "operationId": "GetUserFootprintRegionOutline",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "regionName",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "regionName",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions/{regionName}/outline/points?res={resolution}": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/outline/points?res={resolution}": {
       "get": {
         "summary": "Returns the points of the outline of a footprint.",
         "operationId": "GetUserFootprintRegionOutlinePoints",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "resolution",
             "in": "query",
             "description": null,
             "required": false,
-            "type": "number",
-            "format": "double"
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EquatorialPoint"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions/{regionName}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
       "get": {
         "summary": "Plots a footprint.",
         "operationId": "PlotUserFootprintRegion",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "regionName",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "projection",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "sys",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "ra",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "dec",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "l",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "width",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "height",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "number",
-            "format": "float"
-          },
-          {
-            "name": "colorTheme",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoZoom",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "autoRotate",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "grid",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "degreeStyle",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "regionName",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "projection",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "sys",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "ra",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "dec",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "b",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "l",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "width",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "height",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "colorTheme",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoZoom",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "autoRotate",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "grid",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "degreeStyle",
+            "in": null,
+            "description": null,
+            "required": false,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions/{regionName}/plot": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/plot": {
       "post": {
         "summary": "Plots a footprint.",
         "operationId": "PlotUserFootprintRegionAdvanced",
         "tags": [
           "Footprint"
         ],
+        "consumes": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
+        "produces": [
+          "image/jpeg",
+          "image/png",
+          "image/gif",
+          "image/bmp",
+          "application/pdf",
+          "application/postscript",
+          "windows/metafile"
+        ],
         "parameters": [
           {
             "name": "owner",
-            "in": "path",
+            "in": null,
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "name",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          },
-          {
-            "name": "regionName",
-            "in": "path",
-            "description": null,
-            "required": true,
-            "type": "string",
-            "format": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
             "schema": {
               "type": "file"
             }
           },
+          {
+            "name": "name",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "regionName",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          },
+          {
+            "name": "plotParameters",
+            "in": null,
+            "description": null,
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
           }
         }
       }
     },
-    "/users/{owner}/footprints/{name}/regions/{regionName}/thumbnail": {
+    "V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/thumbnail": {
       "get": {
         "summary": "Get the thumbnail of a footprint.",
         "operationId": "GetUserFootprintRegionThumbnail",
         "tags": [
           "Footprint"
         ],
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "owner",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "name",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           },
           {
             "name": "regionName",
             "in": "path",
             "description": null,
             "required": true,
-            "type": "string",
-            "format": "string"
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
-          },
           "default": {
             "description": "unexpected error",
             "schema": {
               "$ref": "#/definitions/RestError"
+            }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
             }
           }
         }
@@ -2282,7 +2887,7 @@
     "FootprintResponse": {
       "properties": {
         "footprint": {
-          "$ref": "#/definition/footprint"
+          "$ref": "#/definitions/footprint"
         }
       }
     },
@@ -2329,14 +2934,14 @@
     "FootprintRegionResponse": {
       "properties": {
         "region": {
-          "$ref": "#/definition/footprintRegion"
+          "$ref": "#/definitions/footprintRegion"
         }
       }
     },
     "FootprintRegionRequest": {
       "properties": {
         "region": {
-          "$ref": "#/definition/footprintRegion"
+          "$ref": "#/definitions/footprintRegion"
         },
         "sources": {
           "type": "array",
@@ -2350,9 +2955,7 @@
     "FootprintRegionListResponse": {
       "properties": {
         "regions": {
-          "items": {
-            "type": "#/definition/footprintRegion"
-          }
+          "$ref": "#/definitions/footprintRegion"
         }
       }
     },
@@ -2391,7 +2994,7 @@
     "FootprintRequest": {
       "properties": {
         "footprint": {
-          "$ref": "#/definition/footprint"
+          "$ref": "#/definitions/footprint"
         },
         "source": {
           "type": "string",
@@ -2418,12 +3021,10 @@
     "FootprintListResponse": {
       "properties": {
         "links": {
-          "$ref": "#/definition/links"
+          "$ref": "#/definitions/links"
         },
         "footprints": {
-          "items": {
-            "type": "#/definition/footprint"
-          }
+          "$ref": "#/definitions/footprint"
         }
       }
     }

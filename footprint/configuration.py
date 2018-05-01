@@ -47,7 +47,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     def __init__(self):
         """Constructor"""
         # Default Base url
-        self.host = "http://localhost/dobos/footprint-v2.0/Api/V1/"
+        self.host = "http://localhost/dobos/footprint-v2.0/Api/"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 

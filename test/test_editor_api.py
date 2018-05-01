@@ -16,15 +16,21 @@ from __future__ import absolute_import
 import unittest
 
 import footprint
+from footprint import Configuration
+from footprint import SciServerClient
 from footprint.api.editor_api import EditorApi  # noqa: E501
 from footprint.rest import ApiException
+from footprint.models import FootprintRegion, FootprintRegionRequest
 
 
 class TestEditorApi(unittest.TestCase):
     """EditorApi unit test stubs"""
 
     def setUp(self):
-        self.api = footprint.api.editor_api.EditorApi()  # noqa: E501
+        self.configuration = Configuration()
+        self.configuration.proxy = 'http://localhost:8888'
+        self.ssclient = SciServerClient(configuration=self.configuration)
+        self.api = footprint.api.editor_api.EditorApi(self.ssclient)  # noqa: E501
 
     def tearDown(self):
         pass
@@ -41,6 +47,16 @@ class TestEditorApi(unittest.TestCase):
 
         Create new region.  # noqa: E501
         """
+
+        r1 = FootprintRegion()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+
+        self.api.create_footprint_region("test", FootprintRegionRequest(r1))
+
+        r2 = self.api.get_footprint_region("test").region
+
+        self.assertEqual(r1.region_string, r2.region_string)
+
         pass
 
     def test_delete_footprint(self):

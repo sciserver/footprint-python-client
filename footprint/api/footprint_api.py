@@ -33,45 +33,47 @@ class FootprintApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def copy_user_footprint(self, owner, name, **kwargs):  # noqa: E501
+    def copy_user_footprint(self, owner, name, request, **kwargs):  # noqa: E501
         """Copy from and existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.copy_user_footprint(owner, name, async=True)
+        >>> thread = api.copy_user_footprint(owner, name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :param FootprintRequest request: null (required)
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.copy_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            return self.copy_user_footprint_with_http_info(owner, name, request, **kwargs)  # noqa: E501
         else:
-            (data) = self.copy_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            (data) = self.copy_user_footprint_with_http_info(owner, name, request, **kwargs)  # noqa: E501
             return data
 
-    def copy_user_footprint_with_http_info(self, owner, name, **kwargs):  # noqa: E501
+    def copy_user_footprint_with_http_info(self, owner, name, request, **kwargs):  # noqa: E501
         """Copy from and existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.copy_user_footprint_with_http_info(owner, name, async=True)
+        >>> thread = api.copy_user_footprint_with_http_info(owner, name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :param FootprintRequest request: null (required)
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name']  # noqa: E501
+        all_params = ['owner', 'name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -94,6 +96,10 @@ class FootprintApi(object):
         if ('name' not in params or
                 params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `copy_user_footprint`")  # noqa: E501
+        # verify the required parameter 'request' is set
+        if ('request' not in params or
+                params['request'] is None):
+            raise ValueError("Missing the required parameter `request` when calling `copy_user_footprint`")  # noqa: E501
 
         collection_formats = {}
 
@@ -111,6 +117,8 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'request' in params:
+            body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -123,14 +131,14 @@ class FootprintApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}?op=copy', 'POST',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}?op=copy', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintResponse',  # noqa: E501
+            response_type='FootprintResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -138,45 +146,47 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_user_footprint(self, owner, name, **kwargs):  # noqa: E501
+    def create_user_footprint(self, owner, name, request, **kwargs):  # noqa: E501
         """Create new footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_user_footprint(owner, name, async=True)
+        >>> thread = api.create_user_footprint(owner, name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :param FootprintRequest request: null (required)
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.create_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            return self.create_user_footprint_with_http_info(owner, name, request, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            (data) = self.create_user_footprint_with_http_info(owner, name, request, **kwargs)  # noqa: E501
             return data
 
-    def create_user_footprint_with_http_info(self, owner, name, **kwargs):  # noqa: E501
+    def create_user_footprint_with_http_info(self, owner, name, request, **kwargs):  # noqa: E501
         """Create new footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_user_footprint_with_http_info(owner, name, async=True)
+        >>> thread = api.create_user_footprint_with_http_info(owner, name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :param FootprintRequest request: null (required)
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name']  # noqa: E501
+        all_params = ['owner', 'name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -199,6 +209,10 @@ class FootprintApi(object):
         if ('name' not in params or
                 params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `create_user_footprint`")  # noqa: E501
+        # verify the required parameter 'request' is set
+        if ('request' not in params or
+                params['request'] is None):
+            raise ValueError("Missing the required parameter `request` when calling `create_user_footprint`")  # noqa: E501
 
         collection_formats = {}
 
@@ -216,6 +230,8 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'request' in params:
+            body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -228,14 +244,14 @@ class FootprintApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}', 'POST',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintResponse',  # noqa: E501
+            response_type='FootprintResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -243,47 +259,49 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_user_footprint_region(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def create_user_footprint_region(self, owner, name, region_name, request, **kwargs):  # noqa: E501
         """Create new region under an existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_user_footprint_region(owner, name, region_name, async=True)
+        >>> thread = api.create_user_footprint_region(owner, name, region_name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: DefinitionFootprintRegionResponse
+        :param FootprintRegionRequest request: null (required)
+        :return: FootprintRegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.create_user_footprint_region_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            return self.create_user_footprint_region_with_http_info(owner, name, region_name, request, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_user_footprint_region_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            (data) = self.create_user_footprint_region_with_http_info(owner, name, region_name, request, **kwargs)  # noqa: E501
             return data
 
-    def create_user_footprint_region_with_http_info(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def create_user_footprint_region_with_http_info(self, owner, name, region_name, request, **kwargs):  # noqa: E501
         """Create new region under an existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_user_footprint_region_with_http_info(owner, name, region_name, async=True)
+        >>> thread = api.create_user_footprint_region_with_http_info(owner, name, region_name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: DefinitionFootprintRegionResponse
+        :param FootprintRegionRequest request: null (required)
+        :return: FootprintRegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name', 'region_name']  # noqa: E501
+        all_params = ['owner', 'name', 'region_name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -310,6 +328,10 @@ class FootprintApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `create_user_footprint_region`")  # noqa: E501
+        # verify the required parameter 'request' is set
+        if ('request' not in params or
+                params['request'] is None):
+            raise ValueError("Missing the required parameter `request` when calling `create_user_footprint_region`")  # noqa: E501
 
         collection_formats = {}
 
@@ -329,6 +351,8 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'request' in params:
+            body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -341,14 +365,14 @@ class FootprintApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}', 'POST',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintRegionResponse',  # noqa: E501
+            response_type='FootprintRegionResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -367,7 +391,7 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: None
+        :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -389,7 +413,7 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: None
+        :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -434,26 +458,18 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}', 'DELETE',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}', 'DELETE',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='RestError',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -473,7 +489,7 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: None
+        :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -496,7 +512,7 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: None
+        :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -547,26 +563,18 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}', 'DELETE',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}', 'DELETE',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='RestError',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -585,9 +593,9 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null
         :param str name: null
-        :param int _from: null
-        :param int max: null
-        :return: DefinitionFootprintListResponse
+        :param str _from: null
+        :param str max: null
+        :return: FootprintListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -609,9 +617,9 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null
         :param str name: null
-        :param int _from: null
-        :param int max: null
-        :return: DefinitionFootprintListResponse
+        :param str _from: null
+        :param str max: null
+        :return: FootprintListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -656,22 +664,18 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/footprints?owner={owner}&name={name}&from={from}&max={max}', 'GET',
+            'V1/Footprint.svc/footprints?owner={owner}&name={name}&from={from}&max={max}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintListResponse',  # noqa: E501
+            response_type='FootprintListResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -691,9 +695,9 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null
-        :param int _from: null
-        :param int max: null
-        :return: DefinitionFootprintRegionListResponse
+        :param str _from: null
+        :param str max: null
+        :return: FootprintRegionListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -716,9 +720,9 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null
-        :param int _from: null
-        :param int max: null
-        :return: DefinitionFootprintRegionListResponse
+        :param str _from: null
+        :param str max: null
+        :return: FootprintRegionListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -773,22 +777,18 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions?regionName={regionName}&from={from}&max={max}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions?regionName={regionName}&from={from}&max={max}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintRegionListResponse',  # noqa: E501
+            response_type='FootprintRegionListResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -807,9 +807,9 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null
-        :param int _from: null
-        :param int max: null
-        :return: DefinitionFootprintListResponse
+        :param str _from: null
+        :param str max: null
+        :return: FootprintListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -831,9 +831,9 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null
-        :param int _from: null
-        :param int max: null
-        :return: DefinitionFootprintListResponse
+        :param str _from: null
+        :param str max: null
+        :return: FootprintListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -882,22 +882,18 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints?name={name}&from={from}&max={max}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints?name={name}&from={from}&max={max}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintListResponse',  # noqa: E501
+            response_type='FootprintListResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -916,7 +912,7 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -938,7 +934,7 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -987,22 +983,18 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintResponse',  # noqa: E501
+            response_type='FootprintResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1010,45 +1002,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_user_footprint_outline(self, owner, name, **kwargs):  # noqa: E501
+    def get_user_footprint_outline(self, **kwargs):  # noqa: E501
         """Returns the outline a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_outline(owner, name, async=True)
+        >>> thread = api.get_user_footprint_outline(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_user_footprint_outline_with_http_info(owner, name, **kwargs)  # noqa: E501
+            return self.get_user_footprint_outline_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_user_footprint_outline_with_http_info(owner, name, **kwargs)  # noqa: E501
+            (data) = self.get_user_footprint_outline_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_user_footprint_outline_with_http_info(self, owner, name, **kwargs):  # noqa: E501
+    def get_user_footprint_outline_with_http_info(self, **kwargs):  # noqa: E501
         """Returns the outline a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_outline_with_http_info(owner, name, async=True)
+        >>> thread = api.get_user_footprint_outline_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1063,22 +1051,10 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `get_user_footprint_outline`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_user_footprint_outline`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
 
         query_params = []
 
@@ -1090,17 +1066,13 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/outline', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/outline', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1126,8 +1098,8 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :param float resolution: null
-        :return: file
+        :param str resolution: null
+        :return: EquatorialPoint
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1149,8 +1121,8 @@ class FootprintApi(object):
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :param float resolution: null
-        :return: file
+        :param str resolution: null
+        :return: EquatorialPoint
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1201,22 +1173,18 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/outline/points?res={resolution}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/outline/points?res={resolution}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='file',  # noqa: E501
+            response_type='EquatorialPoint',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1236,7 +1204,7 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: DefinitionFootprintRegionResponse
+        :return: FootprintRegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1259,7 +1227,7 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: DefinitionFootprintRegionResponse
+        :return: FootprintRegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1314,22 +1282,18 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintRegionResponse',  # noqa: E501
+            response_type='FootprintRegionResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1337,47 +1301,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_user_footprint_region_outline(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def get_user_footprint_region_outline(self, **kwargs):  # noqa: E501
         """Returns the outline a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_region_outline(owner, name, region_name, async=True)
+        >>> thread = api.get_user_footprint_region_outline(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_user_footprint_region_outline_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            return self.get_user_footprint_region_outline_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_user_footprint_region_outline_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            (data) = self.get_user_footprint_region_outline_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_user_footprint_region_outline_with_http_info(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def get_user_footprint_region_outline_with_http_info(self, **kwargs):  # noqa: E501
         """Returns the outline a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_region_outline_with_http_info(owner, name, region_name, async=True)
+        >>> thread = api.get_user_footprint_region_outline_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name', 'region_name']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1392,28 +1350,10 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `get_user_footprint_region_outline`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_user_footprint_region_outline`")  # noqa: E501
-        # verify the required parameter 'region_name' is set
-        if ('region_name' not in params or
-                params['region_name'] is None):
-            raise ValueError("Missing the required parameter `region_name` when calling `get_user_footprint_region_outline`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
-        if 'region_name' in params:
-            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
 
@@ -1425,17 +1365,13 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}/outline', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/outline', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1462,8 +1398,8 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :param float resolution: null
-        :return: file
+        :param str resolution: null
+        :return: EquatorialPoint
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1486,8 +1422,8 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :param float resolution: null
-        :return: file
+        :param str resolution: null
+        :return: EquatorialPoint
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1544,22 +1480,18 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}/outline/points?res={resolution}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/outline/points?res={resolution}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='file',  # noqa: E501
+            response_type='EquatorialPoint',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1567,47 +1499,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_user_footprint_region_shape(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def get_user_footprint_region_shape(self, **kwargs):  # noqa: E501
         """Returns the shape description of a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_region_shape(owner, name, region_name, async=True)
+        >>> thread = api.get_user_footprint_region_shape(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_user_footprint_region_shape_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            return self.get_user_footprint_region_shape_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_user_footprint_region_shape_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            (data) = self.get_user_footprint_region_shape_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_user_footprint_region_shape_with_http_info(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def get_user_footprint_region_shape_with_http_info(self, **kwargs):  # noqa: E501
         """Returns the shape description of a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_region_shape_with_http_info(owner, name, region_name, async=True)
+        >>> thread = api.get_user_footprint_region_shape_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name', 'region_name']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1622,28 +1548,10 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `get_user_footprint_region_shape`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_user_footprint_region_shape`")  # noqa: E501
-        # verify the required parameter 'region_name' is set
-        if ('region_name' not in params or
-                params['region_name'] is None):
-            raise ValueError("Missing the required parameter `region_name` when calling `get_user_footprint_region_shape`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
-        if 'region_name' in params:
-            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
 
@@ -1655,17 +1563,13 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}/shape', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/shape', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1770,15 +1674,11 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}/thumbnail', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/thumbnail', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1793,45 +1693,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_user_footprint_shape(self, owner, name, **kwargs):  # noqa: E501
+    def get_user_footprint_shape(self, **kwargs):  # noqa: E501
         """Returns the shape description of a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_shape(owner, name, async=True)
+        >>> thread = api.get_user_footprint_shape(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_user_footprint_shape_with_http_info(owner, name, **kwargs)  # noqa: E501
+            return self.get_user_footprint_shape_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_user_footprint_shape_with_http_info(owner, name, **kwargs)  # noqa: E501
+            (data) = self.get_user_footprint_shape_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_user_footprint_shape_with_http_info(self, owner, name, **kwargs):  # noqa: E501
+    def get_user_footprint_shape_with_http_info(self, **kwargs):  # noqa: E501
         """Returns the shape description of a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_footprint_shape_with_http_info(owner, name, async=True)
+        >>> thread = api.get_user_footprint_shape_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1846,22 +1742,10 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `get_user_footprint_shape`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `get_user_footprint_shape`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
 
         query_params = []
 
@@ -1873,17 +1757,13 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/shape', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/shape', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1980,15 +1860,11 @@ class FootprintApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/thumbnail', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/thumbnail', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2003,45 +1879,47 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def modify_user_footprint(self, owner, name, **kwargs):  # noqa: E501
+    def modify_user_footprint(self, owner, name, request, **kwargs):  # noqa: E501
         """Modify existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modify_user_footprint(owner, name, async=True)
+        >>> thread = api.modify_user_footprint(owner, name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :param FootprintRequest request: null (required)
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.modify_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            return self.modify_user_footprint_with_http_info(owner, name, request, **kwargs)  # noqa: E501
         else:
-            (data) = self.modify_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            (data) = self.modify_user_footprint_with_http_info(owner, name, request, **kwargs)  # noqa: E501
             return data
 
-    def modify_user_footprint_with_http_info(self, owner, name, **kwargs):  # noqa: E501
+    def modify_user_footprint_with_http_info(self, owner, name, request, **kwargs):  # noqa: E501
         """Modify existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modify_user_footprint_with_http_info(owner, name, async=True)
+        >>> thread = api.modify_user_footprint_with_http_info(owner, name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
-        :return: DefinitionFootprintResponse
+        :param FootprintRequest request: null (required)
+        :return: FootprintResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name']  # noqa: E501
+        all_params = ['owner', 'name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2064,6 +1942,10 @@ class FootprintApi(object):
         if ('name' not in params or
                 params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `modify_user_footprint`")  # noqa: E501
+        # verify the required parameter 'request' is set
+        if ('request' not in params or
+                params['request'] is None):
+            raise ValueError("Missing the required parameter `request` when calling `modify_user_footprint`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2081,6 +1963,8 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'request' in params:
+            body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2093,14 +1977,14 @@ class FootprintApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}', 'PATCH',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}', 'PATCH',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintResponse',  # noqa: E501
+            response_type='FootprintResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2108,47 +1992,49 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def modify_user_footprint_region(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def modify_user_footprint_region(self, owner, name, region_name, request, **kwargs):  # noqa: E501
         """Modify a region under an existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modify_user_footprint_region(owner, name, region_name, async=True)
+        >>> thread = api.modify_user_footprint_region(owner, name, region_name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: DefinitionFootprintRegionResponse
+        :param FootprintRegionRequest request: null (required)
+        :return: FootprintRegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.modify_user_footprint_region_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            return self.modify_user_footprint_region_with_http_info(owner, name, region_name, request, **kwargs)  # noqa: E501
         else:
-            (data) = self.modify_user_footprint_region_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            (data) = self.modify_user_footprint_region_with_http_info(owner, name, region_name, request, **kwargs)  # noqa: E501
             return data
 
-    def modify_user_footprint_region_with_http_info(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def modify_user_footprint_region_with_http_info(self, owner, name, region_name, request, **kwargs):  # noqa: E501
         """Modify a region under an existing footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modify_user_footprint_region_with_http_info(owner, name, region_name, async=True)
+        >>> thread = api.modify_user_footprint_region_with_http_info(owner, name, region_name, request, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: DefinitionFootprintRegionResponse
+        :param FootprintRegionRequest request: null (required)
+        :return: FootprintRegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name', 'region_name']  # noqa: E501
+        all_params = ['owner', 'name', 'region_name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2175,6 +2061,10 @@ class FootprintApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `modify_user_footprint_region`")  # noqa: E501
+        # verify the required parameter 'request' is set
+        if ('request' not in params or
+                params['request'] is None):
+            raise ValueError("Missing the required parameter `request` when calling `modify_user_footprint_region`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2194,6 +2084,8 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'request' in params:
+            body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -2206,14 +2098,14 @@ class FootprintApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}', 'PUT',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}', 'PUT',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DefinitionFootprintRegionResponse',  # noqa: E501
+            response_type='FootprintRegionResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2221,71 +2113,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_user_footprint(self, owner, name, **kwargs):  # noqa: E501
+    def plot_user_footprint(self, **kwargs):  # noqa: E501
         """Plots a footprint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint(owner, name, async=True)
+        >>> thread = api.plot_user_footprint(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str projection: null
-        :param str sys: null
-        :param str ra: null
-        :param str dec: null
-        :param str b: null
-        :param str l: null
-        :param float width: null
-        :param float height: null
-        :param str color_theme: null
-        :param str auto_zoom: null
-        :param str auto_rotate: null
-        :param str grid: null
-        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            return self.plot_user_footprint_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.plot_user_footprint_with_http_info(owner, name, **kwargs)  # noqa: E501
+            (data) = self.plot_user_footprint_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def plot_user_footprint_with_http_info(self, owner, name, **kwargs):  # noqa: E501
+    def plot_user_footprint_with_http_info(self, **kwargs):  # noqa: E501
         """Plots a footprint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint_with_http_info(owner, name, async=True)
+        >>> thread = api.plot_user_footprint_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str projection: null
-        :param str sys: null
-        :param str ra: null
-        :param str dec: null
-        :param str b: null
-        :param str l: null
-        :param float width: null
-        :param float height: null
-        :param str color_theme: null
-        :param str auto_zoom: null
-        :param str auto_rotate: null
-        :param str grid: null
-        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name', 'projection', 'sys', 'ra', 'dec', 'b', 'l', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2300,50 +2162,12 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `plot_user_footprint`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `plot_user_footprint`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
 
         query_params = []
-        if 'projection' in params:
-            query_params.append(('projection', params['projection']))  # noqa: E501
-        if 'sys' in params:
-            query_params.append(('sys', params['sys']))  # noqa: E501
-        if 'ra' in params:
-            query_params.append(('ra', params['ra']))  # noqa: E501
-        if 'dec' in params:
-            query_params.append(('dec', params['dec']))  # noqa: E501
-        if 'b' in params:
-            query_params.append(('b', params['b']))  # noqa: E501
-        if 'l' in params:
-            query_params.append(('l', params['l']))  # noqa: E501
-        if 'width' in params:
-            query_params.append(('width', params['width']))  # noqa: E501
-        if 'height' in params:
-            query_params.append(('height', params['height']))  # noqa: E501
-        if 'color_theme' in params:
-            query_params.append(('colorTheme', params['color_theme']))  # noqa: E501
-        if 'auto_zoom' in params:
-            query_params.append(('autoZoom', params['auto_zoom']))  # noqa: E501
-        if 'auto_rotate' in params:
-            query_params.append(('autoRotate', params['auto_rotate']))  # noqa: E501
-        if 'grid' in params:
-            query_params.append(('grid', params['grid']))  # noqa: E501
-        if 'degree_style' in params:
-            query_params.append(('degreeStyle', params['degree_style']))  # noqa: E501
 
         header_params = {}
 
@@ -2353,17 +2177,13 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2378,45 +2198,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_user_footprint_advanced(self, owner, name, **kwargs):  # noqa: E501
+    def plot_user_footprint_advanced(self, **kwargs):  # noqa: E501
         """Plots a footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint_advanced(owner, name, async=True)
+        >>> thread = api.plot_user_footprint_advanced(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_user_footprint_advanced_with_http_info(owner, name, **kwargs)  # noqa: E501
+            return self.plot_user_footprint_advanced_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.plot_user_footprint_advanced_with_http_info(owner, name, **kwargs)  # noqa: E501
+            (data) = self.plot_user_footprint_advanced_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def plot_user_footprint_advanced_with_http_info(self, owner, name, **kwargs):  # noqa: E501
+    def plot_user_footprint_advanced_with_http_info(self, **kwargs):  # noqa: E501
         """Plots a footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint_advanced_with_http_info(owner, name, async=True)
+        >>> thread = api.plot_user_footprint_advanced_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2431,22 +2247,10 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `plot_user_footprint_advanced`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `plot_user_footprint_advanced`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
 
         query_params = []
 
@@ -2458,17 +2262,17 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/plot', 'POST',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/plot', 'POST',
             path_params,
             query_params,
             header_params,
@@ -2483,73 +2287,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_user_footprint_region(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def plot_user_footprint_region(self, **kwargs):  # noqa: E501
         """Plots a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint_region(owner, name, region_name, async=True)
+        >>> thread = api.plot_user_footprint_region(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
-        :param str projection: null
-        :param str sys: null
-        :param str ra: null
-        :param str dec: null
-        :param str b: null
-        :param str l: null
-        :param float width: null
-        :param float height: null
-        :param str color_theme: null
-        :param str auto_zoom: null
-        :param str auto_rotate: null
-        :param str grid: null
-        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_user_footprint_region_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            return self.plot_user_footprint_region_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.plot_user_footprint_region_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            (data) = self.plot_user_footprint_region_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def plot_user_footprint_region_with_http_info(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def plot_user_footprint_region_with_http_info(self, **kwargs):  # noqa: E501
         """Plots a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint_region_with_http_info(owner, name, region_name, async=True)
+        >>> thread = api.plot_user_footprint_region_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
-        :param str projection: null
-        :param str sys: null
-        :param str ra: null
-        :param str dec: null
-        :param str b: null
-        :param str l: null
-        :param float width: null
-        :param float height: null
-        :param str color_theme: null
-        :param str auto_zoom: null
-        :param str auto_rotate: null
-        :param str grid: null
-        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name', 'region_name', 'projection', 'sys', 'ra', 'dec', 'b', 'l', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2564,56 +2336,12 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `plot_user_footprint_region`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `plot_user_footprint_region`")  # noqa: E501
-        # verify the required parameter 'region_name' is set
-        if ('region_name' not in params or
-                params['region_name'] is None):
-            raise ValueError("Missing the required parameter `region_name` when calling `plot_user_footprint_region`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
-        if 'region_name' in params:
-            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
-        if 'projection' in params:
-            query_params.append(('projection', params['projection']))  # noqa: E501
-        if 'sys' in params:
-            query_params.append(('sys', params['sys']))  # noqa: E501
-        if 'ra' in params:
-            query_params.append(('ra', params['ra']))  # noqa: E501
-        if 'dec' in params:
-            query_params.append(('dec', params['dec']))  # noqa: E501
-        if 'b' in params:
-            query_params.append(('b', params['b']))  # noqa: E501
-        if 'l' in params:
-            query_params.append(('l', params['l']))  # noqa: E501
-        if 'width' in params:
-            query_params.append(('width', params['width']))  # noqa: E501
-        if 'height' in params:
-            query_params.append(('height', params['height']))  # noqa: E501
-        if 'color_theme' in params:
-            query_params.append(('colorTheme', params['color_theme']))  # noqa: E501
-        if 'auto_zoom' in params:
-            query_params.append(('autoZoom', params['auto_zoom']))  # noqa: E501
-        if 'auto_rotate' in params:
-            query_params.append(('autoRotate', params['auto_rotate']))  # noqa: E501
-        if 'grid' in params:
-            query_params.append(('grid', params['grid']))  # noqa: E501
-        if 'degree_style' in params:
-            query_params.append(('degreeStyle', params['degree_style']))  # noqa: E501
 
         header_params = {}
 
@@ -2623,17 +2351,13 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}', 'GET',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/plot?proj={projection}&sys={sys}&ra={ra}&dec={dec}&b={b}&l={l}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2648,47 +2372,41 @@ class FootprintApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_user_footprint_region_advanced(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def plot_user_footprint_region_advanced(self, **kwargs):  # noqa: E501
         """Plots a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint_region_advanced(owner, name, region_name, async=True)
+        >>> thread = api.plot_user_footprint_region_advanced(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_user_footprint_region_advanced_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            return self.plot_user_footprint_region_advanced_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.plot_user_footprint_region_advanced_with_http_info(owner, name, region_name, **kwargs)  # noqa: E501
+            (data) = self.plot_user_footprint_region_advanced_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def plot_user_footprint_region_advanced_with_http_info(self, owner, name, region_name, **kwargs):  # noqa: E501
+    def plot_user_footprint_region_advanced_with_http_info(self, **kwargs):  # noqa: E501
         """Plots a footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_user_footprint_region_advanced_with_http_info(owner, name, region_name, async=True)
+        >>> thread = api.plot_user_footprint_region_advanced_with_http_info(async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str owner: null (required)
-        :param str name: null (required)
-        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'name', 'region_name']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2703,28 +2421,10 @@ class FootprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'owner' is set
-        if ('owner' not in params or
-                params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `plot_user_footprint_region_advanced`")  # noqa: E501
-        # verify the required parameter 'name' is set
-        if ('name' not in params or
-                params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `plot_user_footprint_region_advanced`")  # noqa: E501
-        # verify the required parameter 'region_name' is set
-        if ('region_name' not in params or
-                params['region_name'] is None):
-            raise ValueError("Missing the required parameter `region_name` when calling `plot_user_footprint_region_advanced`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'owner' in params:
-            path_params['owner'] = params['owner']  # noqa: E501
-        if 'name' in params:
-            path_params['name'] = params['name']  # noqa: E501
-        if 'region_name' in params:
-            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
 
@@ -2736,17 +2436,17 @@ class FootprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}/plot', 'POST',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/plot', 'POST',
             path_params,
             query_params,
             header_params,
@@ -2773,7 +2473,7 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: None
+        :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2796,7 +2496,7 @@ class FootprintApi(object):
         :param str owner: null (required)
         :param str name: null (required)
         :param str region_name: null (required)
-        :return: None
+        :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2847,10 +2547,6 @@ class FootprintApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
@@ -2859,14 +2555,14 @@ class FootprintApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/users/{owner}/footprints/{name}/regions/{regionName}/shape', 'POST',
+            'V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/shape', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='RestError',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),

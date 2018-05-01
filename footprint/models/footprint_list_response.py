@@ -16,7 +16,8 @@ import re  # noqa: F401
 
 import six
 
-from footprint.models.definitionlinks import Definitionlinks  # noqa: F401,E501
+from footprint.models.footprint import Footprint  # noqa: F401,E501
+from footprint.models.links import Links  # noqa: F401,E501
 
 
 class FootprintListResponse(object):
@@ -33,21 +34,26 @@ class FootprintListResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'links': 'Definitionlinks'
+        'links': 'Links',
+        'footprints': 'Footprint'
     }
 
     attribute_map = {
-        'links': 'links'
+        'links': 'links',
+        'footprints': 'footprints'
     }
 
-    def __init__(self, links=None):  # noqa: E501
+    def __init__(self, links=None, footprints=None):  # noqa: E501
         """FootprintListResponse - a model defined in Swagger"""  # noqa: E501
 
         self._links = None
+        self._footprints = None
         self.discriminator = None
 
         if links is not None:
             self.links = links
+        if footprints is not None:
+            self.footprints = footprints
 
     @property
     def links(self):
@@ -55,7 +61,7 @@ class FootprintListResponse(object):
 
 
         :return: The links of this FootprintListResponse.  # noqa: E501
-        :rtype: Definitionlinks
+        :rtype: Links
         """
         return self._links
 
@@ -65,10 +71,31 @@ class FootprintListResponse(object):
 
 
         :param links: The links of this FootprintListResponse.  # noqa: E501
-        :type: Definitionlinks
+        :type: Links
         """
 
         self._links = links
+
+    @property
+    def footprints(self):
+        """Gets the footprints of this FootprintListResponse.  # noqa: E501
+
+
+        :return: The footprints of this FootprintListResponse.  # noqa: E501
+        :rtype: Footprint
+        """
+        return self._footprints
+
+    @footprints.setter
+    def footprints(self, footprints):
+        """Sets the footprints of this FootprintListResponse.
+
+
+        :param footprints: The footprints of this FootprintListResponse.  # noqa: E501
+        :type: Footprint
+        """
+
+        self._footprints = footprints
 
     def to_dict(self):
         """Returns the model properties as a dict"""

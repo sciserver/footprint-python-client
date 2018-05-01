@@ -16,7 +16,7 @@ import re  # noqa: F401
 
 import six
 
-from footprint.models.definitionfootprint import Definitionfootprint  # noqa: F401,E501
+from footprint.models.footprint import Footprint  # noqa: F401,E501
 
 
 class FootprintResponse(object):
@@ -33,7 +33,7 @@ class FootprintResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'footprint': 'Definitionfootprint'
+        'footprint': 'Footprint'
     }
 
     attribute_map = {
@@ -55,7 +55,7 @@ class FootprintResponse(object):
 
 
         :return: The footprint of this FootprintResponse.  # noqa: E501
-        :rtype: Definitionfootprint
+        :rtype: Footprint
         """
         return self._footprint
 
@@ -65,7 +65,7 @@ class FootprintResponse(object):
 
 
         :param footprint: The footprint of this FootprintResponse.  # noqa: E501
-        :type: Definitionfootprint
+        :type: Footprint
         """
 
         self._footprint = footprint
