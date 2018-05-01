@@ -17,7 +17,7 @@ import unittest
 
 import footprint
 from footprint import Configuration
-from footprint import SciServerClient
+from footprint.sciserver_client import SciServerClient
 from footprint.api.editor_api import EditorApi  # noqa: E501
 from footprint.rest import ApiException
 from footprint.models import FootprintRegion, FootprintRegionRequest

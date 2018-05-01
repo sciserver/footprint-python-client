@@ -20,7 +20,6 @@ from footprint.api.editor_api import EditorApi
 from footprint.api.footprint_api import FootprintApi
 
 # import ApiClient
-from footprint.sciserver_client import SciServerClient
 from footprint.api_client import ApiClient
 from footprint.configuration import Configuration
 # import models into sdk package
