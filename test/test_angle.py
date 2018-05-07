@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import footprint
-from footprint.models.footprint_region import FootprintRegion  # noqa: E501
+from footprint.models.angle import Angle  # noqa: E501
 from footprint.rest import ApiException
 
 
-class TestFootprintRegion(unittest.TestCase):
-    """FootprintRegion unit test stubs"""
+class TestAngle(unittest.TestCase):
+    """Angle unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestFootprintRegion(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testFootprintRegion(self):
-        """Test FootprintRegion"""
+    def testAngle(self):
+        """Test Angle"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = footprint.models.footprint_region.FootprintRegion()  # noqa: E501
+        # model = footprint.models.angle.Angle()  # noqa: E501
         pass
 
 

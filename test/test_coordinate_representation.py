@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import footprint
-from footprint.models.equatorial_point import EquatorialPoint  # noqa: E501
+from footprint.models.coordinate_representation import CoordinateRepresentation  # noqa: E501
 from footprint.rest import ApiException
 
 
-class TestEquatorialPoint(unittest.TestCase):
-    """EquatorialPoint unit test stubs"""
+class TestCoordinateRepresentation(unittest.TestCase):
+    """CoordinateRepresentation unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestEquatorialPoint(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testEquatorialPoint(self):
-        """Test EquatorialPoint"""
+    def testCoordinateRepresentation(self):
+        """Test CoordinateRepresentation"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = footprint.models.equatorial_point.EquatorialPoint()  # noqa: E501
+        # model = footprint.models.coordinate_representation.CoordinateRepresentation()  # noqa: E501
         pass
 
 

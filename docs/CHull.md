@@ -1,9 +1,9 @@
-# FootprintRegionResponse
+# CHull
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**region** | [**FootprintRegion**](FootprintRegion.md) |  | [optional] 
+**p1** | [**list[Point]**](Point.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

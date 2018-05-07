@@ -53,16 +53,15 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
-request = footprint.FootprintRegionRequest() # FootprintRegionRequest | null
-operation = 'operation_example' # str | null (optional)
+request = footprint.RegionRequest() # RegionRequest | null
 keep_original = 'keep_original_example' # str | null (optional)
 
 try:
-    # Compute union, intersection or difference of regions.
-    api_response = api_instance.combine_footprint_regions(region_name, request, operation=operation, keep_original=keep_original)
+    # Generate the convex hull of the regions.
+    api_response = api_instance.c_hull_regions(region_name, request, keep_original=keep_original)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling EditorApi->combine_footprint_regions: %s\n" % e)
+    print("Exception when calling EditorApi->c_hull_regions: %s\n" % e)
 
 ```
 
@@ -72,68 +71,56 @@ All URIs are relative to *http://localhost/dobos/footprint-v2.0/Api/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EditorApi* | [**combine_footprint_regions**](docs/EditorApi.md#combine_footprint_regions) | **POST** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;{operation}&amp;keepOrig&#x3D;{keepOriginal} | Compute union, intersection or difference of regions.
-*EditorApi* | [**create_footprint_region**](docs/EditorApi.md#create_footprint_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName} | Create new region.
+*EditorApi* | [**c_hull_regions**](docs/EditorApi.md#c_hull_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;chull&amp;keepOrig&#x3D;{keepOriginal} | Generate the convex hull of the regions.
+*EditorApi* | [**copy_region**](docs/EditorApi.md#copy_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;copy | Copy a region.
+*EditorApi* | [**create_region**](docs/EditorApi.md#create_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName} | Create a new region.
 *EditorApi* | [**delete_footprint**](docs/EditorApi.md#delete_footprint) | **DELETE** V1/Editor.svc/footprint | Delete footprint and reset the editor.
-*EditorApi* | [**delete_footprint_region**](docs/EditorApi.md#delete_footprint_region) | **DELETE** V1/Editor.svc/footprint/regions/{regionName} | Delete a region.
-*EditorApi* | [**delete_footprint_regions**](docs/EditorApi.md#delete_footprint_regions) | **DELETE** V1/Editor.svc/footprint/regions | Deletes multiple regions.
+*EditorApi* | [**delete_region**](docs/EditorApi.md#delete_region) | **DELETE** V1/Editor.svc/footprint/regions/{regionName} | Delete a region.
+*EditorApi* | [**download_footprint**](docs/EditorApi.md#download_footprint) | **GET** V1/Editor.svc/footprint/raw | Returns the footprint in raw format text or binary.
+*EditorApi* | [**download_footprint_outline**](docs/EditorApi.md#download_footprint_outline) | **GET** V1/Editor.svc/footprint/outline/raw | Returns the outline of the footprint.
+*EditorApi* | [**download_region**](docs/EditorApi.md#download_region) | **GET** V1/Editor.svc/footprint/regions/{regionName}/raw | Returns the shape description of the footprint region.
+*EditorApi* | [**download_region_outline**](docs/EditorApi.md#download_region_outline) | **GET** V1/Editor.svc/footprint/regions/{regionName}/outline/raw | Returns the outline of the footprint.
 *EditorApi* | [**get_footprint**](docs/EditorApi.md#get_footprint) | **GET** V1/Editor.svc/footprint | Returns the header information of the edited footprint
-*EditorApi* | [**get_footprint_outline**](docs/EditorApi.md#get_footprint_outline) | **GET** V1/Editor.svc/footprint/outline | Returns the outline of the footprint.
-*EditorApi* | [**get_footprint_outline_points**](docs/EditorApi.md#get_footprint_outline_points) | **GET** V1/Editor.svc/footprint/outline/points?res&#x3D;{resolution} | Returns the points of the outline of the footprint.
-*EditorApi* | [**get_footprint_region**](docs/EditorApi.md#get_footprint_region) | **GET** V1/Editor.svc/footprint/regions/{regionName} | Returns the header information of a region.
-*EditorApi* | [**get_footprint_region_outline**](docs/EditorApi.md#get_footprint_region_outline) | **GET** V1/Editor.svc/footprint/regions/{regionName}/outline | Returns the outline of the footprint.
-*EditorApi* | [**get_footprint_region_outline_points**](docs/EditorApi.md#get_footprint_region_outline_points) | **GET** V1/Editor.svc/footprint/regions/{regionName}/outline/points?res&#x3D;{resolution} | Returns the points of the outline of the footprint.
-*EditorApi* | [**get_footprint_region_shape**](docs/EditorApi.md#get_footprint_region_shape) | **GET** V1/Editor.svc/footprint/regions/{regionName}/shape | Returns the shape description of the footprint region.
-*EditorApi* | [**get_footprint_region_thumbnail**](docs/EditorApi.md#get_footprint_region_thumbnail) | **GET** V1/Editor.svc/footprint/regions/{regionName}/thumbnail | Gets the thumbnail of a footprint region.
-*EditorApi* | [**get_footprint_shape**](docs/EditorApi.md#get_footprint_shape) | **GET** V1/Editor.svc/footprint/shape | Returns the shape description of the footprint.
-*EditorApi* | [**get_footprint_thumbnail**](docs/EditorApi.md#get_footprint_thumbnail) | **GET** V1/Editor.svc/footprint/thumbnail | Gets the thumbnail of the footprint.
-*EditorApi* | [**list_footprint_regions**](docs/EditorApi.md#list_footprint_regions) | **GET** V1/Editor.svc/footprint/regions | List all regions.
-*EditorApi* | [**modify_footprint_region**](docs/EditorApi.md#modify_footprint_region) | **PATCH** V1/Editor.svc/footprint/regions/{regionName} | Modify a region.
-*EditorApi* | [**plot_footprint**](docs/EditorApi.md#plot_footprint) | **GET** V1/Editor.svc/footprint/plot?proj&#x3D;{projection}&amp;sys&#x3D;{sys}&amp;ra&#x3D;{ra}&amp;dec&#x3D;{dec}&amp;b&#x3D;{b}&amp;l&#x3D;{l}&amp;width&#x3D;{width}&amp;height&#x3D;{height}&amp;theme&#x3D;{colorTheme}&amp;zoom&#x3D;{autoZoom}&amp;rotate&#x3D;{autoRotate}&amp;grid&#x3D;{grid}&amp;degStyle&#x3D;{degreeStyle}&amp;highlights&#x3D;{highlights} | Plots the footprint
+*EditorApi* | [**get_footprint_outline_points**](docs/EditorApi.md#get_footprint_outline_points) | **GET** V1/Editor.svc/footprint/outline/points?sys&#x3D;{sys}&amp;rep&#x3D;{rep}&amp;res&#x3D;{resolution}&amp;reduce&#x3D;{reduce}&amp;limit&#x3D;{limit} | Returns the points of the outline of the footprint.
+*EditorApi* | [**get_region**](docs/EditorApi.md#get_region) | **GET** V1/Editor.svc/footprint/regions/{regionName} | Returns the header information of a region.
+*EditorApi* | [**get_region_outline_points**](docs/EditorApi.md#get_region_outline_points) | **GET** V1/Editor.svc/footprint/regions/{regionName}/outline/points?sys&#x3D;{sys}&amp;rep&#x3D;{rep}&amp;res&#x3D;{resolution}&amp;reduce&#x3D;{reduce}&amp;limit&#x3D;{limit} | Returns the points of the outline of the region.
+*EditorApi* | [**grow_region**](docs/EditorApi.md#grow_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;grow&amp;radius&#x3D;{radius}&amp;keepOrig&#x3D;{keepOriginal} | Grow region.
+*EditorApi* | [**intersect_regions**](docs/EditorApi.md#intersect_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;intersect&amp;keepOrig&#x3D;{keepOriginal} | Compute the intersection of regions.
+*EditorApi* | [**list_regions**](docs/EditorApi.md#list_regions) | **GET** V1/Editor.svc/footprint/regions?regionName&#x3D;{regionName}&amp;from&#x3D;{from}&amp;max&#x3D;{max} | List regions.
+*EditorApi* | [**modify_footprint**](docs/EditorApi.md#modify_footprint) | **PATCH** V1/Editor.svc/footprint | Modified the properties of the footprint in the editor.
+*EditorApi* | [**modify_region**](docs/EditorApi.md#modify_region) | **PATCH** V1/Editor.svc/footprint/regions/{regionName} | Modify a region.
+*EditorApi* | [**move_region**](docs/EditorApi.md#move_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;move | Move a region.
+*EditorApi* | [**plot_footprint**](docs/EditorApi.md#plot_footprint) | **GET** V1/Editor.svc/footprint/plot?proj&#x3D;{projection}&amp;sys&#x3D;{sys}&amp;lon&#x3D;{lon}&amp;lat&#x3D;{lat}&amp;width&#x3D;{width}&amp;height&#x3D;{height}&amp;theme&#x3D;{colorTheme}&amp;zoom&#x3D;{autoZoom}&amp;rotate&#x3D;{autoRotate}&amp;grid&#x3D;{grid}&amp;degStyle&#x3D;{degreeStyle} | Plots the footprint
 *EditorApi* | [**plot_footprint_advanced**](docs/EditorApi.md#plot_footprint_advanced) | **POST** V1/Editor.svc/footprint/plot | Plots the footprint, with advanced parameters
-*EditorApi* | [**plot_footprint_region**](docs/EditorApi.md#plot_footprint_region) | **GET** V1/Editor.svc/footprint/regions/{regionName}/plot?proj&#x3D;{projection}&amp;sys&#x3D;{sys}&amp;ra&#x3D;{ra}&amp;dec&#x3D;{dec}&amp;b&#x3D;{b}&amp;l&#x3D;{l}&amp;width&#x3D;{width}&amp;height&#x3D;{height}&amp;theme&#x3D;{colorTheme}&amp;zoom&#x3D;{autoZoom}&amp;rotate&#x3D;{autoRotate}&amp;grid&#x3D;{grid}&amp;degStyle&#x3D;{degreeStyle} | Plots a footprint region.
-*EditorApi* | [**plot_footprint_region_advanced**](docs/EditorApi.md#plot_footprint_region_advanced) | **POST** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots a footprint region.
-*EditorApi* | [**set_footprint_region_shape**](docs/EditorApi.md#set_footprint_region_shape) | **POST** V1/Editor.svc/footprint/regions/{regionName}/shape | Upload a region shape binary or other representation
-*FootprintApi* | [**copy_user_footprint**](docs/FootprintApi.md#copy_user_footprint) | **POST** V1/Footprint.svc/users/{owner}/footprints/{name}?op&#x3D;copy | Copy from and existing footprint.
-*FootprintApi* | [**create_user_footprint**](docs/FootprintApi.md#create_user_footprint) | **POST** V1/Footprint.svc/users/{owner}/footprints/{name} | Create new footprint.
-*FootprintApi* | [**create_user_footprint_region**](docs/FootprintApi.md#create_user_footprint_region) | **POST** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName} | Create new region under an existing footprint.
-*FootprintApi* | [**delete_user_footprint**](docs/FootprintApi.md#delete_user_footprint) | **DELETE** V1/Footprint.svc/users/{owner}/footprints/{name} | Delete footprint.
-*FootprintApi* | [**delete_user_footprint_region**](docs/FootprintApi.md#delete_user_footprint_region) | **DELETE** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName} | Delete a region under an existing footprint.
-*FootprintApi* | [**find_footprints**](docs/FootprintApi.md#find_footprints) | **GET** V1/Footprint.svc/footprints?owner&#x3D;{owner}&amp;name&#x3D;{name}&amp;from&#x3D;{from}&amp;max&#x3D;{max} | Returns the list of footprints of the user.
-*FootprintApi* | [**find_user_footprint_regions**](docs/FootprintApi.md#find_user_footprint_regions) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/regions?regionName&#x3D;{regionName}&amp;from&#x3D;{from}&amp;max&#x3D;{max} | Returns the list of the regions of a footprint.
-*FootprintApi* | [**find_user_footprints**](docs/FootprintApi.md#find_user_footprints) | **GET** V1/Footprint.svc/users/{owner}/footprints?name&#x3D;{name}&amp;from&#x3D;{from}&amp;max&#x3D;{max} | Returns the list of footprints of the user.
-*FootprintApi* | [**get_user_footprint**](docs/FootprintApi.md#get_user_footprint) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name} | Returns the header information of a footprint.
-*FootprintApi* | [**get_user_footprint_outline**](docs/FootprintApi.md#get_user_footprint_outline) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/outline | Returns the outline a footprint.
-*FootprintApi* | [**get_user_footprint_outline_points**](docs/FootprintApi.md#get_user_footprint_outline_points) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/outline/points?res&#x3D;{resolution} | Returns the points of the outline of a footprint.
-*FootprintApi* | [**get_user_footprint_region**](docs/FootprintApi.md#get_user_footprint_region) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName} | Returns the header information of a region.
-*FootprintApi* | [**get_user_footprint_region_outline**](docs/FootprintApi.md#get_user_footprint_region_outline) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/outline | Returns the outline a footprint.
-*FootprintApi* | [**get_user_footprint_region_outline_points**](docs/FootprintApi.md#get_user_footprint_region_outline_points) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/outline/points?res&#x3D;{resolution} | Returns the points of the outline of a footprint.
-*FootprintApi* | [**get_user_footprint_region_shape**](docs/FootprintApi.md#get_user_footprint_region_shape) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/shape | Returns the shape description of a footprint.
-*FootprintApi* | [**get_user_footprint_region_thumbnail**](docs/FootprintApi.md#get_user_footprint_region_thumbnail) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/thumbnail | Get the thumbnail of a footprint.
-*FootprintApi* | [**get_user_footprint_shape**](docs/FootprintApi.md#get_user_footprint_shape) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/shape | Returns the shape description of a footprint.
-*FootprintApi* | [**get_user_footprint_thumbnail**](docs/FootprintApi.md#get_user_footprint_thumbnail) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/thumbnail | Get the thumbnail of a footprint.
-*FootprintApi* | [**modify_user_footprint**](docs/FootprintApi.md#modify_user_footprint) | **PATCH** V1/Footprint.svc/users/{owner}/footprints/{name} | Modify existing footprint.
-*FootprintApi* | [**modify_user_footprint_region**](docs/FootprintApi.md#modify_user_footprint_region) | **PUT** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName} | Modify a region under an existing footprint.
-*FootprintApi* | [**plot_user_footprint**](docs/FootprintApi.md#plot_user_footprint) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/plot?proj&#x3D;{projection}&amp;sys&#x3D;{sys}&amp;ra&#x3D;{ra}&amp;dec&#x3D;{dec}&amp;b&#x3D;{b}&amp;l&#x3D;{l}&amp;width&#x3D;{width}&amp;height&#x3D;{height}&amp;theme&#x3D;{colorTheme}&amp;zoom&#x3D;{autoZoom}&amp;rotate&#x3D;{autoRotate}&amp;grid&#x3D;{grid}&amp;degStyle&#x3D;{degreeStyle} | Plots a footprint
-*FootprintApi* | [**plot_user_footprint_advanced**](docs/FootprintApi.md#plot_user_footprint_advanced) | **POST** V1/Footprint.svc/users/{owner}/footprints/{name}/plot | Plots a footprint, with advanced parameters
-*FootprintApi* | [**plot_user_footprint_region**](docs/FootprintApi.md#plot_user_footprint_region) | **GET** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/plot?proj&#x3D;{projection}&amp;sys&#x3D;{sys}&amp;ra&#x3D;{ra}&amp;dec&#x3D;{dec}&amp;b&#x3D;{b}&amp;l&#x3D;{l}&amp;width&#x3D;{width}&amp;height&#x3D;{height}&amp;theme&#x3D;{colorTheme}&amp;zoom&#x3D;{autoZoom}&amp;rotate&#x3D;{autoRotate}&amp;grid&#x3D;{grid}&amp;degStyle&#x3D;{degreeStyle} | Plots a footprint.
-*FootprintApi* | [**plot_user_footprint_region_advanced**](docs/FootprintApi.md#plot_user_footprint_region_advanced) | **POST** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/plot | Plots a footprint.
-*FootprintApi* | [**set_user_footprint_region_shape**](docs/FootprintApi.md#set_user_footprint_region_shape) | **POST** V1/Footprint.svc/users/{owner}/footprints/{name}/regions/{regionName}/shape | Upload region shape binary or other representation
+*EditorApi* | [**plot_region**](docs/EditorApi.md#plot_region) | **GET** V1/Editor.svc/footprint/regions/{regionName}/plot?proj&#x3D;{projection}&amp;sys&#x3D;{sys}&amp;lon&#x3D;{lon}&amp;lat&#x3D;{lat}&amp;width&#x3D;{width}&amp;height&#x3D;{height}&amp;theme&#x3D;{colorTheme}&amp;zoom&#x3D;{autoZoom}&amp;rotate&#x3D;{autoRotate}&amp;grid&#x3D;{grid}&amp;degStyle&#x3D;{degreeStyle} | Plots the region
+*EditorApi* | [**plot_region_advanced**](docs/EditorApi.md#plot_region_advanced) | **POST** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the footprint, with advanced parameters
+*EditorApi* | [**subtract_regions**](docs/EditorApi.md#subtract_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;subtract&amp;keepOrig&#x3D;{keepOriginal} | Compute the difference of regions.
+*EditorApi* | [**union_regions**](docs/EditorApi.md#union_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}?op&#x3D;union&amp;keepOrig&#x3D;{keepOriginal} | Compute the union of regions.
+*EditorApi* | [**upload_region**](docs/EditorApi.md#upload_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/raw | Upload a region binary or other representation
 
 
 ## Documentation For Models
 
- - [EquatorialPoint](docs/EquatorialPoint.md)
+ - [Angle](docs/Angle.md)
+ - [CHull](docs/CHull.md)
+ - [Circle](docs/Circle.md)
+ - [CombinationMethod](docs/CombinationMethod.md)
+ - [CoordinateRepresentation](docs/CoordinateRepresentation.md)
+ - [CoordinateSystem](docs/CoordinateSystem.md)
  - [Footprint](docs/Footprint.md)
- - [FootprintListResponse](docs/FootprintListResponse.md)
- - [FootprintRegion](docs/FootprintRegion.md)
- - [FootprintRegionListResponse](docs/FootprintRegionListResponse.md)
- - [FootprintRegionRequest](docs/FootprintRegionRequest.md)
- - [FootprintRegionResponse](docs/FootprintRegionResponse.md)
  - [FootprintRequest](docs/FootprintRequest.md)
  - [FootprintResponse](docs/FootprintResponse.md)
  - [Links](docs/Links.md)
+ - [OutlineReduction](docs/OutlineReduction.md)
+ - [Point](docs/Point.md)
+ - [Poly](docs/Poly.md)
+ - [Rect](docs/Rect.md)
+ - [Region](docs/Region.md)
+ - [RegionListResponse](docs/RegionListResponse.md)
+ - [RegionRequest](docs/RegionRequest.md)
+ - [RegionResponse](docs/RegionResponse.md)
  - [RestError](docs/RestError.md)
+ - [Rotation](docs/Rotation.md)
 
 
 ## Documentation For Authorization

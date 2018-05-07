@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_self** | **str** |  | [optional] 
+**parent** | **str** |  | [optional] 
 **prev** | **str** |  | [optional] 
 **next** | **str** |  | [optional] 
 

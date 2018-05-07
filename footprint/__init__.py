@@ -17,20 +17,28 @@ from __future__ import absolute_import
 
 # import apis into sdk package
 from footprint.api.editor_api import EditorApi
-from footprint.api.footprint_api import FootprintApi
 
 # import ApiClient
 from footprint.api_client import ApiClient
 from footprint.configuration import Configuration
 # import models into sdk package
-from footprint.models.equatorial_point import EquatorialPoint
+from footprint.models.angle import Angle
+from footprint.models.c_hull import CHull
+from footprint.models.circle import Circle
+from footprint.models.combination_method import CombinationMethod
+from footprint.models.coordinate_representation import CoordinateRepresentation
+from footprint.models.coordinate_system import CoordinateSystem
 from footprint.models.footprint import Footprint
-from footprint.models.footprint_list_response import FootprintListResponse
-from footprint.models.footprint_region import FootprintRegion
-from footprint.models.footprint_region_list_response import FootprintRegionListResponse
-from footprint.models.footprint_region_request import FootprintRegionRequest
-from footprint.models.footprint_region_response import FootprintRegionResponse
 from footprint.models.footprint_request import FootprintRequest
 from footprint.models.footprint_response import FootprintResponse
 from footprint.models.links import Links
+from footprint.models.outline_reduction import OutlineReduction
+from footprint.models.point import Point
+from footprint.models.poly import Poly
+from footprint.models.rect import Rect
+from footprint.models.region import Region
+from footprint.models.region_list_response import RegionListResponse
+from footprint.models.region_request import RegionRequest
+from footprint.models.region_response import RegionResponse
 from footprint.models.rest_error import RestError
+from footprint.models.rotation import Rotation

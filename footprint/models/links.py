@@ -32,26 +32,31 @@ class Links(object):
     """
     swagger_types = {
         '_self': 'str',
+        'parent': 'str',
         'prev': 'str',
         'next': 'str'
     }
 
     attribute_map = {
         '_self': 'self',
+        'parent': 'parent',
         'prev': 'prev',
         'next': 'next'
     }
 
-    def __init__(self, _self=None, prev=None, next=None):  # noqa: E501
+    def __init__(self, _self=None, parent=None, prev=None, next=None):  # noqa: E501
         """Links - a model defined in Swagger"""  # noqa: E501
 
         self.__self = None
+        self._parent = None
         self._prev = None
         self._next = None
         self.discriminator = None
 
         if _self is not None:
             self._self = _self
+        if parent is not None:
+            self.parent = parent
         if prev is not None:
             self.prev = prev
         if next is not None:
@@ -77,6 +82,27 @@ class Links(object):
         """
 
         self.__self = _self
+
+    @property
+    def parent(self):
+        """Gets the parent of this Links.  # noqa: E501
+
+
+        :return: The parent of this Links.  # noqa: E501
+        :rtype: str
+        """
+        return self._parent
+
+    @parent.setter
+    def parent(self, parent):
+        """Sets the parent of this Links.
+
+
+        :param parent: The parent of this Links.  # noqa: E501
+        :type: str
+        """
+
+        self._parent = parent
 
     @property
     def prev(self):

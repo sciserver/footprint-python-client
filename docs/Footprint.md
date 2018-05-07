@@ -5,8 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **owner** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
-**url** | **str** |  | [optional] 
-**combination_method** | **str** |  | [optional] 
+**combination_method** | [**CombinationMethod**](CombinationMethod.md) |  | [optional] 
 **comments** | **str** |  | [optional] 
 **public** | **bool** |  | [optional] 
 

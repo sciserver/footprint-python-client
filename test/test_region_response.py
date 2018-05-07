@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import footprint
-from footprint.models.footprint_list_response import FootprintListResponse  # noqa: E501
+from footprint.models.region_response import RegionResponse  # noqa: E501
 from footprint.rest import ApiException
 
 
-class TestFootprintListResponse(unittest.TestCase):
-    """FootprintListResponse unit test stubs"""
+class TestRegionResponse(unittest.TestCase):
+    """RegionResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestFootprintListResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testFootprintListResponse(self):
-        """Test FootprintListResponse"""
+    def testRegionResponse(self):
+        """Test RegionResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = footprint.models.footprint_list_response.FootprintListResponse()  # noqa: E501
+        # model = footprint.models.region_response.RegionResponse()  # noqa: E501
         pass
 
 

@@ -16,47 +16,38 @@ from __future__ import absolute_import
 import unittest
 
 import footprint
-from footprint import Configuration
-from footprint.sciserver_client import SciServerClient
 from footprint.api.editor_api import EditorApi  # noqa: E501
 from footprint.rest import ApiException
-from footprint.models import FootprintRegion, FootprintRegionRequest
 
 
 class TestEditorApi(unittest.TestCase):
     """EditorApi unit test stubs"""
 
     def setUp(self):
-        self.configuration = Configuration()
-        self.configuration.proxy = 'http://localhost:8888'
-        self.ssclient = SciServerClient(configuration=self.configuration)
-        self.api = footprint.api.editor_api.EditorApi(self.ssclient)  # noqa: E501
+        self.api = footprint.api.editor_api.EditorApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_combine_footprint_regions(self):
-        """Test case for combine_footprint_regions
+    def test_c_hull_regions(self):
+        """Test case for c_hull_regions
 
-        Compute union, intersection or difference of regions.  # noqa: E501
+        Generate the convex hull of the regions.  # noqa: E501
         """
         pass
 
-    def test_create_footprint_region(self):
-        """Test case for create_footprint_region
+    def test_copy_region(self):
+        """Test case for copy_region
 
-        Create new region.  # noqa: E501
+        Copy a region.  # noqa: E501
         """
+        pass
 
-        r1 = FootprintRegion()
-        r1.region_string = 'CIRCLE J2000 10 10 10'
+    def test_create_region(self):
+        """Test case for create_region
 
-        self.api.create_footprint_region("test", FootprintRegionRequest(r1))
-
-        r2 = self.api.get_footprint_region("test").region
-
-        self.assertEqual(r1.region_string, r2.region_string)
-
+        Create a new region.  # noqa: E501
+        """
         pass
 
     def test_delete_footprint(self):
@@ -66,17 +57,38 @@ class TestEditorApi(unittest.TestCase):
         """
         pass
 
-    def test_delete_footprint_region(self):
-        """Test case for delete_footprint_region
+    def test_delete_region(self):
+        """Test case for delete_region
 
         Delete a region.  # noqa: E501
         """
         pass
 
-    def test_delete_footprint_regions(self):
-        """Test case for delete_footprint_regions
+    def test_download_footprint(self):
+        """Test case for download_footprint
 
-        Deletes multiple regions.  # noqa: E501
+        Returns the footprint in raw format text or binary.  # noqa: E501
+        """
+        pass
+
+    def test_download_footprint_outline(self):
+        """Test case for download_footprint_outline
+
+        Returns the outline of the footprint.  # noqa: E501
+        """
+        pass
+
+    def test_download_region(self):
+        """Test case for download_region
+
+        Returns the shape description of the footprint region.  # noqa: E501
+        """
+        pass
+
+    def test_download_region_outline(self):
+        """Test case for download_region_outline
+
+        Returns the outline of the footprint.  # noqa: E501
         """
         pass
 
@@ -87,13 +99,6 @@ class TestEditorApi(unittest.TestCase):
         """
         pass
 
-    def test_get_footprint_outline(self):
-        """Test case for get_footprint_outline
-
-        Returns the outline of the footprint.  # noqa: E501
-        """
-        pass
-
     def test_get_footprint_outline_points(self):
         """Test case for get_footprint_outline_points
 
@@ -101,66 +106,59 @@ class TestEditorApi(unittest.TestCase):
         """
         pass
 
-    def test_get_footprint_region(self):
-        """Test case for get_footprint_region
+    def test_get_region(self):
+        """Test case for get_region
 
         Returns the header information of a region.  # noqa: E501
         """
         pass
 
-    def test_get_footprint_region_outline(self):
-        """Test case for get_footprint_region_outline
+    def test_get_region_outline_points(self):
+        """Test case for get_region_outline_points
 
-        Returns the outline of the footprint.  # noqa: E501
+        Returns the points of the outline of the region.  # noqa: E501
         """
         pass
 
-    def test_get_footprint_region_outline_points(self):
-        """Test case for get_footprint_region_outline_points
+    def test_grow_region(self):
+        """Test case for grow_region
 
-        Returns the points of the outline of the footprint.  # noqa: E501
+        Grow region.  # noqa: E501
         """
         pass
 
-    def test_get_footprint_region_shape(self):
-        """Test case for get_footprint_region_shape
+    def test_intersect_regions(self):
+        """Test case for intersect_regions
 
-        Returns the shape description of the footprint region.  # noqa: E501
+        Compute the intersection of regions.  # noqa: E501
         """
         pass
 
-    def test_get_footprint_region_thumbnail(self):
-        """Test case for get_footprint_region_thumbnail
+    def test_list_regions(self):
+        """Test case for list_regions
 
-        Gets the thumbnail of a footprint region.  # noqa: E501
+        List regions.  # noqa: E501
         """
         pass
 
-    def test_get_footprint_shape(self):
-        """Test case for get_footprint_shape
+    def test_modify_footprint(self):
+        """Test case for modify_footprint
 
-        Returns the shape description of the footprint.  # noqa: E501
+        Modified the properties of the footprint in the editor.  # noqa: E501
         """
         pass
 
-    def test_get_footprint_thumbnail(self):
-        """Test case for get_footprint_thumbnail
-
-        Gets the thumbnail of the footprint.  # noqa: E501
-        """
-        pass
-
-    def test_list_footprint_regions(self):
-        """Test case for list_footprint_regions
-
-        List all regions.  # noqa: E501
-        """
-        pass
-
-    def test_modify_footprint_region(self):
-        """Test case for modify_footprint_region
+    def test_modify_region(self):
+        """Test case for modify_region
 
         Modify a region.  # noqa: E501
+        """
+        pass
+
+    def test_move_region(self):
+        """Test case for move_region
+
+        Move a region.  # noqa: E501
         """
         pass
 
@@ -178,24 +176,38 @@ class TestEditorApi(unittest.TestCase):
         """
         pass
 
-    def test_plot_footprint_region(self):
-        """Test case for plot_footprint_region
+    def test_plot_region(self):
+        """Test case for plot_region
 
-        Plots a footprint region.  # noqa: E501
+        Plots the region  # noqa: E501
         """
         pass
 
-    def test_plot_footprint_region_advanced(self):
-        """Test case for plot_footprint_region_advanced
+    def test_plot_region_advanced(self):
+        """Test case for plot_region_advanced
 
-        Plots a footprint region.  # noqa: E501
+        Plots the footprint, with advanced parameters  # noqa: E501
         """
         pass
 
-    def test_set_footprint_region_shape(self):
-        """Test case for set_footprint_region_shape
+    def test_subtract_regions(self):
+        """Test case for subtract_regions
 
-        Upload a region shape binary or other representation  # noqa: E501
+        Compute the difference of regions.  # noqa: E501
+        """
+        pass
+
+    def test_union_regions(self):
+        """Test case for union_regions
+
+        Compute the union of regions.  # noqa: E501
+        """
+        pass
+
+    def test_upload_region(self):
+        """Test case for upload_region
+
+        Upload a region binary or other representation  # noqa: E501
         """
         pass
 
