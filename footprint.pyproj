@@ -26,21 +26,29 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="footprint\api\editor_api.py" />
-    <Compile Include="footprint\api\footprint_api.py" />
     <Compile Include="footprint\api\__init__.py" />
     <Compile Include="footprint\api_client.py" />
     <Compile Include="footprint\configuration.py" />
-    <Compile Include="footprint\models\equatorial_point.py" />
+    <Compile Include="footprint\models\angle.py" />
+    <Compile Include="footprint\models\circle.py" />
+    <Compile Include="footprint\models\combination_method.py" />
+    <Compile Include="footprint\models\coordinate_representation.py" />
+    <Compile Include="footprint\models\coordinate_system.py" />
+    <Compile Include="footprint\models\c_hull.py" />
     <Compile Include="footprint\models\footprint.py" />
-    <Compile Include="footprint\models\footprint_list_response.py" />
-    <Compile Include="footprint\models\footprint_region.py" />
-    <Compile Include="footprint\models\footprint_region_list_response.py" />
-    <Compile Include="footprint\models\footprint_region_request.py" />
-    <Compile Include="footprint\models\footprint_region_response.py" />
     <Compile Include="footprint\models\footprint_request.py" />
     <Compile Include="footprint\models\footprint_response.py" />
     <Compile Include="footprint\models\links.py" />
+    <Compile Include="footprint\models\outline_reduction.py" />
+    <Compile Include="footprint\models\point.py" />
+    <Compile Include="footprint\models\poly.py" />
+    <Compile Include="footprint\models\rect.py" />
+    <Compile Include="footprint\models\region.py" />
+    <Compile Include="footprint\models\region_list_response.py" />
+    <Compile Include="footprint\models\region_request.py" />
+    <Compile Include="footprint\models\region_response.py" />
     <Compile Include="footprint\models\rest_error.py" />
+    <Compile Include="footprint\models\rotation.py" />
     <Compile Include="footprint\models\__init__.py" />
     <Compile Include="footprint\rest.py" />
     <Compile Include="footprint\sciserver_client.py">
@@ -50,19 +58,27 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="setup.py" />
+    <Compile Include="test\test_angle.py" />
+    <Compile Include="test\test_circle.py" />
+    <Compile Include="test\test_combination_method.py" />
+    <Compile Include="test\test_coordinate_representation.py" />
+    <Compile Include="test\test_coordinate_system.py" />
+    <Compile Include="test\test_c_hull.py" />
     <Compile Include="test\test_editor_api.py" />
-    <Compile Include="test\test_equatorial_point.py" />
     <Compile Include="test\test_footprint.py" />
-    <Compile Include="test\test_footprint_api.py" />
-    <Compile Include="test\test_footprint_list_response.py" />
-    <Compile Include="test\test_footprint_region.py" />
-    <Compile Include="test\test_footprint_region_list_response.py" />
-    <Compile Include="test\test_footprint_region_request.py" />
-    <Compile Include="test\test_footprint_region_response.py" />
     <Compile Include="test\test_footprint_request.py" />
     <Compile Include="test\test_footprint_response.py" />
     <Compile Include="test\test_links.py" />
+    <Compile Include="test\test_outline_reduction.py" />
+    <Compile Include="test\test_point.py" />
+    <Compile Include="test\test_poly.py" />
+    <Compile Include="test\test_rect.py" />
+    <Compile Include="test\test_region.py" />
+    <Compile Include="test\test_region_list_response.py" />
+    <Compile Include="test\test_region_request.py" />
+    <Compile Include="test\test_region_response.py" />
     <Compile Include="test\test_rest_error.py" />
+    <Compile Include="test\test_rotation.py" />
     <Compile Include="test\__init__.py" />
   </ItemGroup>
   <ItemGroup>
@@ -78,19 +94,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="build.ps1" />
+    <Content Include="docs\Angle.md" />
+    <Content Include="docs\CHull.md" />
+    <Content Include="docs\Circle.md" />
+    <Content Include="docs\CombinationMethod.md" />
+    <Content Include="docs\CoordinateRepresentation.md" />
+    <Content Include="docs\CoordinateSystem.md" />
     <Content Include="docs\EditorApi.md" />
-    <Content Include="docs\EquatorialPoint.md" />
     <Content Include="docs\Footprint.md" />
-    <Content Include="docs\FootprintApi.md" />
-    <Content Include="docs\FootprintListResponse.md" />
-    <Content Include="docs\FootprintRegion.md" />
-    <Content Include="docs\FootprintRegionListResponse.md" />
-    <Content Include="docs\FootprintRegionRequest.md" />
-    <Content Include="docs\FootprintRegionResponse.md" />
     <Content Include="docs\FootprintRequest.md" />
     <Content Include="docs\FootprintResponse.md" />
     <Content Include="docs\Links.md" />
+    <Content Include="docs\OutlineReduction.md" />
+    <Content Include="docs\Point.md" />
+    <Content Include="docs\Poly.md" />
+    <Content Include="docs\Rect.md" />
+    <Content Include="docs\Region.md" />
+    <Content Include="docs\RegionListResponse.md" />
+    <Content Include="docs\RegionRequest.md" />
+    <Content Include="docs\RegionResponse.md" />
     <Content Include="docs\RestError.md" />
+    <Content Include="docs\Rotation.md" />
     <Content Include="footprint.json" />
     <Content Include="README.md" />
     <Content Include="requirements.txt" />

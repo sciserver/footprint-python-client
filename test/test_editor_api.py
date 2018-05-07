@@ -16,15 +16,21 @@ from __future__ import absolute_import
 import unittest
 
 import footprint
+from footprint import Configuration
+from footprint.sciserver_client import SciServerClient
 from footprint.api.editor_api import EditorApi  # noqa: E501
 from footprint.rest import ApiException
-
+from footprint.models import Region, RegionRequest
 
 class TestEditorApi(unittest.TestCase):
     """EditorApi unit test stubs"""
 
     def setUp(self):
-        self.api = footprint.api.editor_api.EditorApi()  # noqa: E501
+        self.configuration = Configuration()
+        self.configuration.host = "http://localhost/tomshark/footprint-v2.0/Api/"
+        self.configuration.proxy = 'http://localhost:8888'
+        self.ssclient = SciServerClient(configuration=self.configuration)
+        self.api = footprint.api.editor_api.EditorApi(self.ssclient) # noqa: E501
 
     def tearDown(self):
         pass
@@ -48,7 +54,11 @@ class TestEditorApi(unittest.TestCase):
 
         Create a new region.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test", RegionRequest(r1))
+        r2 = self.api.get_region("test").region
+        self.assertEqual(0.087266401064508378, r2.area)
 
     def test_delete_footprint(self):
         """Test case for delete_footprint
@@ -167,7 +177,10 @@ class TestEditorApi(unittest.TestCase):
 
         Plots the footprint  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test", RegionRequest(r1))
+        self.api.plot_footprint()
 
     def test_plot_footprint_advanced(self):
         """Test case for plot_footprint_advanced
