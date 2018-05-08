@@ -28,6 +28,9 @@
     <Compile Include="footprint\api\editor_api.py" />
     <Compile Include="footprint\api\__init__.py" />
     <Compile Include="footprint\api_client.py" />
+    <Compile Include="footprint\footprint_client.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="footprint\configuration.py" />
     <Compile Include="footprint\models\angle.py" />
     <Compile Include="footprint\models\circle.py" />

@@ -60,6 +60,10 @@ class TestEditorApi(unittest.TestCase):
         r2 = self.api.get_region("test").region
         self.assertEqual(0.087266401064508378, r2.area)
 
+        r3 = self.api.create_region("test2", { "region": { "regionString": "CIRCLE J2000 20 20 10"}})
+        self.assertEqual(0.08726640106450838, r3.region.area)
+
+
     def test_delete_footprint(self):
         """Test case for delete_footprint
 
@@ -222,7 +226,9 @@ class TestEditorApi(unittest.TestCase):
 
         Upload a region binary or other representation  # noqa: E501
         """
-        pass
+        self.api.upload_region("test", "CIRCLE J2000 10 10 10", )
+        r = self.api.get_region("test")
+        self.assertEqual(0, r.region.area)
 
 
 if __name__ == '__main__':

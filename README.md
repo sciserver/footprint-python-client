@@ -114,6 +114,8 @@ Class | Method | HTTP request | Description
  - [FootprintResponse](docs/FootprintResponse.md)
  - [Links](docs/Links.md)
  - [OutlineReduction](docs/OutlineReduction.md)
+ - [Plot](docs/Plot.md)
+ - [PlotRequest](docs/PlotRequest.md)
  - [Point](docs/Point.md)
  - [Poly](docs/Poly.md)
  - [Projection](docs/Projection.md)

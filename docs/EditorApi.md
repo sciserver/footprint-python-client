@@ -1001,7 +1001,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_footprint_advanced**
-> file plot_footprint_advanced()
+> file plot_footprint_advanced(plot)
 
 Plots the footprint, with advanced parameters
 
@@ -1015,17 +1015,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
+plot = footprint.PlotRequest() # PlotRequest | null
 
 try:
     # Plots the footprint, with advanced parameters
-    api_response = api_instance.plot_footprint_advanced()
+    api_response = api_instance.plot_footprint_advanced(plot)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_footprint_advanced: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plot** | [**PlotRequest**](PlotRequest.md)| null | 
 
 ### Return type
 
@@ -1111,7 +1115,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_region_advanced**
-> file plot_region_advanced(region_name)
+> file plot_region_advanced(region_name, plot)
 
 Plots the footprint, with advanced parameters
 
@@ -1126,10 +1130,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
+plot = footprint.PlotRequest() # PlotRequest | null
 
 try:
     # Plots the footprint, with advanced parameters
-    api_response = api_instance.plot_region_advanced(region_name)
+    api_response = api_instance.plot_region_advanced(region_name, plot)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_region_advanced: %s\n" % e)
@@ -1140,6 +1145,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
+ **plot** | [**PlotRequest**](PlotRequest.md)| null | 
 
 ### Return type
 
@@ -1257,7 +1263,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_region**
-> RestError upload_region(region_name)
+> RestError upload_region(region_name, region)
 
 Upload a region binary or other representation
 
@@ -1272,10 +1278,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
+region = '/path/to/file.txt' # file | null
 
 try:
     # Upload a region binary or other representation
-    api_response = api_instance.upload_region(region_name)
+    api_response = api_instance.upload_region(region_name, region)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->upload_region: %s\n" % e)
@@ -1286,6 +1293,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
+ **region** | **file**| null | 
 
 ### Return type
 

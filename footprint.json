@@ -405,11 +405,11 @@
         "parameters": [
           {
             "name": "plot",
-            "in": null,
+            "in": "body",
             "description": null,
             "required": true,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/PlotRequest"
             }
           }
         ],
@@ -717,7 +717,7 @@
           },
           {
             "name": "region",
-            "in": null,
+            "in": "body",
             "description": null,
             "required": true,
             "schema": {
@@ -1050,11 +1050,11 @@
           },
           {
             "name": "plot",
-            "in": null,
+            "in": "body",
             "description": null,
             "required": true,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/PlotRequest"
             }
           }
         ],
@@ -1645,6 +1645,81 @@
         "Sexa"
       ]
     },
+    "plot": {
+      "properties": {
+        "width": {
+          "type": "number",
+          "format": "float"
+        },
+        "height": {
+          "type": "number",
+          "format": "float"
+        },
+        "theme": {
+          "$ref": "#/definitions/ColorTheme"
+        },
+        "proj": {
+          "$ref": "#/definitions/Projection"
+        },
+        "sys": {
+          "$ref": "#/definitions/CoordinateSystem"
+        },
+        "lon": {
+          "type": "number",
+          "format": "double"
+        },
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "zoom": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "rotate": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "grid": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "gridDensity": {
+          "type": "number",
+          "format": "float"
+        },
+        "gridSys": {
+          "$ref": "#/definitions/CoordinateSystem"
+        },
+        "axesVisible": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "axisLabelsVisible": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "degreeStyle": {
+          "$ref": "#/definitions/DegreeStyle"
+        },
+        "fontSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "lineWidth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "regionsVisible": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "outlineVisible": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
     "Angle": {
       "properties": {
         "degrees": {
@@ -1750,6 +1825,26 @@
         },
         "chull": {
           "$ref": "#/definitions/CHull"
+        }
+      }
+    },
+    "PlotRequest": {
+      "properties": {
+        "plot": {
+          "$ref": "#/definitions/plot"
+        },
+        "regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/region"
+          }
+        },
+        "selection": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
         }
       }
     },

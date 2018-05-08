@@ -2029,41 +2029,43 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_footprint_advanced(self, **kwargs):  # noqa: E501
+    def plot_footprint_advanced(self, plot, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_footprint_advanced(async=True)
+        >>> thread = api.plot_footprint_advanced(plot, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param PlotRequest plot: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_footprint_advanced_with_http_info(**kwargs)  # noqa: E501
+            return self.plot_footprint_advanced_with_http_info(plot, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_footprint_advanced_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.plot_footprint_advanced_with_http_info(plot, **kwargs)  # noqa: E501
             return data
 
-    def plot_footprint_advanced_with_http_info(self, **kwargs):  # noqa: E501
+    def plot_footprint_advanced_with_http_info(self, plot, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_footprint_advanced_with_http_info(async=True)
+        >>> thread = api.plot_footprint_advanced_with_http_info(plot, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param PlotRequest plot: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['plot']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2078,6 +2080,10 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'plot' is set
+        if ('plot' not in params or
+                params['plot'] is None):
+            raise ValueError("Missing the required parameter `plot` when calling `plot_footprint_advanced`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2091,6 +2097,8 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'plot' in params:
+            body_params = params['plot']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
@@ -2255,43 +2263,45 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_region_advanced(self, region_name, **kwargs):  # noqa: E501
+    def plot_region_advanced(self, region_name, plot, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_advanced(region_name, async=True)
+        >>> thread = api.plot_region_advanced(region_name, plot, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param PlotRequest plot: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_region_advanced_with_http_info(region_name, **kwargs)  # noqa: E501
+            return self.plot_region_advanced_with_http_info(region_name, plot, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_region_advanced_with_http_info(region_name, **kwargs)  # noqa: E501
+            (data) = self.plot_region_advanced_with_http_info(region_name, plot, **kwargs)  # noqa: E501
             return data
 
-    def plot_region_advanced_with_http_info(self, region_name, **kwargs):  # noqa: E501
+    def plot_region_advanced_with_http_info(self, region_name, plot, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_advanced_with_http_info(region_name, async=True)
+        >>> thread = api.plot_region_advanced_with_http_info(region_name, plot, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param PlotRequest plot: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name']  # noqa: E501
+        all_params = ['region_name', 'plot']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2310,6 +2320,10 @@ class EditorApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `plot_region_advanced`")  # noqa: E501
+        # verify the required parameter 'plot' is set
+        if ('plot' not in params or
+                params['plot'] is None):
+            raise ValueError("Missing the required parameter `plot` when calling `plot_region_advanced`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2325,6 +2339,8 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'plot' in params:
+            body_params = params['plot']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
@@ -2570,43 +2586,45 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def upload_region(self, region_name, **kwargs):  # noqa: E501
+    def upload_region(self, region_name, region, **kwargs):  # noqa: E501
         """Upload a region binary or other representation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_region(region_name, async=True)
+        >>> thread = api.upload_region(region_name, region, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param file region: null (required)
         :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.upload_region_with_http_info(region_name, **kwargs)  # noqa: E501
+            return self.upload_region_with_http_info(region_name, region, **kwargs)  # noqa: E501
         else:
-            (data) = self.upload_region_with_http_info(region_name, **kwargs)  # noqa: E501
+            (data) = self.upload_region_with_http_info(region_name, region, **kwargs)  # noqa: E501
             return data
 
-    def upload_region_with_http_info(self, region_name, **kwargs):  # noqa: E501
+    def upload_region_with_http_info(self, region_name, region, **kwargs):  # noqa: E501
         """Upload a region binary or other representation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_region_with_http_info(region_name, async=True)
+        >>> thread = api.upload_region_with_http_info(region_name, region, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param file region: null (required)
         :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name']  # noqa: E501
+        all_params = ['region_name', 'region']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2625,6 +2643,10 @@ class EditorApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `upload_region`")  # noqa: E501
+        # verify the required parameter 'region' is set
+        if ('region' not in params or
+                params['region'] is None):
+            raise ValueError("Missing the required parameter `region` when calling `upload_region`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2640,6 +2662,8 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'region' in params:
+            body_params = params['region']
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/octet-stream', 'text/plain', 'text/xml'])  # noqa: E501

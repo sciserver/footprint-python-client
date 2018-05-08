@@ -35,6 +35,8 @@ from footprint.models.footprint_request import FootprintRequest
 from footprint.models.footprint_response import FootprintResponse
 from footprint.models.links import Links
 from footprint.models.outline_reduction import OutlineReduction
+from footprint.models.plot import Plot
+from footprint.models.plot_request import PlotRequest
 from footprint.models.point import Point
 from footprint.models.poly import Poly
 from footprint.models.projection import Projection
