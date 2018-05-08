@@ -32,8 +32,16 @@ class SciServerClient(ApiClient):
             post_params, body, _preload_content,
             _request_timeout)
 
-        if 'Set-Cookie' in response.urllib3_response.headers:
-            cookies = Cookies.from_response(response.urllib3_response.headers['Set-Cookie'])
+        if _preload_content:
+            if 'Set-Cookie' in response.urllib3_response.headers:
+                set_cookie = response.urllib3_response.headers['Set-Cookie']
+            else:
+                set_cookie = None
+        else:
+            set_cookie = response.getheader('Set-Cookie')
+
+        if set_cookie is not None:
+            cookies = Cookies.from_response(set_cookie)
             for key in cookies:
                 self.cookies.add(cookies[key])
             

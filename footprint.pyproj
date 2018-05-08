@@ -31,10 +31,12 @@
     <Compile Include="footprint\configuration.py" />
     <Compile Include="footprint\models\angle.py" />
     <Compile Include="footprint\models\circle.py" />
+    <Compile Include="footprint\models\color_theme.py" />
     <Compile Include="footprint\models\combination_method.py" />
     <Compile Include="footprint\models\coordinate_representation.py" />
     <Compile Include="footprint\models\coordinate_system.py" />
     <Compile Include="footprint\models\c_hull.py" />
+    <Compile Include="footprint\models\degree_style.py" />
     <Compile Include="footprint\models\footprint.py" />
     <Compile Include="footprint\models\footprint_request.py" />
     <Compile Include="footprint\models\footprint_response.py" />
@@ -42,6 +44,7 @@
     <Compile Include="footprint\models\outline_reduction.py" />
     <Compile Include="footprint\models\point.py" />
     <Compile Include="footprint\models\poly.py" />
+    <Compile Include="footprint\models\projection.py" />
     <Compile Include="footprint\models\rect.py" />
     <Compile Include="footprint\models\region.py" />
     <Compile Include="footprint\models\region_list_response.py" />
@@ -58,27 +61,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="setup.py" />
-    <Compile Include="test\test_angle.py" />
-    <Compile Include="test\test_circle.py" />
-    <Compile Include="test\test_combination_method.py" />
-    <Compile Include="test\test_coordinate_representation.py" />
-    <Compile Include="test\test_coordinate_system.py" />
-    <Compile Include="test\test_c_hull.py" />
     <Compile Include="test\test_editor_api.py" />
-    <Compile Include="test\test_footprint.py" />
-    <Compile Include="test\test_footprint_request.py" />
-    <Compile Include="test\test_footprint_response.py" />
-    <Compile Include="test\test_links.py" />
-    <Compile Include="test\test_outline_reduction.py" />
-    <Compile Include="test\test_point.py" />
-    <Compile Include="test\test_poly.py" />
-    <Compile Include="test\test_rect.py" />
-    <Compile Include="test\test_region.py" />
-    <Compile Include="test\test_region_list_response.py" />
-    <Compile Include="test\test_region_request.py" />
-    <Compile Include="test\test_region_response.py" />
-    <Compile Include="test\test_rest_error.py" />
-    <Compile Include="test\test_rotation.py" />
     <Compile Include="test\__init__.py" />
   </ItemGroup>
   <ItemGroup>

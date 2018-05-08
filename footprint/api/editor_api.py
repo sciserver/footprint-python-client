@@ -127,7 +127,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}?op=chull&keepOrig={keepOriginal}', 'PUT',
+            'V1/Editor.svc/footprint/regions/{regionName}/chull', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -232,7 +232,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}?op=copy', 'PUT',
+            'V1/Editor.svc/footprint/regions/{regionName}/copy', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -692,41 +692,43 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_region(self, **kwargs):  # noqa: E501
+    def download_region(self, region_name, **kwargs):  # noqa: E501
         """Returns the shape description of the footprint region.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region(async=True)
+        >>> thread = api.download_region(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.download_region_with_http_info(**kwargs)  # noqa: E501
+            return self.download_region_with_http_info(region_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_region_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.download_region_with_http_info(region_name, **kwargs)  # noqa: E501
             return data
 
-    def download_region_with_http_info(self, **kwargs):  # noqa: E501
+    def download_region_with_http_info(self, region_name, **kwargs):  # noqa: E501
         """Returns the shape description of the footprint region.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region_with_http_info(async=True)
+        >>> thread = api.download_region_with_http_info(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['region_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -741,10 +743,16 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'region_name' is set
+        if ('region_name' not in params or
+                params['region_name'] is None):
+            raise ValueError("Missing the required parameter `region_name` when calling `download_region`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'region_name' in params:
+            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
 
@@ -777,41 +785,43 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_region_outline(self, **kwargs):  # noqa: E501
+    def download_region_outline(self, region_name, **kwargs):  # noqa: E501
         """Returns the outline of the footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region_outline(async=True)
+        >>> thread = api.download_region_outline(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.download_region_outline_with_http_info(**kwargs)  # noqa: E501
+            return self.download_region_outline_with_http_info(region_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_region_outline_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.download_region_outline_with_http_info(region_name, **kwargs)  # noqa: E501
             return data
 
-    def download_region_outline_with_http_info(self, **kwargs):  # noqa: E501
+    def download_region_outline_with_http_info(self, region_name, **kwargs):  # noqa: E501
         """Returns the outline of the footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region_outline_with_http_info(async=True)
+        >>> thread = api.download_region_outline_with_http_info(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['region_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -826,10 +836,16 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'region_name' is set
+        if ('region_name' not in params or
+                params['region_name'] is None):
+            raise ValueError("Missing the required parameter `region_name` when calling `download_region_outline`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'region_name' in params:
+            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
 
@@ -1037,7 +1053,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/outline/points?sys={sys}&rep={rep}&res={resolution}&reduce={reduce}&limit={limit}', 'GET',
+            'V1/Editor.svc/footprint/outline/points', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1243,7 +1259,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}/outline/points?sys={sys}&rep={rep}&res={resolution}&reduce={reduce}&limit={limit}', 'GET',
+            'V1/Editor.svc/footprint/regions/{regionName}/outline/points', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1356,7 +1372,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}?op=grow&radius={radius}&keepOrig={keepOriginal}', 'PUT',
+            'V1/Editor.svc/footprint/regions/{regionName}/grow', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -1465,7 +1481,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}?op=intersect&keepOrig={keepOriginal}', 'PUT',
+            'V1/Editor.svc/footprint/regions/{regionName}/intersect', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -1562,7 +1578,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions?regionName={regionName}&from={from}&max={max}', 'GET',
+            'V1/Editor.svc/footprint/regions', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1869,7 +1885,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}?op=move', 'PUT',
+            'V1/Editor.svc/footprint/regions/{regionName}/move', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -1893,6 +1909,17 @@ class EditorApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str projection: null
+        :param str sys: null
+        :param str lon: null
+        :param str lat: null
+        :param str width: null
+        :param str height: null
+        :param str color_theme: null
+        :param str auto_zoom: null
+        :param str auto_rotate: null
+        :param str grid: null
+        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1913,12 +1940,23 @@ class EditorApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str projection: null
+        :param str sys: null
+        :param str lon: null
+        :param str lat: null
+        :param str width: null
+        :param str height: null
+        :param str color_theme: null
+        :param str auto_zoom: null
+        :param str auto_rotate: null
+        :param str grid: null
+        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1939,6 +1977,28 @@ class EditorApi(object):
         path_params = {}
 
         query_params = []
+        if 'projection' in params:
+            query_params.append(('projection', params['projection']))  # noqa: E501
+        if 'sys' in params:
+            query_params.append(('sys', params['sys']))  # noqa: E501
+        if 'lon' in params:
+            query_params.append(('lon', params['lon']))  # noqa: E501
+        if 'lat' in params:
+            query_params.append(('lat', params['lat']))  # noqa: E501
+        if 'width' in params:
+            query_params.append(('width', params['width']))  # noqa: E501
+        if 'height' in params:
+            query_params.append(('height', params['height']))  # noqa: E501
+        if 'color_theme' in params:
+            query_params.append(('colorTheme', params['color_theme']))  # noqa: E501
+        if 'auto_zoom' in params:
+            query_params.append(('autoZoom', params['auto_zoom']))  # noqa: E501
+        if 'auto_rotate' in params:
+            query_params.append(('autoRotate', params['auto_rotate']))  # noqa: E501
+        if 'grid' in params:
+            query_params.append(('grid', params['grid']))  # noqa: E501
+        if 'degree_style' in params:
+            query_params.append(('degreeStyle', params['degree_style']))  # noqa: E501
 
         header_params = {}
 
@@ -1954,7 +2014,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/plot?proj={projection}&sys={sys}&lon={lon}&lat={lat}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}', 'GET',
+            'V1/Editor.svc/footprint/plot', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2058,41 +2118,65 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_region(self, **kwargs):  # noqa: E501
+    def plot_region(self, region_name, **kwargs):  # noqa: E501
         """Plots the region  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region(async=True)
+        >>> thread = api.plot_region(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
+        :param str projection: null
+        :param str sys: null
+        :param str lon: null
+        :param str lat: null
+        :param str width: null
+        :param str height: null
+        :param str color_theme: null
+        :param str auto_zoom: null
+        :param str auto_rotate: null
+        :param str grid: null
+        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_region_with_http_info(**kwargs)  # noqa: E501
+            return self.plot_region_with_http_info(region_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_region_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.plot_region_with_http_info(region_name, **kwargs)  # noqa: E501
             return data
 
-    def plot_region_with_http_info(self, **kwargs):  # noqa: E501
+    def plot_region_with_http_info(self, region_name, **kwargs):  # noqa: E501
         """Plots the region  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_with_http_info(async=True)
+        >>> thread = api.plot_region_with_http_info(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
+        :param str projection: null
+        :param str sys: null
+        :param str lon: null
+        :param str lat: null
+        :param str width: null
+        :param str height: null
+        :param str color_theme: null
+        :param str auto_zoom: null
+        :param str auto_rotate: null
+        :param str grid: null
+        :param str degree_style: null
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['region_name', 'projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2107,12 +2191,40 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'region_name' is set
+        if ('region_name' not in params or
+                params['region_name'] is None):
+            raise ValueError("Missing the required parameter `region_name` when calling `plot_region`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'region_name' in params:
+            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
+        if 'projection' in params:
+            query_params.append(('projection', params['projection']))  # noqa: E501
+        if 'sys' in params:
+            query_params.append(('sys', params['sys']))  # noqa: E501
+        if 'lon' in params:
+            query_params.append(('lon', params['lon']))  # noqa: E501
+        if 'lat' in params:
+            query_params.append(('lat', params['lat']))  # noqa: E501
+        if 'width' in params:
+            query_params.append(('width', params['width']))  # noqa: E501
+        if 'height' in params:
+            query_params.append(('height', params['height']))  # noqa: E501
+        if 'color_theme' in params:
+            query_params.append(('colorTheme', params['color_theme']))  # noqa: E501
+        if 'auto_zoom' in params:
+            query_params.append(('autoZoom', params['auto_zoom']))  # noqa: E501
+        if 'auto_rotate' in params:
+            query_params.append(('autoRotate', params['auto_rotate']))  # noqa: E501
+        if 'grid' in params:
+            query_params.append(('grid', params['grid']))  # noqa: E501
+        if 'degree_style' in params:
+            query_params.append(('degreeStyle', params['degree_style']))  # noqa: E501
 
         header_params = {}
 
@@ -2128,7 +2240,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}/plot?proj={projection}&sys={sys}&lon={lon}&lat={lat}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}', 'GET',
+            'V1/Editor.svc/footprint/regions/{regionName}/plot', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2143,41 +2255,43 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_region_advanced(self, **kwargs):  # noqa: E501
+    def plot_region_advanced(self, region_name, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_advanced(async=True)
+        >>> thread = api.plot_region_advanced(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_region_advanced_with_http_info(**kwargs)  # noqa: E501
+            return self.plot_region_advanced_with_http_info(region_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_region_advanced_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.plot_region_advanced_with_http_info(region_name, **kwargs)  # noqa: E501
             return data
 
-    def plot_region_advanced_with_http_info(self, **kwargs):  # noqa: E501
+    def plot_region_advanced_with_http_info(self, region_name, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_advanced_with_http_info(async=True)
+        >>> thread = api.plot_region_advanced_with_http_info(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['region_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2192,10 +2306,16 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'region_name' is set
+        if ('region_name' not in params or
+                params['region_name'] is None):
+            raise ValueError("Missing the required parameter `region_name` when calling `plot_region_advanced`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'region_name' in params:
+            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
 
@@ -2326,7 +2446,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}?op=subtract&keepOrig={keepOriginal}', 'PUT',
+            'V1/Editor.svc/footprint/regions/{regionName}/subtract', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -2435,7 +2555,7 @@ class EditorApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            'V1/Editor.svc/footprint/regions/{regionName}?op=union&keepOrig={keepOriginal}', 'PUT',
+            'V1/Editor.svc/footprint/regions/{regionName}/union', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -2450,41 +2570,43 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def upload_region(self, **kwargs):  # noqa: E501
+    def upload_region(self, region_name, **kwargs):  # noqa: E501
         """Upload a region binary or other representation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_region(async=True)
+        >>> thread = api.upload_region(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.upload_region_with_http_info(**kwargs)  # noqa: E501
+            return self.upload_region_with_http_info(region_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.upload_region_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.upload_region_with_http_info(region_name, **kwargs)  # noqa: E501
             return data
 
-    def upload_region_with_http_info(self, **kwargs):  # noqa: E501
+    def upload_region_with_http_info(self, region_name, **kwargs):  # noqa: E501
         """Upload a region binary or other representation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_region_with_http_info(async=True)
+        >>> thread = api.upload_region_with_http_info(region_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str region_name: null (required)
         :return: RestError
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['region_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2499,10 +2621,16 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'region_name' is set
+        if ('region_name' not in params or
+                params['region_name'] is None):
+            raise ValueError("Missing the required parameter `region_name` when calling `upload_region`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'region_name' in params:
+            path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
 

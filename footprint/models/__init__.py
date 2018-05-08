@@ -18,9 +18,11 @@ from __future__ import absolute_import
 from footprint.models.angle import Angle
 from footprint.models.c_hull import CHull
 from footprint.models.circle import Circle
+from footprint.models.color_theme import ColorTheme
 from footprint.models.combination_method import CombinationMethod
 from footprint.models.coordinate_representation import CoordinateRepresentation
 from footprint.models.coordinate_system import CoordinateSystem
+from footprint.models.degree_style import DegreeStyle
 from footprint.models.footprint import Footprint
 from footprint.models.footprint_request import FootprintRequest
 from footprint.models.footprint_response import FootprintResponse
@@ -28,6 +30,7 @@ from footprint.models.links import Links
 from footprint.models.outline_reduction import OutlineReduction
 from footprint.models.point import Point
 from footprint.models.poly import Poly
+from footprint.models.projection import Projection
 from footprint.models.rect import Rect
 from footprint.models.region import Region
 from footprint.models.region_list_response import RegionListResponse

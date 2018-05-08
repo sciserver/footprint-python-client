@@ -27,7 +27,7 @@ class TestEditorApi(unittest.TestCase):
 
     def setUp(self):
         self.configuration = Configuration()
-        self.configuration.host = "http://localhost/tomshark/footprint-v2.0/Api/"
+        self.configuration.host = "http://localhost/dobos/footprint-v2.0/Api/"
         self.configuration.proxy = 'http://localhost:8888'
         self.ssclient = SciServerClient(configuration=self.configuration)
         self.api = footprint.api.editor_api.EditorApi(self.ssclient) # noqa: E501
@@ -177,10 +177,7 @@ class TestEditorApi(unittest.TestCase):
 
         Plots the footprint  # noqa: E501
         """
-        r1 = Region()
-        r1.region_string = 'CIRCLE J2000 10 10 10'
-        self.api.create_region("test", RegionRequest(r1))
-        self.api.plot_footprint()
+        pass
 
     def test_plot_footprint_advanced(self):
         """Test case for plot_footprint_advanced
@@ -194,7 +191,10 @@ class TestEditorApi(unittest.TestCase):
 
         Plots the region  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 100'
+        self.api.create_region("test", RegionRequest(r1))
+        self.api.plot_region("test", _preload_content=False)
 
     def test_plot_region_advanced(self):
         """Test case for plot_region_advanced

@@ -159,7 +159,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/outline/points?sys={sys}&rep={rep}&res={resolution}&reduce={reduce}&limit={limit}": {
+    "V1/Editor.svc/footprint/outline/points": {
       "get": {
         "summary": "Returns the points of the outline of the footprint.",
         "operationId": "GetFootprintOutlinePoints",
@@ -238,7 +238,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/plot?proj={projection}&sys={sys}&lon={lon}&lat={lat}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
+    "V1/Editor.svc/footprint/plot": {
       "get": {
         "summary": "Plots the footprint",
         "operationId": "PlotFootprint",
@@ -258,101 +258,108 @@
         "parameters": [
           {
             "name": "projection",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/Projection"
             }
           },
           {
             "name": "sys",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/CoordinateSystem"
             }
           },
           {
             "name": "lon",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "double"
             }
           },
           {
             "name": "lat",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "double"
             }
           },
           {
             "name": "width",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "float"
             }
           },
           {
             "name": "height",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "float"
             }
           },
           {
             "name": "colorTheme",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/ColorTheme"
             }
           },
           {
             "name": "autoZoom",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "boolean",
+              "format": "boolean"
             }
           },
           {
             "name": "autoRotate",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "boolean",
+              "format": "boolean"
             }
           },
           {
             "name": "grid",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "boolean",
+              "format": "boolean"
             }
           },
           {
             "name": "degreeStyle",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/DegreeStyle"
             }
           }
         ],
@@ -370,9 +377,7 @@
             }
           }
         }
-      }
-    },
-    "V1/Editor.svc/footprint/plot": {
+      },
       "post": {
         "summary": "Plots the footprint, with advanced parameters",
         "operationId": "PlotFootprintAdvanced",
@@ -588,7 +593,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions?regionName={regionName}&from={from}&max={max}": {
+    "V1/Editor.svc/footprint/regions": {
       "get": {
         "summary": "List regions.",
         "operationId": "ListRegions",
@@ -663,11 +668,12 @@
         "parameters": [
           {
             "name": "regionName",
-            "in": null,
+            "in": "path",
             "description": null,
             "required": true,
             "schema": {
-              "type": "file"
+              "type": "string",
+              "format": "string"
             }
           }
         ],
@@ -701,11 +707,12 @@
         "parameters": [
           {
             "name": "regionName",
-            "in": null,
+            "in": "path",
             "description": null,
             "required": true,
             "schema": {
-              "type": "file"
+              "type": "string",
+              "format": "string"
             }
           },
           {
@@ -742,11 +749,12 @@
         "parameters": [
           {
             "name": "regionName",
-            "in": null,
+            "in": "path",
             "description": null,
             "required": true,
             "schema": {
-              "type": "file"
+              "type": "string",
+              "format": "string"
             }
           }
         ],
@@ -766,7 +774,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/outline/points?sys={sys}&rep={rep}&res={resolution}&reduce={reduce}&limit={limit}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/outline/points": {
       "get": {
         "summary": "Returns the points of the outline of the region.",
         "operationId": "GetRegionOutlinePoints",
@@ -855,7 +863,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/plot?proj={projection}&sys={sys}&lon={lon}&lat={lat}&width={width}&height={height}&theme={colorTheme}&zoom={autoZoom}&rotate={autoRotate}&grid={grid}&degStyle={degreeStyle}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/plot": {
       "get": {
         "summary": "Plots the region",
         "operationId": "PlotRegion",
@@ -875,110 +883,118 @@
         "parameters": [
           {
             "name": "regionName",
-            "in": null,
+            "in": "path",
             "description": null,
             "required": true,
             "schema": {
-              "type": "file"
+              "type": "string",
+              "format": "string"
             }
           },
           {
             "name": "projection",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/Projection"
             }
           },
           {
             "name": "sys",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/CoordinateSystem"
             }
           },
           {
             "name": "lon",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "double"
             }
           },
           {
             "name": "lat",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "double"
             }
           },
           {
             "name": "width",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "float"
             }
           },
           {
             "name": "height",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "number",
+              "format": "float"
             }
           },
           {
             "name": "colorTheme",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/ColorTheme"
             }
           },
           {
             "name": "autoZoom",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "boolean",
+              "format": "boolean"
             }
           },
           {
             "name": "autoRotate",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "boolean",
+              "format": "boolean"
             }
           },
           {
             "name": "grid",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "type": "boolean",
+              "format": "boolean"
             }
           },
           {
             "name": "degreeStyle",
-            "in": null,
+            "in": "query",
             "description": null,
             "required": false,
             "schema": {
-              "type": "file"
+              "$ref": "#/definitions/DegreeStyle"
             }
           }
         ],
@@ -996,9 +1012,7 @@
             }
           }
         }
-      }
-    },
-    "V1/Editor.svc/footprint/regions/{regionName}/plot": {
+      },
       "post": {
         "summary": "Plots the footprint, with advanced parameters",
         "operationId": "PlotRegionAdvanced",
@@ -1026,11 +1040,12 @@
         "parameters": [
           {
             "name": "regionName",
-            "in": null,
+            "in": "path",
             "description": null,
             "required": true,
             "schema": {
-              "type": "file"
+              "type": "string",
+              "format": "string"
             }
           },
           {
@@ -1059,7 +1074,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}?op=copy": {
+    "V1/Editor.svc/footprint/regions/{regionName}/copy": {
       "put": {
         "summary": "Copy a region.",
         "operationId": "CopyRegion",
@@ -1109,7 +1124,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}?op=move": {
+    "V1/Editor.svc/footprint/regions/{regionName}/move": {
       "put": {
         "summary": "Move a region.",
         "operationId": "MoveRegion",
@@ -1159,7 +1174,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}?op=grow&radius={radius}&keepOrig={keepOriginal}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/grow": {
       "put": {
         "summary": "Grow region.",
         "operationId": "GrowRegion",
@@ -1229,7 +1244,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}?op=chull&keepOrig={keepOriginal}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/chull": {
       "put": {
         "summary": "Generate the convex hull of the regions.",
         "operationId": "CHullRegions",
@@ -1289,7 +1304,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}?op=union&keepOrig={keepOriginal}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/union": {
       "put": {
         "summary": "Compute the union of regions.",
         "operationId": "UnionRegions",
@@ -1349,7 +1364,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}?op=intersect&keepOrig={keepOriginal}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/intersect": {
       "put": {
         "summary": "Compute the intersection of regions.",
         "operationId": "IntersectRegions",
@@ -1409,7 +1424,7 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}?op=subtract&keepOrig={keepOriginal}": {
+    "V1/Editor.svc/footprint/regions/{regionName}/subtract": {
       "put": {
         "summary": "Compute the difference of regions.",
         "operationId": "SubtractRegions",
@@ -1605,6 +1620,30 @@
           "format": "double"
         }
       }
+    },
+    "Projection": {
+      "type": "string",
+      "enum": [
+        "Aitoff",
+        "Hammer",
+        "Mollweide",
+        "Stereo",
+        "Ortho"
+      ]
+    },
+    "ColorTheme": {
+      "type": "string",
+      "enum": [
+        "Light",
+        "Dark"
+      ]
+    },
+    "DegreeStyle": {
+      "type": "string",
+      "enum": [
+        "Dec",
+        "Sexa"
+      ]
     },
     "Angle": {
       "properties": {
