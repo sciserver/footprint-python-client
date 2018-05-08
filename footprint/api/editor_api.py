@@ -531,6 +531,7 @@ class EditorApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -551,12 +552,13 @@ class EditorApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -579,6 +581,8 @@ class EditorApi(object):
         query_params = []
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -586,7 +590,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream', 'text/plain', 'text/xml'])  # noqa: E501
+            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -616,6 +620,7 @@ class EditorApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -636,12 +641,13 @@ class EditorApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -664,6 +670,8 @@ class EditorApi(object):
         query_params = []
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -702,6 +710,7 @@ class EditorApi(object):
 
         :param async bool
         :param str region_name: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -723,12 +732,13 @@ class EditorApi(object):
 
         :param async bool
         :param str region_name: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name']  # noqa: E501
+        all_params = ['region_name', 'accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -757,6 +767,8 @@ class EditorApi(object):
         query_params = []
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -764,7 +776,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream', 'text/plain', 'text/xml'])  # noqa: E501
+            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -795,6 +807,7 @@ class EditorApi(object):
 
         :param async bool
         :param str region_name: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -816,12 +829,13 @@ class EditorApi(object):
 
         :param async bool
         :param str region_name: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name']  # noqa: E501
+        all_params = ['region_name', 'accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -850,6 +864,8 @@ class EditorApi(object):
         query_params = []
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1920,6 +1936,7 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1951,12 +1968,13 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
+        all_params = ['projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style', 'accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2001,6 +2019,8 @@ class EditorApi(object):
             query_params.append(('degreeStyle', params['degree_style']))  # noqa: E501
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2008,7 +2028,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2039,6 +2059,7 @@ class EditorApi(object):
 
         :param async bool
         :param PlotRequest plot: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2060,12 +2081,13 @@ class EditorApi(object):
 
         :param async bool
         :param PlotRequest plot: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['plot']  # noqa: E501
+        all_params = ['plot', 'accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2092,6 +2114,8 @@ class EditorApi(object):
         query_params = []
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2101,11 +2125,11 @@ class EditorApi(object):
             body_params = params['plot']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2147,6 +2171,7 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2179,12 +2204,13 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
+        all_params = ['region_name', 'projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style', 'accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2235,6 +2261,8 @@ class EditorApi(object):
             query_params.append(('degreeStyle', params['degree_style']))  # noqa: E501
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2242,7 +2270,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2274,6 +2302,7 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param PlotRequest plot: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2296,12 +2325,13 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param PlotRequest plot: null (required)
+        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'plot']  # noqa: E501
+        all_params = ['region_name', 'plot', 'accept']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2334,6 +2364,8 @@ class EditorApi(object):
         query_params = []
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2343,11 +2375,11 @@ class EditorApi(object):
             body_params = params['plot']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2666,7 +2698,7 @@ class EditorApi(object):
             body_params = params['region']
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/octet-stream', 'text/plain', 'text/xml'])  # noqa: E501
+            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501

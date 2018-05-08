@@ -110,11 +110,22 @@
         ],
         "consumes": [],
         "produces": [
-          "application/octet-stream",
           "text/plain",
+          "application/octet-stream",
           "text/xml"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "text/plain",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": "unexpected error",
@@ -142,7 +153,18 @@
         "produces": [
           "text/plain"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "text/plain",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": "unexpected error",
@@ -247,8 +269,8 @@
         ],
         "consumes": [],
         "produces": [
-          "image/jpeg",
           "image/png",
+          "image/jpeg",
           "image/gif",
           "image/bmp",
           "application/pdf",
@@ -361,6 +383,16 @@
             "schema": {
               "$ref": "#/definitions/DegreeStyle"
             }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "image/png",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
@@ -385,8 +417,8 @@
           "Editor"
         ],
         "consumes": [
-          "image/jpeg",
           "image/png",
+          "image/jpeg",
           "image/gif",
           "image/bmp",
           "application/pdf",
@@ -394,8 +426,8 @@
           "windows/metafile"
         ],
         "produces": [
-          "image/jpeg",
           "image/png",
+          "image/jpeg",
           "image/gif",
           "image/bmp",
           "application/pdf",
@@ -410,6 +442,16 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/PlotRequest"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "image/png",
+            "schema": {
+              "type": "string",
+              "format": "string"
             }
           }
         ],
@@ -661,8 +703,8 @@
         ],
         "consumes": [],
         "produces": [
-          "application/octet-stream",
           "text/plain",
+          "application/octet-stream",
           "text/xml"
         ],
         "parameters": [
@@ -671,6 +713,16 @@
             "in": "path",
             "description": null,
             "required": true,
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "text/plain",
             "schema": {
               "type": "string",
               "format": "string"
@@ -699,8 +751,8 @@
           "Editor"
         ],
         "consumes": [
-          "application/octet-stream",
           "text/plain",
+          "application/octet-stream",
           "text/xml"
         ],
         "produces": [],
@@ -752,6 +804,16 @@
             "in": "path",
             "description": null,
             "required": true,
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "text/plain",
             "schema": {
               "type": "string",
               "format": "string"
@@ -872,8 +934,8 @@
         ],
         "consumes": [],
         "produces": [
-          "image/jpeg",
           "image/png",
+          "image/jpeg",
           "image/gif",
           "image/bmp",
           "application/pdf",
@@ -996,6 +1058,16 @@
             "schema": {
               "$ref": "#/definitions/DegreeStyle"
             }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "image/png",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
           }
         ],
         "responses": {
@@ -1020,8 +1092,8 @@
           "Editor"
         ],
         "consumes": [
-          "image/jpeg",
           "image/png",
+          "image/jpeg",
           "image/gif",
           "image/bmp",
           "application/pdf",
@@ -1029,8 +1101,8 @@
           "windows/metafile"
         ],
         "produces": [
-          "image/jpeg",
           "image/png",
+          "image/jpeg",
           "image/gif",
           "image/bmp",
           "application/pdf",
@@ -1055,6 +1127,16 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/PlotRequest"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "image/png",
+            "schema": {
+              "type": "string",
+              "format": "string"
             }
           }
         ],
@@ -1498,7 +1580,7 @@
         "Any"
       ]
     },
-    "footprint": {
+    "Footprint": {
       "properties": {
         "owner": {
           "type": "string",
@@ -1521,7 +1603,7 @@
         }
       }
     },
-    "links": {
+    "Links": {
       "properties": {
         "self": {
           "type": "string",
@@ -1544,17 +1626,17 @@
     "FootprintResponse": {
       "properties": {
         "footprint": {
-          "$ref": "#/definitions/footprint"
+          "$ref": "#/definitions/Footprint"
         },
         "links": {
-          "$ref": "#/definitions/links"
+          "$ref": "#/definitions/Links"
         }
       }
     },
     "FootprintRequest": {
       "properties": {
         "footprint": {
-          "$ref": "#/definitions/footprint"
+          "$ref": "#/definitions/Footprint"
         },
         "selection": {
           "type": "array",
@@ -1645,7 +1727,7 @@
         "Sexa"
       ]
     },
-    "plot": {
+    "Plot": {
       "properties": {
         "width": {
           "type": "number",
@@ -1780,7 +1862,7 @@
         }
       }
     },
-    "region": {
+    "Region": {
       "properties": {
         "owner": {
           "type": "string",
@@ -1831,12 +1913,12 @@
     "PlotRequest": {
       "properties": {
         "plot": {
-          "$ref": "#/definitions/plot"
+          "$ref": "#/definitions/Plot"
         },
         "regions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/region"
+            "$ref": "#/definitions/Region"
           }
         },
         "selection": {
@@ -1867,7 +1949,7 @@
     "RegionRequest": {
       "properties": {
         "region": {
-          "$ref": "#/definitions/region"
+          "$ref": "#/definitions/Region"
         },
         "rotation": {
           "$ref": "#/definitions/Rotation"
@@ -1887,10 +1969,10 @@
     "RegionResponse": {
       "properties": {
         "region": {
-          "$ref": "#/definitions/region"
+          "$ref": "#/definitions/Region"
         },
         "links": {
-          "$ref": "#/definitions/links"
+          "$ref": "#/definitions/Links"
         }
       }
     },
@@ -1899,11 +1981,11 @@
         "regions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/region"
+            "$ref": "#/definitions/Region"
           }
         },
         "links": {
-          "$ref": "#/definitions/links"
+          "$ref": "#/definitions/Links"
         }
       }
     },

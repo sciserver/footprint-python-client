@@ -226,9 +226,9 @@ class TestEditorApi(unittest.TestCase):
 
         Upload a region binary or other representation  # noqa: E501
         """
-        self.api.upload_region("test", "CIRCLE J2000 10 10 10", )
+        self.api.upload_region("test", "CIRCLE J2000 10 10 10")
         r = self.api.get_region("test")
-        self.assertEqual(0, r.region.area)
+        self.assertEqual(0.08726640106450838, r.region.area)
 
 
 if __name__ == '__main__':
