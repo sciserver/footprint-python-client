@@ -20,17 +20,17 @@ from footprint import Configuration
 from footprint.sciserver_client import SciServerClient
 from footprint.api.editor_api import EditorApi  # noqa: E501
 from footprint.rest import ApiException
-from footprint.models import Region, RegionRequest
+from footprint.models import *
 
 class TestEditorApi(unittest.TestCase):
     """EditorApi unit test stubs"""
 
     def setUp(self):
         self.configuration = Configuration()
-        self.configuration.host = "http://localhost/dobos/footprint-v2.0/Api/"
+        self.configuration.host = "http://localhost/tomshark/footprint-v2.0/Api/"
         self.configuration.proxy = 'http://localhost:8888'
         self.ssclient = SciServerClient(configuration=self.configuration)
-        self.api = footprint.api.editor_api.EditorApi(self.ssclient) # noqa: E501
+        self.api = EditorApi(self.ssclient) # noqa: E501
 
     def tearDown(self):
         pass
@@ -47,7 +47,17 @@ class TestEditorApi(unittest.TestCase):
 
         Copy a region.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'Rect J2000 0 0 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        
+        req = RegionRequest()
+        req.selection = [ "test1", ]
+        self.api.copy_region("test2", req)
+
+        r2 = self.api.get_region("test1").region
+        r3 = self.api.get_region("test2").region
+        self.assertEqual(r2.area,r3.area)
 
     def test_create_region(self):
         """Test case for create_region
@@ -69,35 +79,74 @@ class TestEditorApi(unittest.TestCase):
 
         Delete footprint and reset the editor.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 10 10 10'
+        r3 = Region()
+        r3.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        self.api.create_region("test2", RegionRequest(r2))
+        self.api.create_region("test3", RegionRequest(r3))
+        self.api.delete_footprint()
+        self.api.list_regions()
+        self.assertEqual(self.ssclient.last_response.data ,"{\"regions\":[]}")
 
     def test_delete_region(self):
         """Test case for delete_region
 
         Delete a region.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        self.api.delete_region("test1")
+        self.api.list_regions()
+        self.assertEqual(self.ssclient.last_response.data ,"{\"regions\":[]}")
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test2", RegionRequest(r2))
+        self.api.create_region("test1", RegionRequest(r1))
+        self.api.delete_region("test1")
+        self.api.list_regions()
+        self.assertNotEqual(self.ssclient.last_response.data ,"{\"regions\":[]}")
 
     def test_download_footprint(self):
         """Test case for download_footprint
 
         Returns the footprint in raw format text or binary.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 20 20 10'
+        self.api.create_region("test2", RegionRequest(r2))
+        self.api.download_footprint()
 
     def test_download_footprint_outline(self):
         """Test case for download_footprint_outline
 
         Returns the outline of the footprint.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 20 20 10'
+        self.api.create_region("test2", RegionRequest(r2))
+        self.api.download_footprint_outline()
 
     def test_download_region(self):
         """Test case for download_region
 
         Returns the shape description of the footprint region.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test_download_region", RegionRequest(r1))
+        self.api.download_region("test_download_region")
+
 
     def test_download_region_outline(self):
         """Test case for download_region_outline
@@ -139,49 +188,103 @@ class TestEditorApi(unittest.TestCase):
 
         Grow region.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        req = RegionRequest()
+        req.selection = [ "test1",]
+        self.api.grow_region("test2",req)
+        r2 = self.api.get_region("test2").region
+        
 
     def test_intersect_regions(self):
         """Test case for intersect_regions
 
         Compute the intersection of regions.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 200'
+        self.api.create_region("test1", RegionRequest(r1))
+        r2 = Region()
+        r3 = Region()
+        r2.region_string = 'CIRCLE J2000 11 11 200'
+        self.api.create_region("test2", RegionRequest(r2))
+        req = RegionRequest()
+        req.selection = [ "test1", "test2"]
+        self.api.intersect_regions("test3",req)
+        r1 = self.api.get_region("test1")
+        r2 = self.api.get_region("test2")
+        r3 = self.api.get_region("test3")
+        self.assertLessEqual(r3.region.area,r1.region.area )
+        self.assertLessEqual(r3.region.area,r2.region.area)
 
     def test_list_regions(self):
         """Test case for list_regions
 
         List regions.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("testlist1", RegionRequest(r1))
+        self.api.list_regions()
+        self.assertEqual(self.ssclient.last_response.data ,"{\"regions\":[{\"area\":0.087266401064508378,\"fillFactor\":1,\"footprintName\":\"new_footprint\",\"isSimplified\":true,\"name\":\"testlist1\"}]}")
 
     def test_modify_footprint(self):
         """Test case for modify_footprint
 
         Modified the properties of the footprint in the editor.  # noqa: E501
         """
-        pass
+        req = FootprintRequest()
+        req.footprint = Footprint()
+        req.footprint.combination_method = CombinationMethod.UNION
+        self.api.modify_footprint(req)
 
     def test_modify_region(self):
         """Test case for modify_region
 
         Modify a region.  # noqa: E501
         """
-        pass
-
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test_mregion1", RegionRequest(r1))
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 20 20 20'
+        self.api.modify_region("test_mregion1",RegionRequest(r2))
+        self.assertEqual(self.ssclient.last_response.data, "{\"region\":{\"area\":0.34906486584773644,\"fillFactor\":1,\"footprintName\":\"new_footprint\",\"isSimplified\":true,\"name\":\"test_mregion1\"}}")
+        
     def test_move_region(self):
         """Test case for move_region
 
         Move a region.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test",RegionRequest(r1))
+        req = RegionRequest()
+        req.selection = [ "test", ]
+        self.api.move_region("test_move", req)
+        self.api.list_regions()
+        self.assertEqual(self.ssclient.last_response.data, "{\"regions\":[{\"area\":0.087266401064508378,\"fillFactor\":1,\"footprintName\":\"new_footprint\",\"isSimplified\":true,\"name\":\"test_move\"}]}")
 
     def test_plot_footprint(self):
         """Test case for plot_footprint
 
         Plots the footprint  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 100'
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 11 11 110'
+        r3 = Region()
+        r3.region_string = 'CIRCLE J2000 40 40 400'
+        """freq = FootprintRequest() intercept kell
+        """
+        self.api.modify_footprint()
+        self.api.create_region("test1", RegionRequest(r1))
+        self.api.create_region("test2", RegionRequest(r2))
+        self.api.create_region("test3", RegionRequest(r3))
+        self.api.plot_region("test1", _preload_content=False)
+        self.api.plot_footprint( _preload_content=False)
 
     def test_plot_footprint_advanced(self):
         """Test case for plot_footprint_advanced
@@ -203,23 +306,58 @@ class TestEditorApi(unittest.TestCase):
     def test_plot_region_advanced(self):
         """Test case for plot_region_advanced
 
-        Plots the footprint, with advanced parameters  # noqa: E501
+        Plots the region, with advanced parameters  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 100'
+        self.api.create_region("test", RegionRequest(r1))
+        preq = PlotRequest()
+        preq.plot = Plot()
+        self.api.plot_region_advanced("test",preq)
 
     def test_subtract_regions(self):
         """Test case for subtract_regions
 
         Compute the difference of regions.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 100'
+        self.api.create_region("test1", RegionRequest(r1))
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 12 12 100'
+        self.api.create_region("test2", RegionRequest(r2))
+        
+        req = RegionRequest()
+        req.selection = [ "test1", "test2" ]
+        self.api.union_regions("testsubtract",req)
+        r1 = self.api.get_region("test1")
+        r2 = self.api.get_region("test2")
+        r3 = self.api.get_region("testsubtract")
+        self.assertLessEqual(r1.region.area,r3.region.area)
+        self.assertLessEqual(r2.region.area,r3.region.area)
+
 
     def test_union_regions(self):
         """Test case for union_regions
 
         Compute the union of regions.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 100'
+        self.api.create_region("test1", RegionRequest(r1))
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 20 20 100'
+        self.api.create_region("test2", RegionRequest(r2))
+        
+        req = RegionRequest()
+        req.selection = [ "test1", "test2" ]
+        self.api.union_regions("testunion",req)
+        r1 = self.api.get_region("test1")
+        r2 = self.api.get_region("test2")
+        r3 = self.api.get_region("testunion")
+        self.assertGreaterEqual(r3.region.area,r1.region.area)
+        self.assertGreaterEqual(r3.region.area,r2.region.area)
+
 
     def test_upload_region(self):
         """Test case for upload_region
