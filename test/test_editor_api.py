@@ -40,7 +40,22 @@ class TestEditorApi(unittest.TestCase):
 
         Generate the convex hull of the regions.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'Rect J2000 0 0 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        r2 = self.api.get_region("test1").region
+         
+        req = RegionRequest()
+        req.selection = [ "test1", ]
+        self.api.c_hull_regions("test2", req)
+        r3 = self.api.get_region("test2").region
+
+        req.selection = [ "test2", ]
+        self.api.c_hull_regions("test3", req)
+        r4 = self.api.get_region("test3").region
+
+        self.assertGreaterEqual(r3.area,r2.area)
+        self.assertGreaterEqual(r4.area,r3.area)
 
     def test_copy_region(self):
         """Test case for copy_region
@@ -122,7 +137,8 @@ class TestEditorApi(unittest.TestCase):
         r2 = Region()
         r2.region_string = 'CIRCLE J2000 20 20 10'
         self.api.create_region("test2", RegionRequest(r2))
-        self.api.download_footprint()
+        self.api.download_footprint(_preload_content=False)
+        
 
     def test_download_footprint_outline(self):
         """Test case for download_footprint_outline
@@ -145,7 +161,7 @@ class TestEditorApi(unittest.TestCase):
         r1 = Region()
         r1.region_string = 'CIRCLE J2000 10 10 10'
         self.api.create_region("test_download_region", RegionRequest(r1))
-        self.api.download_region("test_download_region")
+        self.api.download_region("test_download_region", _preload_content=False)
 
 
     def test_download_region_outline(self):
@@ -153,14 +169,20 @@ class TestEditorApi(unittest.TestCase):
 
         Returns the outline of the footprint.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test_download_region_outline", RegionRequest(r1))
+        self.api.download_region_outline("test_download_region_outline")
 
     def test_get_footprint(self):
         """Test case for get_footprint
 
         Returns the header information of the edited footprint  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test", RegionRequest(r1))
+        self.api.get_footprint(_preload_content=False)
 
     def test_get_footprint_outline_points(self):
         """Test case for get_footprint_outline_points
@@ -174,7 +196,13 @@ class TestEditorApi(unittest.TestCase):
 
         Returns the header information of a region.  # noqa: E501
         """
-        pass
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 10 10 11'
+        self.api.create_region("test2", RegionRequest(r2))
+        self.api.get_region("test1",_preload_content=False)
 
     def test_get_region_outline_points(self):
         """Test case for get_region_outline_points
@@ -192,10 +220,9 @@ class TestEditorApi(unittest.TestCase):
         r1.region_string = 'CIRCLE J2000 10 10 10'
         self.api.create_region("test1", RegionRequest(r1))
         req = RegionRequest()
-        req.selection = [ "test1",]
+        req.selection = [ "test1", ]
         self.api.grow_region("test2",req)
-        r2 = self.api.get_region("test2").region
-        
+        r2 = self.api.get_region("test2").region        
 
     def test_intersect_regions(self):
         """Test case for intersect_regions
@@ -324,17 +351,17 @@ class TestEditorApi(unittest.TestCase):
         r1.region_string = 'CIRCLE J2000 10 10 100'
         self.api.create_region("test1", RegionRequest(r1))
         r2 = Region()
-        r2.region_string = 'CIRCLE J2000 12 12 100'
+        r2.region_string = 'CIRCLE J2000 10.01 10.01 100'
         self.api.create_region("test2", RegionRequest(r2))
         
         req = RegionRequest()
         req.selection = [ "test1", "test2" ]
-        self.api.union_regions("testsubtract",req)
+        self.api.subtract_regions("testsubtract",req)
         r1 = self.api.get_region("test1")
         r2 = self.api.get_region("test2")
         r3 = self.api.get_region("testsubtract")
-        self.assertLessEqual(r1.region.area,r3.region.area)
-        self.assertLessEqual(r2.region.area,r3.region.area)
+        self.assertLessEqual(r3.region.area,r1.region.area)
+        self.assertLessEqual(r3.region.area,r2.region.area)
 
 
     def test_union_regions(self):
