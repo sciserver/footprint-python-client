@@ -27,7 +27,7 @@ class TestEditorApi(unittest.TestCase):
 
     def setUp(self):
         self.configuration = Configuration()
-        self.configuration.host = "http://localhost/tomshark/footprint-v2.0/Api/"
+        self.configuration.host = "http://localhost/dobos/footprint-v2.0/Api/"
         self.configuration.proxy = 'http://localhost:8888'
         self.ssclient = SciServerClient(configuration=self.configuration)
         self.api = EditorApi(self.ssclient) # noqa: E501
@@ -151,7 +151,13 @@ class TestEditorApi(unittest.TestCase):
         r2 = Region()
         r2.region_string = 'CIRCLE J2000 20 20 10'
         self.api.create_region("test2", RegionRequest(r2))
-        self.api.download_footprint_outline()
+
+        req = FootprintRequest()
+        req.footprint = Footprint()
+        req.footprint.combination_method = CombinationMethod.UNION
+        self.api.modify_footprint(req)
+
+        self.api.download_footprint_outline(_preload_content=False)
 
     def test_download_region(self):
         """Test case for download_region
@@ -172,7 +178,7 @@ class TestEditorApi(unittest.TestCase):
         r1 = Region()
         r1.region_string = 'CIRCLE J2000 10 10 10'
         self.api.create_region("test_download_region_outline", RegionRequest(r1))
-        self.api.download_region_outline("test_download_region_outline")
+        self.api.download_region_outline("test_download_region_outline", _preload_content=False)
 
     def test_get_footprint(self):
         """Test case for get_footprint
