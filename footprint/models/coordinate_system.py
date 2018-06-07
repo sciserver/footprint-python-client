@@ -26,10 +26,10 @@ class CoordinateSystem(object):
     """
     allowed enum values
     """
-    EQ = "Eq"
-    EQJ2000 = "EqJ2000"
-    GAL = "Gal"
-    GALJ2000 = "GalJ2000"
+    EQ = "eq"
+    EQJ2000 = "eqj2000"
+    GAL = "gal"
+    GALJ2000 = "galj2000"
 
     """
     Attributes:

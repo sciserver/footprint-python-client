@@ -26,9 +26,9 @@ class CoordinateRepresentation(object):
     """
     allowed enum values
     """
-    DEC = "Dec"
-    SEXA = "Sexa"
-    CART = "Cart"
+    DEC = "dec"
+    SEXA = "sexa"
+    CART = "cart"
 
     """
     Attributes:

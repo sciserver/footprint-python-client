@@ -1206,10 +1206,10 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/move": {
+    "V1/Editor.svc/footprint/regions/{regionName}/rename": {
       "put": {
-        "summary": "Move a region.",
-        "operationId": "MoveRegion",
+        "summary": "Renames a region.",
+        "operationId": "RenameRegion",
         "tags": [
           "Editor"
         ],
@@ -1571,13 +1571,13 @@
     "CombinationMethod": {
       "type": "string",
       "enum": [
-        "None",
-        "Union",
-        "Intersection",
-        "Intersect",
-        "Subtract",
-        "CHull",
-        "Any"
+        "none",
+        "union",
+        "intersection",
+        "intersect",
+        "subtract",
+        "chull",
+        "any"
       ]
     },
     "Footprint": {
@@ -1650,25 +1650,25 @@
     "CoordinateSystem": {
       "type": "string",
       "enum": [
-        "Eq",
-        "EqJ2000",
-        "Gal",
-        "GalJ2000"
+        "eq",
+        "eqj2000",
+        "gal",
+        "galj2000"
       ]
     },
     "CoordinateRepresentation": {
       "type": "string",
       "enum": [
-        "Dec",
-        "Sexa",
-        "Cart"
+        "dec",
+        "sexa",
+        "cart"
       ]
     },
     "OutlineReduction": {
       "type": "string",
       "enum": [
-        "Dp",
-        "CHull"
+        "dp",
+        "chull"
       ]
     },
     "Point": {
@@ -1706,25 +1706,25 @@
     "Projection": {
       "type": "string",
       "enum": [
-        "Aitoff",
-        "Hammer",
-        "Mollweide",
-        "Stereo",
-        "Ortho"
+        "aitoff",
+        "hammer",
+        "mollweide",
+        "stereo",
+        "ortho"
       ]
     },
     "ColorTheme": {
       "type": "string",
       "enum": [
-        "Light",
-        "Dark"
+        "light",
+        "dark"
       ]
     },
     "DegreeStyle": {
       "type": "string",
       "enum": [
-        "Dec",
-        "Sexa"
+        "dec",
+        "sexa"
       ]
     },
     "Plot": {

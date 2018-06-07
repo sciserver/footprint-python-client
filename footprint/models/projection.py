@@ -26,11 +26,11 @@ class Projection(object):
     """
     allowed enum values
     """
-    AITOFF = "Aitoff"
-    HAMMER = "Hammer"
-    MOLLWEIDE = "Mollweide"
-    STEREO = "Stereo"
-    ORTHO = "Ortho"
+    AITOFF = "aitoff"
+    HAMMER = "hammer"
+    MOLLWEIDE = "mollweide"
+    STEREO = "stereo"
+    ORTHO = "ortho"
 
     """
     Attributes:

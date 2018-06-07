@@ -26,8 +26,8 @@ class DegreeStyle(object):
     """
     allowed enum values
     """
-    DEC = "Dec"
-    SEXA = "Sexa"
+    DEC = "dec"
+    SEXA = "sexa"
 
     """
     Attributes:

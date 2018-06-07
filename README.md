@@ -89,11 +89,11 @@ Class | Method | HTTP request | Description
 *EditorApi* | [**list_regions**](docs/EditorApi.md#list_regions) | **GET** V1/Editor.svc/footprint/regions | List regions.
 *EditorApi* | [**modify_footprint**](docs/EditorApi.md#modify_footprint) | **PATCH** V1/Editor.svc/footprint | Modified the properties of the footprint in the editor.
 *EditorApi* | [**modify_region**](docs/EditorApi.md#modify_region) | **PATCH** V1/Editor.svc/footprint/regions/{regionName} | Modify a region.
-*EditorApi* | [**move_region**](docs/EditorApi.md#move_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/move | Move a region.
 *EditorApi* | [**plot_footprint**](docs/EditorApi.md#plot_footprint) | **GET** V1/Editor.svc/footprint/plot | Plots the footprint
 *EditorApi* | [**plot_footprint_advanced**](docs/EditorApi.md#plot_footprint_advanced) | **POST** V1/Editor.svc/footprint/plot | Plots the footprint, with advanced parameters
 *EditorApi* | [**plot_region**](docs/EditorApi.md#plot_region) | **GET** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the region
 *EditorApi* | [**plot_region_advanced**](docs/EditorApi.md#plot_region_advanced) | **POST** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the footprint, with advanced parameters
+*EditorApi* | [**rename_region**](docs/EditorApi.md#rename_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/rename | Renames a region.
 *EditorApi* | [**subtract_regions**](docs/EditorApi.md#subtract_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/subtract | Compute the difference of regions.
 *EditorApi* | [**union_regions**](docs/EditorApi.md#union_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/union | Compute the union of regions.
 *EditorApi* | [**upload_region**](docs/EditorApi.md#upload_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/raw | Upload a region binary or other representation

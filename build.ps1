@@ -21,4 +21,4 @@ Write-Host "Downloading swagger file from $FOOTPRINT_JSON"
 wget "$FOOTPRINT_JSON" -O "$SWAGGER_FILE"
 
 # Generate proxy
-java.exe -jar .\swagger-codegen-cli.jar generate -i "$SWAGGER_FILE" -l python -o . -DpackageName=footprint -v
+java.exe -jar .\swagger-codegen-cli.jar generate -i "$SWAGGER_FILE" -l python -o . -DpackageName=footprint

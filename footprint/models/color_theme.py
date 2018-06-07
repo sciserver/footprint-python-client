@@ -26,8 +26,8 @@ class ColorTheme(object):
     """
     allowed enum values
     """
-    LIGHT = "Light"
-    DARK = "Dark"
+    LIGHT = "light"
+    DARK = "dark"
 
     """
     Attributes:

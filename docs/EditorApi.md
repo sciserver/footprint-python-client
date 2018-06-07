@@ -22,11 +22,11 @@ Method | HTTP request | Description
 [**list_regions**](EditorApi.md#list_regions) | **GET** V1/Editor.svc/footprint/regions | List regions.
 [**modify_footprint**](EditorApi.md#modify_footprint) | **PATCH** V1/Editor.svc/footprint | Modified the properties of the footprint in the editor.
 [**modify_region**](EditorApi.md#modify_region) | **PATCH** V1/Editor.svc/footprint/regions/{regionName} | Modify a region.
-[**move_region**](EditorApi.md#move_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/move | Move a region.
 [**plot_footprint**](EditorApi.md#plot_footprint) | **GET** V1/Editor.svc/footprint/plot | Plots the footprint
 [**plot_footprint_advanced**](EditorApi.md#plot_footprint_advanced) | **POST** V1/Editor.svc/footprint/plot | Plots the footprint, with advanced parameters
 [**plot_region**](EditorApi.md#plot_region) | **GET** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the region
 [**plot_region_advanced**](EditorApi.md#plot_region_advanced) | **POST** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the footprint, with advanced parameters
+[**rename_region**](EditorApi.md#rename_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/rename | Renames a region.
 [**subtract_regions**](EditorApi.md#subtract_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/subtract | Compute the difference of regions.
 [**union_regions**](EditorApi.md#union_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/union | Compute the union of regions.
 [**upload_region**](EditorApi.md#upload_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/raw | Upload a region binary or other representation
@@ -898,54 +898,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **move_region**
-> RegionResponse move_region(region_name, request)
-
-Move a region.
-
-### Example
-```python
-from __future__ import print_function
-import time
-import footprint
-from footprint.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
-
-try:
-    # Move a region.
-    api_response = api_instance.move_region(region_name, request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling EditorApi->move_region: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
-
-### Return type
-
-[**RegionResponse**](RegionResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **plot_footprint**
 > file plot_footprint(projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style, accept=accept)
 
@@ -1179,6 +1131,54 @@ No authorization required
 
  - **Content-Type**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
  - **Accept**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rename_region**
+> RegionResponse rename_region(region_name, request)
+
+Renames a region.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import footprint
+from footprint.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = footprint.EditorApi()
+region_name = 'region_name_example' # str | null
+request = footprint.RegionRequest() # RegionRequest | null
+
+try:
+    # Renames a region.
+    api_response = api_instance.rename_region(region_name, request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling EditorApi->rename_region: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **region_name** | **str**| null | 
+ **request** | [**RegionRequest**](RegionRequest.md)| null | 
+
+### Return type
+
+[**RegionResponse**](RegionResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

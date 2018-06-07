@@ -26,8 +26,8 @@ class OutlineReduction(object):
     """
     allowed enum values
     """
-    DP = "Dp"
-    CHULL = "CHull"
+    DP = "dp"
+    CHULL = "chull"
 
     """
     Attributes:

@@ -26,13 +26,13 @@ class CombinationMethod(object):
     """
     allowed enum values
     """
-    NONE = "None"
-    UNION = "Union"
-    INTERSECTION = "Intersection"
-    INTERSECT = "Intersect"
-    SUBTRACT = "Subtract"
-    CHULL = "CHull"
-    ANY = "Any"
+    NONE = "none"
+    UNION = "union"
+    INTERSECTION = "intersection"
+    INTERSECT = "intersect"
+    SUBTRACT = "subtract"
+    CHULL = "chull"
+    ANY = "any"
 
     """
     Attributes:

@@ -285,7 +285,7 @@ class TestEditorApi(unittest.TestCase):
         self.api.modify_region("test_mregion1",RegionRequest(r2))
         self.assertEqual(self.ssclient.last_response.data, "{\"region\":{\"area\":0.34906486584773644,\"fillFactor\":1,\"footprintName\":\"new_footprint\",\"isSimplified\":true,\"name\":\"test_mregion1\"}}")
         
-    def test_move_region(self):
+    def test_rename_region(self):
         """Test case for move_region
 
         Move a region.  # noqa: E501
@@ -295,7 +295,7 @@ class TestEditorApi(unittest.TestCase):
         self.api.create_region("test",RegionRequest(r1))
         req = RegionRequest()
         req.selection = [ "test", ]
-        self.api.move_region("test_move", req)
+        self.api.rename_region("test_move", req)
         self.api.list_regions()
         self.assertEqual(self.ssclient.last_response.data, "{\"regions\":[{\"area\":0.087266401064508378,\"fillFactor\":1,\"footprintName\":\"new_footprint\",\"isSimplified\":true,\"name\":\"test_move\"}]}")
 
@@ -317,7 +317,7 @@ class TestEditorApi(unittest.TestCase):
         self.api.create_region("test2", RegionRequest(r2))
         self.api.create_region("test3", RegionRequest(r3))
         self.api.plot_region("test1", _preload_content=False)
-        self.api.plot_footprint( _preload_content=False)
+        self.api.plot_footprint(_preload_content=False)
 
     def test_plot_footprint_advanced(self):
         """Test case for plot_footprint_advanced
@@ -346,7 +346,7 @@ class TestEditorApi(unittest.TestCase):
         self.api.create_region("test", RegionRequest(r1))
         preq = PlotRequest()
         preq.plot = Plot()
-        self.api.plot_region_advanced("test",preq)
+        self.api.plot_region_advanced("test", preq)
 
     def test_subtract_regions(self):
         """Test case for subtract_regions
