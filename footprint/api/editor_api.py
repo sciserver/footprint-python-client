@@ -117,11 +117,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -222,11 +222,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -327,11 +327,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -522,37 +522,37 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_footprint(self, **kwargs):  # noqa: E501
+    def download_footprint(self, accept, **kwargs):  # noqa: E501
         """Returns the footprint in raw format text or binary.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_footprint(async=True)
+        >>> thread = api.download_footprint(accept, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.download_footprint_with_http_info(**kwargs)  # noqa: E501
+            return self.download_footprint_with_http_info(accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_footprint_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.download_footprint_with_http_info(accept, **kwargs)  # noqa: E501
             return data
 
-    def download_footprint_with_http_info(self, **kwargs):  # noqa: E501
+    def download_footprint_with_http_info(self, accept, **kwargs):  # noqa: E501
         """Returns the footprint in raw format text or binary.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_footprint_with_http_info(async=True)
+        >>> thread = api.download_footprint_with_http_info(accept, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -573,6 +573,10 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `download_footprint`")  # noqa: E501
 
         collection_formats = {}
 
@@ -588,10 +592,6 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -611,37 +611,37 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_footprint_outline(self, **kwargs):  # noqa: E501
+    def download_footprint_outline(self, accept, **kwargs):  # noqa: E501
         """Returns the outline of the footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_footprint_outline(async=True)
+        >>> thread = api.download_footprint_outline(accept, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.download_footprint_outline_with_http_info(**kwargs)  # noqa: E501
+            return self.download_footprint_outline_with_http_info(accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_footprint_outline_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.download_footprint_outline_with_http_info(accept, **kwargs)  # noqa: E501
             return data
 
-    def download_footprint_outline_with_http_info(self, **kwargs):  # noqa: E501
+    def download_footprint_outline_with_http_info(self, accept, **kwargs):  # noqa: E501
         """Returns the outline of the footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_footprint_outline_with_http_info(async=True)
+        >>> thread = api.download_footprint_outline_with_http_info(accept, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -662,6 +662,10 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `download_footprint_outline`")  # noqa: E501
 
         collection_formats = {}
 
@@ -677,10 +681,6 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -700,39 +700,39 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_region(self, region_name, **kwargs):  # noqa: E501
+    def download_region(self, region_name, accept, **kwargs):  # noqa: E501
         """Returns the shape description of the footprint region.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region(region_name, async=True)
+        >>> thread = api.download_region(region_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.download_region_with_http_info(region_name, **kwargs)  # noqa: E501
+            return self.download_region_with_http_info(region_name, accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_region_with_http_info(region_name, **kwargs)  # noqa: E501
+            (data) = self.download_region_with_http_info(region_name, accept, **kwargs)  # noqa: E501
             return data
 
-    def download_region_with_http_info(self, region_name, **kwargs):  # noqa: E501
+    def download_region_with_http_info(self, region_name, accept, **kwargs):  # noqa: E501
         """Returns the shape description of the footprint region.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region_with_http_info(region_name, async=True)
+        >>> thread = api.download_region_with_http_info(region_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -757,6 +757,10 @@ class EditorApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `download_region`")  # noqa: E501
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `download_region`")  # noqa: E501
 
         collection_formats = {}
 
@@ -774,10 +778,6 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -797,39 +797,39 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_region_outline(self, region_name, **kwargs):  # noqa: E501
+    def download_region_outline(self, region_name, accept, **kwargs):  # noqa: E501
         """Returns the outline of the footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region_outline(region_name, async=True)
+        >>> thread = api.download_region_outline(region_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.download_region_outline_with_http_info(region_name, **kwargs)  # noqa: E501
+            return self.download_region_outline_with_http_info(region_name, accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.download_region_outline_with_http_info(region_name, **kwargs)  # noqa: E501
+            (data) = self.download_region_outline_with_http_info(region_name, accept, **kwargs)  # noqa: E501
             return data
 
-    def download_region_outline_with_http_info(self, region_name, **kwargs):  # noqa: E501
+    def download_region_outline_with_http_info(self, region_name, accept, **kwargs):  # noqa: E501
         """Returns the outline of the footprint.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.download_region_outline_with_http_info(region_name, async=True)
+        >>> thread = api.download_region_outline_with_http_info(region_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -854,6 +854,10 @@ class EditorApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `download_region_outline`")  # noqa: E501
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `download_region_outline`")  # noqa: E501
 
         collection_formats = {}
 
@@ -871,10 +875,6 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -958,7 +958,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1063,7 +1063,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1156,7 +1156,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1269,7 +1269,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1378,11 +1378,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1487,11 +1487,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1588,7 +1588,7 @@ class EditorApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1681,11 +1681,11 @@ class EditorApi(object):
             body_params = params['footprint']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1786,11 +1786,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -1811,15 +1811,16 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_footprint(self, **kwargs):  # noqa: E501
+    def plot_footprint(self, accept, **kwargs):  # noqa: E501
         """Plots the footprint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_footprint(async=True)
+        >>> thread = api.plot_footprint(accept, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str accept: File format mime type. (required)
         :param str projection: null
         :param str sys: null
         :param str lon: null
@@ -1831,27 +1832,27 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
-        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_footprint_with_http_info(**kwargs)  # noqa: E501
+            return self.plot_footprint_with_http_info(accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_footprint_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.plot_footprint_with_http_info(accept, **kwargs)  # noqa: E501
             return data
 
-    def plot_footprint_with_http_info(self, **kwargs):  # noqa: E501
+    def plot_footprint_with_http_info(self, accept, **kwargs):  # noqa: E501
         """Plots the footprint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_footprint_with_http_info(async=True)
+        >>> thread = api.plot_footprint_with_http_info(accept, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str accept: File format mime type. (required)
         :param str projection: null
         :param str sys: null
         :param str lon: null
@@ -1863,13 +1864,12 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
-        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style', 'accept']  # noqa: E501
+        all_params = ['accept', 'projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1884,6 +1884,10 @@ class EditorApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `plot_footprint`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1921,10 +1925,6 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -1944,39 +1944,39 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_footprint_advanced(self, plot, **kwargs):  # noqa: E501
+    def plot_footprint_advanced(self, plot, accept, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_footprint_advanced(plot, async=True)
+        >>> thread = api.plot_footprint_advanced(plot, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param PlotRequest plot: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_footprint_advanced_with_http_info(plot, **kwargs)  # noqa: E501
+            return self.plot_footprint_advanced_with_http_info(plot, accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_footprint_advanced_with_http_info(plot, **kwargs)  # noqa: E501
+            (data) = self.plot_footprint_advanced_with_http_info(plot, accept, **kwargs)  # noqa: E501
             return data
 
-    def plot_footprint_advanced_with_http_info(self, plot, **kwargs):  # noqa: E501
+    def plot_footprint_advanced_with_http_info(self, plot, accept, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_footprint_advanced_with_http_info(plot, async=True)
+        >>> thread = api.plot_footprint_advanced_with_http_info(plot, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param PlotRequest plot: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2001,6 +2001,10 @@ class EditorApi(object):
         if ('plot' not in params or
                 params['plot'] is None):
             raise ValueError("Missing the required parameter `plot` when calling `plot_footprint_advanced`")  # noqa: E501
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `plot_footprint_advanced`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2018,13 +2022,9 @@ class EditorApi(object):
         body_params = None
         if 'plot' in params:
             body_params = params['plot']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
-
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2045,16 +2045,17 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_region(self, region_name, **kwargs):  # noqa: E501
+    def plot_region(self, region_name, accept, **kwargs):  # noqa: E501
         """Plots the region  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region(region_name, async=True)
+        >>> thread = api.plot_region(region_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param str accept: File format mime type. (required)
         :param str projection: null
         :param str sys: null
         :param str lon: null
@@ -2066,28 +2067,28 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
-        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_region_with_http_info(region_name, **kwargs)  # noqa: E501
+            return self.plot_region_with_http_info(region_name, accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_region_with_http_info(region_name, **kwargs)  # noqa: E501
+            (data) = self.plot_region_with_http_info(region_name, accept, **kwargs)  # noqa: E501
             return data
 
-    def plot_region_with_http_info(self, region_name, **kwargs):  # noqa: E501
+    def plot_region_with_http_info(self, region_name, accept, **kwargs):  # noqa: E501
         """Plots the region  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_with_http_info(region_name, async=True)
+        >>> thread = api.plot_region_with_http_info(region_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param str accept: File format mime type. (required)
         :param str projection: null
         :param str sys: null
         :param str lon: null
@@ -2099,13 +2100,12 @@ class EditorApi(object):
         :param str auto_rotate: null
         :param str grid: null
         :param str degree_style: null
-        :param str accept: File format mime type.
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style', 'accept']  # noqa: E501
+        all_params = ['region_name', 'accept', 'projection', 'sys', 'lon', 'lat', 'width', 'height', 'color_theme', 'auto_zoom', 'auto_rotate', 'grid', 'degree_style']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2124,6 +2124,10 @@ class EditorApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `plot_region`")  # noqa: E501
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `plot_region`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2163,10 +2167,6 @@ class EditorApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
-
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -2186,41 +2186,41 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def plot_region_advanced(self, region_name, plot, **kwargs):  # noqa: E501
+    def plot_region_advanced(self, region_name, plot, accept, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_advanced(region_name, plot, async=True)
+        >>> thread = api.plot_region_advanced(region_name, plot, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
         :param PlotRequest plot: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.plot_region_advanced_with_http_info(region_name, plot, **kwargs)  # noqa: E501
+            return self.plot_region_advanced_with_http_info(region_name, plot, accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.plot_region_advanced_with_http_info(region_name, plot, **kwargs)  # noqa: E501
+            (data) = self.plot_region_advanced_with_http_info(region_name, plot, accept, **kwargs)  # noqa: E501
             return data
 
-    def plot_region_advanced_with_http_info(self, region_name, plot, **kwargs):  # noqa: E501
+    def plot_region_advanced_with_http_info(self, region_name, plot, accept, **kwargs):  # noqa: E501
         """Plots the footprint, with advanced parameters  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.plot_region_advanced_with_http_info(region_name, plot, async=True)
+        >>> thread = api.plot_region_advanced_with_http_info(region_name, plot, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
         :param PlotRequest plot: null (required)
-        :param str accept: File format mime type.
+        :param str accept: File format mime type. (required)
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2249,6 +2249,10 @@ class EditorApi(object):
         if ('plot' not in params or
                 params['plot'] is None):
             raise ValueError("Missing the required parameter `plot` when calling `plot_region_advanced`")  # noqa: E501
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `plot_region_advanced`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2268,13 +2272,9 @@ class EditorApi(object):
         body_params = None
         if 'plot' in params:
             body_params = params['plot']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
-
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['image/png', 'image/jpeg', 'image/gif', 'image/bmp', 'application/pdf', 'application/postscript', 'windows/metafile'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2375,11 +2375,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2484,11 +2484,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2593,11 +2593,11 @@ class EditorApi(object):
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2618,45 +2618,47 @@ class EditorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def upload_region(self, region_name, region, **kwargs):  # noqa: E501
+    def upload_region(self, region_name, content_type, region, **kwargs):  # noqa: E501
         """Upload a region binary or other representation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_region(region_name, region, async=True)
+        >>> thread = api.upload_region(region_name, content_type, region, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param str content_type: File format mime type. (required)
         :param file region: null (required)
-        :return: RestError
+        :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.upload_region_with_http_info(region_name, region, **kwargs)  # noqa: E501
+            return self.upload_region_with_http_info(region_name, content_type, region, **kwargs)  # noqa: E501
         else:
-            (data) = self.upload_region_with_http_info(region_name, region, **kwargs)  # noqa: E501
+            (data) = self.upload_region_with_http_info(region_name, content_type, region, **kwargs)  # noqa: E501
             return data
 
-    def upload_region_with_http_info(self, region_name, region, **kwargs):  # noqa: E501
+    def upload_region_with_http_info(self, region_name, content_type, region, **kwargs):  # noqa: E501
         """Upload a region binary or other representation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.upload_region_with_http_info(region_name, region, async=True)
+        >>> thread = api.upload_region_with_http_info(region_name, content_type, region, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str region_name: null (required)
+        :param str content_type: File format mime type. (required)
         :param file region: null (required)
-        :return: RestError
+        :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'region']  # noqa: E501
+        all_params = ['region_name', 'content_type', 'region']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2675,6 +2677,10 @@ class EditorApi(object):
         if ('region_name' not in params or
                 params['region_name'] is None):
             raise ValueError("Missing the required parameter `region_name` when calling `upload_region`")  # noqa: E501
+        # verify the required parameter 'content_type' is set
+        if ('content_type' not in params or
+                params['content_type'] is None):
+            raise ValueError("Missing the required parameter `content_type` when calling `upload_region`")  # noqa: E501
         # verify the required parameter 'region' is set
         if ('region' not in params or
                 params['region'] is None):
@@ -2689,6 +2695,8 @@ class EditorApi(object):
         query_params = []
 
         header_params = {}
+        if 'content_type' in params:
+            header_params['Content-Type'] = params['content_type']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2696,9 +2704,9 @@ class EditorApi(object):
         body_params = None
         if 'region' in params:
             body_params = params['region']
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['text/plain', 'application/octet-stream', 'text/xml'])  # noqa: E501
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -2711,7 +2719,7 @@ class EditorApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='RestError',  # noqa: E501
+            response_type='RegionResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -10,12 +10,6 @@
     "http",
     "https"
   ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
   "paths": {
     "V1/Editor.svc/footprint": {
       "get": {
@@ -26,7 +20,8 @@
         ],
         "consumes": [],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [],
         "responses": {
@@ -51,10 +46,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -109,17 +106,14 @@
           "Editor"
         ],
         "consumes": [],
-        "produces": [
-          "text/plain",
-          "application/octet-stream",
-          "text/xml"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "Accept",
             "in": "header",
             "description": "File format mime type.",
             "default": "text/plain",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -150,15 +144,14 @@
           "Editor"
         ],
         "consumes": [],
-        "produces": [
-          "text/plain"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "Accept",
             "in": "header",
             "description": "File format mime type.",
             "default": "text/plain",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -190,7 +183,8 @@
         ],
         "consumes": [],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -268,15 +262,7 @@
           "Editor"
         ],
         "consumes": [],
-        "produces": [
-          "image/png",
-          "image/jpeg",
-          "image/gif",
-          "image/bmp",
-          "application/pdf",
-          "application/postscript",
-          "windows/metafile"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "projection",
@@ -389,6 +375,7 @@
             "in": "header",
             "description": "File format mime type.",
             "default": "image/png",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -417,23 +404,10 @@
           "Editor"
         ],
         "consumes": [
-          "image/png",
-          "image/jpeg",
-          "image/gif",
-          "image/bmp",
-          "application/pdf",
-          "application/postscript",
-          "windows/metafile"
+          "application/json",
+          "application/xml"
         ],
-        "produces": [
-          "image/png",
-          "image/jpeg",
-          "image/gif",
-          "image/bmp",
-          "application/pdf",
-          "application/postscript",
-          "windows/metafile"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "plot",
@@ -449,6 +423,7 @@
             "in": "header",
             "description": "File format mime type.",
             "default": "image/png",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -479,10 +454,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -528,7 +505,8 @@
         ],
         "consumes": [],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -564,10 +542,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -644,7 +624,8 @@
         ],
         "consumes": [],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -702,11 +683,7 @@
           "Editor"
         ],
         "consumes": [],
-        "produces": [
-          "text/plain",
-          "application/octet-stream",
-          "text/xml"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "regionName",
@@ -723,6 +700,7 @@
             "in": "header",
             "description": "File format mime type.",
             "default": "text/plain",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -750,17 +728,27 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "text/plain",
-          "application/octet-stream",
-          "text/xml"
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "application/xml"
         ],
-        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
             "description": null,
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "File format mime type.",
+            "default": "text/plain",
             "required": true,
             "schema": {
               "type": "string",
@@ -783,6 +771,12 @@
             "schema": {
               "$ref": "#/definitions/RestError"
             }
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RegionResponse"
+            }
           }
         }
       }
@@ -795,9 +789,7 @@
           "Editor"
         ],
         "consumes": [],
-        "produces": [
-          "text/plain"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "regionName",
@@ -814,6 +806,7 @@
             "in": "header",
             "description": "File format mime type.",
             "default": "text/plain",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -845,7 +838,8 @@
         ],
         "consumes": [],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -933,15 +927,7 @@
           "Editor"
         ],
         "consumes": [],
-        "produces": [
-          "image/png",
-          "image/jpeg",
-          "image/gif",
-          "image/bmp",
-          "application/pdf",
-          "application/postscript",
-          "windows/metafile"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "regionName",
@@ -1064,6 +1050,7 @@
             "in": "header",
             "description": "File format mime type.",
             "default": "image/png",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -1092,23 +1079,10 @@
           "Editor"
         ],
         "consumes": [
-          "image/png",
-          "image/jpeg",
-          "image/gif",
-          "image/bmp",
-          "application/pdf",
-          "application/postscript",
-          "windows/metafile"
+          "application/json",
+          "application/xml"
         ],
-        "produces": [
-          "image/png",
-          "image/jpeg",
-          "image/gif",
-          "image/bmp",
-          "application/pdf",
-          "application/postscript",
-          "windows/metafile"
-        ],
+        "produces": [],
         "parameters": [
           {
             "name": "regionName",
@@ -1134,6 +1108,7 @@
             "in": "header",
             "description": "File format mime type.",
             "default": "image/png",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "string"
@@ -1164,10 +1139,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -1214,10 +1191,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -1264,10 +1243,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -1334,10 +1315,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -1394,10 +1377,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -1454,10 +1439,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {
@@ -1514,10 +1501,12 @@
           "Editor"
         ],
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/xml"
         ],
         "parameters": [
           {

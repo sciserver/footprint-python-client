@@ -77,8 +77,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -125,8 +125,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -173,8 +173,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -267,7 +267,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_footprint**
-> file download_footprint(accept=accept)
+> file download_footprint(accept)
 
 Returns the footprint in raw format text or binary.
 
@@ -281,11 +281,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-accept = 'text/plain' # str | File format mime type. (optional) (default to text/plain)
+accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the footprint in raw format text or binary.
-    api_response = api_instance.download_footprint(accept=accept)
+    api_response = api_instance.download_footprint(accept)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->download_footprint: %s\n" % e)
@@ -295,7 +295,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accept** | **str**| File format mime type. | [optional] [default to text/plain]
+ **accept** | **str**| File format mime type. | [default to text/plain]
 
 ### Return type
 
@@ -308,12 +308,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/octet-stream, text/xml
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_footprint_outline**
-> file download_footprint_outline(accept=accept)
+> file download_footprint_outline(accept)
 
 Returns the outline of the footprint.
 
@@ -327,11 +327,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-accept = 'text/plain' # str | File format mime type. (optional) (default to text/plain)
+accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the outline of the footprint.
-    api_response = api_instance.download_footprint_outline(accept=accept)
+    api_response = api_instance.download_footprint_outline(accept)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->download_footprint_outline: %s\n" % e)
@@ -341,7 +341,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accept** | **str**| File format mime type. | [optional] [default to text/plain]
+ **accept** | **str**| File format mime type. | [default to text/plain]
 
 ### Return type
 
@@ -354,12 +354,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_region**
-> file download_region(region_name, accept=accept)
+> file download_region(region_name, accept)
 
 Returns the shape description of the footprint region.
 
@@ -374,11 +374,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
-accept = 'text/plain' # str | File format mime type. (optional) (default to text/plain)
+accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the shape description of the footprint region.
-    api_response = api_instance.download_region(region_name, accept=accept)
+    api_response = api_instance.download_region(region_name, accept)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->download_region: %s\n" % e)
@@ -389,7 +389,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
- **accept** | **str**| File format mime type. | [optional] [default to text/plain]
+ **accept** | **str**| File format mime type. | [default to text/plain]
 
 ### Return type
 
@@ -402,12 +402,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/octet-stream, text/xml
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_region_outline**
-> file download_region_outline(region_name, accept=accept)
+> file download_region_outline(region_name, accept)
 
 Returns the outline of the footprint.
 
@@ -422,11 +422,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
-accept = 'text/plain' # str | File format mime type. (optional) (default to text/plain)
+accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the outline of the footprint.
-    api_response = api_instance.download_region_outline(region_name, accept=accept)
+    api_response = api_instance.download_region_outline(region_name, accept)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->download_region_outline: %s\n" % e)
@@ -437,7 +437,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
- **accept** | **str**| File format mime type. | [optional] [default to text/plain]
+ **accept** | **str**| File format mime type. | [default to text/plain]
 
 ### Return type
 
@@ -450,7 +450,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -492,7 +492,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -546,7 +546,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -592,7 +592,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -648,7 +648,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -699,8 +699,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -749,8 +749,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -800,7 +800,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -845,8 +845,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -893,13 +893,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_footprint**
-> file plot_footprint(projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style, accept=accept)
+> file plot_footprint(accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
 
 Plots the footprint
 
@@ -913,6 +913,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
+accept = 'image/png' # str | File format mime type. (default to image/png)
 projection = 'projection_example' # str | null (optional)
 sys = 'sys_example' # str | null (optional)
 lon = 'lon_example' # str | null (optional)
@@ -924,11 +925,10 @@ auto_zoom = 'auto_zoom_example' # str | null (optional)
 auto_rotate = 'auto_rotate_example' # str | null (optional)
 grid = 'grid_example' # str | null (optional)
 degree_style = 'degree_style_example' # str | null (optional)
-accept = 'image/png' # str | File format mime type. (optional) (default to image/png)
 
 try:
     # Plots the footprint
-    api_response = api_instance.plot_footprint(projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style, accept=accept)
+    api_response = api_instance.plot_footprint(accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_footprint: %s\n" % e)
@@ -938,6 +938,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **str**| File format mime type. | [default to image/png]
  **projection** | **str**| null | [optional] 
  **sys** | **str**| null | [optional] 
  **lon** | **str**| null | [optional] 
@@ -949,7 +950,6 @@ Name | Type | Description  | Notes
  **auto_rotate** | **str**| null | [optional] 
  **grid** | **str**| null | [optional] 
  **degree_style** | **str**| null | [optional] 
- **accept** | **str**| File format mime type. | [optional] [default to image/png]
 
 ### Return type
 
@@ -962,12 +962,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_footprint_advanced**
-> file plot_footprint_advanced(plot, accept=accept)
+> file plot_footprint_advanced(plot, accept)
 
 Plots the footprint, with advanced parameters
 
@@ -982,11 +982,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 plot = footprint.PlotRequest() # PlotRequest | null
-accept = 'image/png' # str | File format mime type. (optional) (default to image/png)
+accept = 'image/png' # str | File format mime type. (default to image/png)
 
 try:
     # Plots the footprint, with advanced parameters
-    api_response = api_instance.plot_footprint_advanced(plot, accept=accept)
+    api_response = api_instance.plot_footprint_advanced(plot, accept)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_footprint_advanced: %s\n" % e)
@@ -997,7 +997,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plot** | [**PlotRequest**](PlotRequest.md)| null | 
- **accept** | **str**| File format mime type. | [optional] [default to image/png]
+ **accept** | **str**| File format mime type. | [default to image/png]
 
 ### Return type
 
@@ -1009,13 +1009,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
- - **Accept**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_region**
-> file plot_region(region_name, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style, accept=accept)
+> file plot_region(region_name, accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
 
 Plots the region
 
@@ -1030,6 +1030,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
+accept = 'image/png' # str | File format mime type. (default to image/png)
 projection = 'projection_example' # str | null (optional)
 sys = 'sys_example' # str | null (optional)
 lon = 'lon_example' # str | null (optional)
@@ -1041,11 +1042,10 @@ auto_zoom = 'auto_zoom_example' # str | null (optional)
 auto_rotate = 'auto_rotate_example' # str | null (optional)
 grid = 'grid_example' # str | null (optional)
 degree_style = 'degree_style_example' # str | null (optional)
-accept = 'image/png' # str | File format mime type. (optional) (default to image/png)
 
 try:
     # Plots the region
-    api_response = api_instance.plot_region(region_name, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style, accept=accept)
+    api_response = api_instance.plot_region(region_name, accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_region: %s\n" % e)
@@ -1056,6 +1056,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
+ **accept** | **str**| File format mime type. | [default to image/png]
  **projection** | **str**| null | [optional] 
  **sys** | **str**| null | [optional] 
  **lon** | **str**| null | [optional] 
@@ -1067,7 +1068,6 @@ Name | Type | Description  | Notes
  **auto_rotate** | **str**| null | [optional] 
  **grid** | **str**| null | [optional] 
  **degree_style** | **str**| null | [optional] 
- **accept** | **str**| File format mime type. | [optional] [default to image/png]
 
 ### Return type
 
@@ -1080,12 +1080,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_region_advanced**
-> file plot_region_advanced(region_name, plot, accept=accept)
+> file plot_region_advanced(region_name, plot, accept)
 
 Plots the footprint, with advanced parameters
 
@@ -1101,11 +1101,11 @@ from pprint import pprint
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
 plot = footprint.PlotRequest() # PlotRequest | null
-accept = 'image/png' # str | File format mime type. (optional) (default to image/png)
+accept = 'image/png' # str | File format mime type. (default to image/png)
 
 try:
     # Plots the footprint, with advanced parameters
-    api_response = api_instance.plot_region_advanced(region_name, plot, accept=accept)
+    api_response = api_instance.plot_region_advanced(region_name, plot, accept)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_region_advanced: %s\n" % e)
@@ -1117,7 +1117,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
  **plot** | [**PlotRequest**](PlotRequest.md)| null | 
- **accept** | **str**| File format mime type. | [optional] [default to image/png]
+ **accept** | **str**| File format mime type. | [default to image/png]
 
 ### Return type
 
@@ -1129,8 +1129,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
- - **Accept**: image/png, image/jpeg, image/gif, image/bmp, application/pdf, application/postscript, windows/metafile
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1177,8 +1177,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1227,8 +1227,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1277,13 +1277,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_region**
-> RestError upload_region(region_name, region)
+> RegionResponse upload_region(region_name, content_type, region)
 
 Upload a region binary or other representation
 
@@ -1298,11 +1298,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
+content_type = 'text/plain' # str | File format mime type. (default to text/plain)
 region = '/path/to/file.txt' # file | null
 
 try:
     # Upload a region binary or other representation
-    api_response = api_instance.upload_region(region_name, region)
+    api_response = api_instance.upload_region(region_name, content_type, region)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->upload_region: %s\n" % e)
@@ -1313,11 +1314,12 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
+ **content_type** | **str**| File format mime type. | [default to text/plain]
  **region** | **file**| null | 
 
 ### Return type
 
-[**RestError**](RestError.md)
+[**RegionResponse**](RegionResponse.md)
 
 ### Authorization
 
@@ -1325,8 +1327,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain, application/octet-stream, text/xml
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

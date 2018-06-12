@@ -137,7 +137,8 @@ class TestEditorApi(unittest.TestCase):
         r2 = Region()
         r2.region_string = 'CIRCLE J2000 20 20 10'
         self.api.create_region("test2", RegionRequest(r2))
-        self.api.download_footprint(_preload_content=False)
+        
+        self.api.download_footprint(accept="text/plain", _preload_content=False)
         
 
     def test_download_footprint_outline(self):
@@ -157,7 +158,7 @@ class TestEditorApi(unittest.TestCase):
         req.footprint.combination_method = CombinationMethod.UNION
         self.api.modify_footprint(req)
 
-        self.api.download_footprint_outline(_preload_content=False)
+        self.api.download_footprint_outline(accept="text/plain", _preload_content=False)
 
     def test_download_region(self):
         """Test case for download_region
@@ -167,7 +168,7 @@ class TestEditorApi(unittest.TestCase):
         r1 = Region()
         r1.region_string = 'CIRCLE J2000 10 10 10'
         self.api.create_region("test_download_region", RegionRequest(r1))
-        self.api.download_region("test_download_region", _preload_content=False)
+        self.api.download_region("test_download_region", accept="text/plain", _preload_content=False)
 
 
     def test_download_region_outline(self):
@@ -178,7 +179,7 @@ class TestEditorApi(unittest.TestCase):
         r1 = Region()
         r1.region_string = 'CIRCLE J2000 10 10 10'
         self.api.create_region("test_download_region_outline", RegionRequest(r1))
-        self.api.download_region_outline("test_download_region_outline", _preload_content=False)
+        self.api.download_region_outline("test_download_region_outline", accept="text/plain", _preload_content=False)
 
     def test_get_footprint(self):
         """Test case for get_footprint
@@ -317,7 +318,8 @@ class TestEditorApi(unittest.TestCase):
         self.api.create_region("test2", RegionRequest(r2))
         self.api.create_region("test3", RegionRequest(r3))
         self.api.plot_region("test1", _preload_content=False)
-        self.api.plot_footprint(_preload_content=False)
+
+        self.api.plot_footprint("image/png", _preload_content=False)
 
     def test_plot_footprint_advanced(self):
         """Test case for plot_footprint_advanced
@@ -334,7 +336,14 @@ class TestEditorApi(unittest.TestCase):
         r1 = Region()
         r1.region_string = 'CIRCLE J2000 10 10 100'
         self.api.create_region("test", RegionRequest(r1))
-        self.api.plot_region("test", _preload_content=False)
+        
+        self.api.plot_region("test", accept="image/png", _preload_content=False)
+        self.api.plot_region("test", accept='image/jpeg', _preload_content=False)
+        self.api.plot_region("test", accept='image/gif', _preload_content=False)
+        self.api.plot_region("test", accept='image/bmp', _preload_content=False)
+        #self.api.plot_region("test", accept='application/pdf', _preload_content=False)
+        #self.api.plot_region("test", accept='application/postscript', _preload_content=False)
+        #self.api.plot_region("test", accept='windows/metafile', _preload_content=False)
 
     def test_plot_region_advanced(self):
         """Test case for plot_region_advanced
@@ -346,7 +355,7 @@ class TestEditorApi(unittest.TestCase):
         self.api.create_region("test", RegionRequest(r1))
         preq = PlotRequest()
         preq.plot = Plot()
-        self.api.plot_region_advanced("test", preq)
+        self.api.plot_region_advanced("test", preq, "image/png", _preload_content=False)
 
     def test_subtract_regions(self):
         """Test case for subtract_regions
@@ -397,7 +406,7 @@ class TestEditorApi(unittest.TestCase):
 
         Upload a region binary or other representation  # noqa: E501
         """
-        self.api.upload_region("test", "CIRCLE J2000 10 10 10")
+        self.api.upload_region("test", "text/plain", "CIRCLE J2000 10 10 10")
         r = self.api.get_region("test")
         self.assertEqual(0.08726640106450838, r.region.area)
 
