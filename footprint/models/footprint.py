@@ -17,6 +17,7 @@ import re  # noqa: F401
 import six
 
 from footprint.models.combination_method import CombinationMethod  # noqa: F401,E501
+from footprint.models.region import Region  # noqa: F401,E501
 
 
 class Footprint(object):
@@ -37,7 +38,8 @@ class Footprint(object):
         'name': 'str',
         'combination_method': 'CombinationMethod',
         'comments': 'str',
-        'public': 'bool'
+        'public': 'bool',
+        'combined_region': 'Region'
     }
 
     attribute_map = {
@@ -45,10 +47,11 @@ class Footprint(object):
         'name': 'name',
         'combination_method': 'combinationMethod',
         'comments': 'comments',
-        'public': 'public'
+        'public': 'public',
+        'combined_region': 'combinedRegion'
     }
 
-    def __init__(self, owner=None, name=None, combination_method=None, comments=None, public=None):  # noqa: E501
+    def __init__(self, owner=None, name=None, combination_method=None, comments=None, public=None, combined_region=None):  # noqa: E501
         """Footprint - a model defined in Swagger"""  # noqa: E501
 
         self._owner = None
@@ -56,6 +59,7 @@ class Footprint(object):
         self._combination_method = None
         self._comments = None
         self._public = None
+        self._combined_region = None
         self.discriminator = None
 
         if owner is not None:
@@ -68,6 +72,8 @@ class Footprint(object):
             self.comments = comments
         if public is not None:
             self.public = public
+        if combined_region is not None:
+            self.combined_region = combined_region
 
     @property
     def owner(self):
@@ -173,6 +179,27 @@ class Footprint(object):
         """
 
         self._public = public
+
+    @property
+    def combined_region(self):
+        """Gets the combined_region of this Footprint.  # noqa: E501
+
+
+        :return: The combined_region of this Footprint.  # noqa: E501
+        :rtype: Region
+        """
+        return self._combined_region
+
+    @combined_region.setter
+    def combined_region(self, combined_region):
+        """Sets the combined_region of this Footprint.
+
+
+        :param combined_region: The combined_region of this Footprint.  # noqa: E501
+        :type: Region
+        """
+
+        self._combined_region = combined_region
 
     def to_dict(self):
         """Returns the model properties as a dict"""
