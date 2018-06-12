@@ -54,11 +54,10 @@ from pprint import pprint
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
 request = footprint.RegionRequest() # RegionRequest | null
-keep_original = 'keep_original_example' # str | null (optional)
 
 try:
     # Generate the convex hull of the regions.
-    api_response = api_instance.c_hull_regions(region_name, request, keep_original=keep_original)
+    api_response = api_instance.c_hull_regions(region_name, request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->c_hull_regions: %s\n" % e)

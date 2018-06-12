@@ -1272,16 +1272,6 @@
             }
           },
           {
-            "name": "keepOriginal",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
-          },
-          {
             "name": "request",
             "in": "body",
             "description": null,
@@ -1331,16 +1321,6 @@
             "schema": {
               "type": "string",
               "format": "string"
-            }
-          },
-          {
-            "name": "keepOriginal",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
             }
           },
           {
@@ -1396,16 +1376,6 @@
             }
           },
           {
-            "name": "keepOriginal",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
-          },
-          {
             "name": "request",
             "in": "body",
             "description": null,
@@ -1458,16 +1428,6 @@
             }
           },
           {
-            "name": "keepOriginal",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
-          },
-          {
             "name": "request",
             "in": "body",
             "description": null,
@@ -1517,16 +1477,6 @@
             "schema": {
               "type": "string",
               "format": "string"
-            }
-          },
-          {
-            "name": "keepOriginal",
-            "in": "query",
-            "description": null,
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
             }
           },
           {
@@ -1952,6 +1902,10 @@
             "type": "string",
             "format": "string"
           }
+        },
+        "keepOriginal": {
+          "type": "boolean",
+          "format": "boolean"
         }
       }
     },

@@ -33,7 +33,7 @@ Method | HTTP request | Description
 
 
 # **c_hull_regions**
-> RegionResponse c_hull_regions(region_name, request, keep_original=keep_original)
+> RegionResponse c_hull_regions(region_name, request)
 
 Generate the convex hull of the regions.
 
@@ -49,11 +49,10 @@ from pprint import pprint
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
 request = footprint.RegionRequest() # RegionRequest | null
-keep_original = 'keep_original_example' # str | null (optional)
 
 try:
     # Generate the convex hull of the regions.
-    api_response = api_instance.c_hull_regions(region_name, request, keep_original=keep_original)
+    api_response = api_instance.c_hull_regions(region_name, request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->c_hull_regions: %s\n" % e)
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
  **request** | [**RegionRequest**](RegionRequest.md)| null | 
- **keep_original** | **str**| null | [optional] 
 
 ### Return type
 
@@ -653,7 +651,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **grow_region**
-> RegionResponse grow_region(region_name, request, radius=radius, keep_original=keep_original)
+> RegionResponse grow_region(region_name, request, radius=radius)
 
 Grow region.
 
@@ -670,11 +668,10 @@ api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
 request = footprint.RegionRequest() # RegionRequest | null
 radius = 'radius_example' # str | null (optional)
-keep_original = 'keep_original_example' # str | null (optional)
 
 try:
     # Grow region.
-    api_response = api_instance.grow_region(region_name, request, radius=radius, keep_original=keep_original)
+    api_response = api_instance.grow_region(region_name, request, radius=radius)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->grow_region: %s\n" % e)
@@ -687,7 +684,6 @@ Name | Type | Description  | Notes
  **region_name** | **str**| null | 
  **request** | [**RegionRequest**](RegionRequest.md)| null | 
  **radius** | **str**| null | [optional] 
- **keep_original** | **str**| null | [optional] 
 
 ### Return type
 
@@ -705,7 +701,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **intersect_regions**
-> RegionResponse intersect_regions(region_name, request, keep_original=keep_original)
+> RegionResponse intersect_regions(region_name, request)
 
 Compute the intersection of regions.
 
@@ -721,11 +717,10 @@ from pprint import pprint
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
 request = footprint.RegionRequest() # RegionRequest | null
-keep_original = 'keep_original_example' # str | null (optional)
 
 try:
     # Compute the intersection of regions.
-    api_response = api_instance.intersect_regions(region_name, request, keep_original=keep_original)
+    api_response = api_instance.intersect_regions(region_name, request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->intersect_regions: %s\n" % e)
@@ -737,7 +732,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
  **request** | [**RegionRequest**](RegionRequest.md)| null | 
- **keep_original** | **str**| null | [optional] 
 
 ### Return type
 
@@ -1183,7 +1177,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subtract_regions**
-> RegionResponse subtract_regions(region_name, request, keep_original=keep_original)
+> RegionResponse subtract_regions(region_name, request)
 
 Compute the difference of regions.
 
@@ -1199,11 +1193,10 @@ from pprint import pprint
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
 request = footprint.RegionRequest() # RegionRequest | null
-keep_original = 'keep_original_example' # str | null (optional)
 
 try:
     # Compute the difference of regions.
-    api_response = api_instance.subtract_regions(region_name, request, keep_original=keep_original)
+    api_response = api_instance.subtract_regions(region_name, request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->subtract_regions: %s\n" % e)
@@ -1215,7 +1208,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
  **request** | [**RegionRequest**](RegionRequest.md)| null | 
- **keep_original** | **str**| null | [optional] 
 
 ### Return type
 
@@ -1233,7 +1225,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **union_regions**
-> RegionResponse union_regions(region_name, request, keep_original=keep_original)
+> RegionResponse union_regions(region_name, request)
 
 Compute the union of regions.
 
@@ -1249,11 +1241,10 @@ from pprint import pprint
 api_instance = footprint.EditorApi()
 region_name = 'region_name_example' # str | null
 request = footprint.RegionRequest() # RegionRequest | null
-keep_original = 'keep_original_example' # str | null (optional)
 
 try:
     # Compute the union of regions.
-    api_response = api_instance.union_regions(region_name, request, keep_original=keep_original)
+    api_response = api_instance.union_regions(region_name, request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling EditorApi->union_regions: %s\n" % e)
@@ -1265,7 +1256,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region_name** | **str**| null | 
  **request** | [**RegionRequest**](RegionRequest.md)| null | 
- **keep_original** | **str**| null | [optional] 
 
 ### Return type
 

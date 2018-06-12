@@ -38,23 +38,26 @@ class RegionRequest(object):
         'region': 'Region',
         'rotation': 'Rotation',
         'sys': 'CoordinateSystem',
-        'selection': 'list[str]'
+        'selection': 'list[str]',
+        'keep_original': 'bool'
     }
 
     attribute_map = {
         'region': 'region',
         'rotation': 'rotation',
         'sys': 'sys',
-        'selection': 'selection'
+        'selection': 'selection',
+        'keep_original': 'keepOriginal'
     }
 
-    def __init__(self, region=None, rotation=None, sys=None, selection=None):  # noqa: E501
+    def __init__(self, region=None, rotation=None, sys=None, selection=None, keep_original=None):  # noqa: E501
         """RegionRequest - a model defined in Swagger"""  # noqa: E501
 
         self._region = None
         self._rotation = None
         self._sys = None
         self._selection = None
+        self._keep_original = None
         self.discriminator = None
 
         if region is not None:
@@ -65,6 +68,8 @@ class RegionRequest(object):
             self.sys = sys
         if selection is not None:
             self.selection = selection
+        if keep_original is not None:
+            self.keep_original = keep_original
 
     @property
     def region(self):
@@ -149,6 +154,27 @@ class RegionRequest(object):
         """
 
         self._selection = selection
+
+    @property
+    def keep_original(self):
+        """Gets the keep_original of this RegionRequest.  # noqa: E501
+
+
+        :return: The keep_original of this RegionRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._keep_original
+
+    @keep_original.setter
+    def keep_original(self, keep_original):
+        """Sets the keep_original of this RegionRequest.
+
+
+        :param keep_original: The keep_original of this RegionRequest.  # noqa: E501
+        :type: bool
+        """
+
+        self._keep_original = keep_original
 
     def to_dict(self):
         """Returns the model properties as a dict"""

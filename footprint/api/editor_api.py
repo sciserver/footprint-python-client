@@ -44,7 +44,6 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -67,13 +66,12 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'request', 'keep_original']  # noqa: E501
+        all_params = ['region_name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -104,8 +102,6 @@ class EditorApi(object):
             path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
-        if 'keep_original' in params:
-            query_params.append(('keepOriginal', params['keep_original']))  # noqa: E501
 
         header_params = {}
 
@@ -1302,7 +1298,6 @@ class EditorApi(object):
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
         :param str radius: null
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1326,13 +1321,12 @@ class EditorApi(object):
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
         :param str radius: null
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'request', 'radius', 'keep_original']  # noqa: E501
+        all_params = ['region_name', 'request', 'radius']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1365,8 +1359,6 @@ class EditorApi(object):
         query_params = []
         if 'radius' in params:
             query_params.append(('radius', params['radius']))  # noqa: E501
-        if 'keep_original' in params:
-            query_params.append(('keepOriginal', params['keep_original']))  # noqa: E501
 
         header_params = {}
 
@@ -1414,7 +1406,6 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1437,13 +1428,12 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'request', 'keep_original']  # noqa: E501
+        all_params = ['region_name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1474,8 +1464,6 @@ class EditorApi(object):
             path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
-        if 'keep_original' in params:
-            query_params.append(('keepOriginal', params['keep_original']))  # noqa: E501
 
         header_params = {}
 
@@ -2411,7 +2399,6 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2434,13 +2421,12 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'request', 'keep_original']  # noqa: E501
+        all_params = ['region_name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2471,8 +2457,6 @@ class EditorApi(object):
             path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
-        if 'keep_original' in params:
-            query_params.append(('keepOriginal', params['keep_original']))  # noqa: E501
 
         header_params = {}
 
@@ -2520,7 +2504,6 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2543,13 +2526,12 @@ class EditorApi(object):
         :param async bool
         :param str region_name: null (required)
         :param RegionRequest request: null (required)
-        :param str keep_original: null
         :return: RegionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['region_name', 'request', 'keep_original']  # noqa: E501
+        all_params = ['region_name', 'request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2580,8 +2562,6 @@ class EditorApi(object):
             path_params['regionName'] = params['region_name']  # noqa: E501
 
         query_params = []
-        if 'keep_original' in params:
-            query_params.append(('keepOriginal', params['keep_original']))  # noqa: E501
 
         header_params = {}
 
