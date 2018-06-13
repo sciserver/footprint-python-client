@@ -26,8 +26,7 @@ class TestEditorApi(unittest.TestCase):
 
     def setUp(self):
         self.configuration = Configuration()
-        #self.configuration.host =
-        #"http://localhost/tomshark/footprint-v2.0/Api/"
+        self.configuration.host = "http://localhost/tomshark/footprint-v2.0/Api/"
         self.configuration.proxy = 'http://localhost:8888'
         self.ssclient = SciServerClient(configuration=self.configuration)
         self.api = EditorApi(self.ssclient) # noqa: E501
@@ -240,7 +239,7 @@ class TestEditorApi(unittest.TestCase):
         r2.region_string = 'CIRCLE J2000 10 10 11'
         self.api.create_region("test2", RegionRequest(r2))
         self.api.get_region("test1",_preload_content=False)
-        self.assertEqual(self.ssclient.last_response.data , b"{\"region\":{\"footprintName\":\"new_footprint\",\"name\":\"test1\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378}}")
+        self.assertEqual(self.ssclient.last_response.data, b"{\"region\":{\"footprintName\":\"new_footprint\",\"name\":\"test1\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378}}")
 
     def test_get_region_outline_points(self):
         """Test case for get_region_outline_points
@@ -251,7 +250,7 @@ class TestEditorApi(unittest.TestCase):
         r1.region_string = 'CIRCLE J2000 10 10 0.1'
         self.api.create_region("test", RegionRequest(r1))
         self.api.get_region_outline_points("test")
-        self.assertEqual(self.ssclient.last_response.data ,"[{\"lon\":9.9983076222260951,\"lat\":9.9999999957257124},{\"lon\":9.9991538148716028,\"lat\":9.9985566231837328},{\"lon\":10.000846185128445,\"lat\":9.9985566231837328},{\"lon\":10.00169237777399,\"lat\":9.9999999957257124},{\"lon\":10.000846192645945,\"lat\":10.001443374679123},{\"lon\":9.9983076222260951,\"lat\":9.9999999957257124}]")
+        self.assertEqual(self.ssclient.last_response.data,"[{\"lon\":9.9983076222260951,\"lat\":9.9999999957257124},{\"lon\":9.9991538148716028,\"lat\":9.9985566231837328},{\"lon\":10.000846185128445,\"lat\":9.9985566231837328},{\"lon\":10.00169237777399,\"lat\":9.9999999957257124},{\"lon\":10.000846192645945,\"lat\":10.001443374679123},{\"lon\":9.9983076222260951,\"lat\":9.9999999957257124}]")
 
     def test_grow_region(self):
         """Test case for grow_region
@@ -306,13 +305,13 @@ class TestEditorApi(unittest.TestCase):
         r1.region_string = 'CIRCLE J2000 10 10 10'
         self.api.create_region("testlist1", RegionRequest(r1))
         self.api.list_regions()
-        self.assertEqual(self.ssclient.last_response.data ,"{\"regions\":[{\"footprintName\":\"new_footprint\",\"name\":\"testlist1\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378}]}")
+        self.assertEqual(self.ssclient.last_response.data, "{\"regions\":[{\"footprintName\":\"new_footprint\",\"name\":\"testlist1\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378}]}")
 
         r2 = Region()
         r2.region_string = 'CIRCLE J2000 11 10 10'
         self.api.create_region("testlist2", RegionRequest(r2))
         self.api.list_regions()
-        self.assertEqual(self.ssclient.last_response.data ,"{\"regions\":[{\"footprintName\":\"new_footprint\",\"name\":\"testlist1\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378},{\"footprintName\":\"new_footprint\",\"name\":\"testlist2\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378}]}")
+        self.assertEqual(self.ssclient.last_response.data, "{\"regions\":[{\"footprintName\":\"new_footprint\",\"name\":\"testlist1\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378},{\"footprintName\":\"new_footprint\",\"name\":\"testlist2\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.087266401064508378}]}")
 
 
     def test_modify_footprint(self):
@@ -334,7 +333,14 @@ class TestEditorApi(unittest.TestCase):
         self.api.modify_footprint(req)
         
         r3 = self.api.get_footprint();
-        self.assertEqual(self.ssclient.last_response.data, "0")
+        self.assertEqual(r3.footprint.combination_method, 1)
+
+        req.footprint.combination_method = CombinationMethod.INTERSECT
+
+        self.api.modify_footprint(req)
+        
+        r3 = self.api.get_footprint();
+        self.assertEqual(r3.footprint.combination_method, 2)
 
     def test_modify_region(self):
         """Test case for modify_region
@@ -346,7 +352,7 @@ class TestEditorApi(unittest.TestCase):
         self.api.create_region("test_mregion1", RegionRequest(r1))
         r2 = Region()
         r2.region_string = 'CIRCLE J2000 20 20 20'
-        self.api.modify_region("test_mregion1",RegionRequest(r2))
+        self.api.modify_region("test_mregion1", RegionRequest(r2))
         self.assertEqual(self.ssclient.last_response.data, "{\"region\":{\"footprintName\":\"new_footprint\",\"name\":\"test_mregion1\",\"fillFactor\":1.0,\"isSimplified\":true,\"area\":0.34906486584773644}}")
         
     def test_rename_region(self):
@@ -356,7 +362,7 @@ class TestEditorApi(unittest.TestCase):
         """
         r1 = Region()
         r1.region_string = 'CIRCLE J2000 10 10 10'
-        self.api.create_region("test",RegionRequest(r1))
+        self.api.create_region("test", RegionRequest(r1))
         req = RegionRequest()
         req.selection = ["test",]
         self.api.rename_region("test_rename", req)
@@ -405,7 +411,7 @@ class TestEditorApi(unittest.TestCase):
         r1.region_string = 'CIRCLE J2000 10 10 100'
         self.api.create_region("test", RegionRequest(r1))
         
-        self.api.plot_region("test", accept="image/png", _preload_content=False)
+        res = self.api.plot_region("test", accept="image/png", _preload_content=False)
         self.api.plot_region("test", accept='image/jpeg', _preload_content=False)
         self.api.plot_region("test", accept='image/gif', _preload_content=False)
         self.api.plot_region("test", accept='image/bmp', _preload_content=False)
