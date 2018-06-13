@@ -224,7 +224,7 @@ class TestEditorApi(unittest.TestCase):
         req.footprint = Footprint()
         req.footprint.combination_method = CombinationMethod.UNION
         self.api.modify_footprint(req)
-        self.api.get_footprint_outline_points()
+        points = self.api.get_footprint_outline_points()
         self.assertEqual(self.ssclient.last_response.data, "[{\"lon\":9.9983076222260951,\"lat\":9.9999999957257124},{\"lon\":9.9991538148716028,\"lat\":9.9985566231837328},{\"lon\":10.000846185128445,\"lat\":9.9985566231837328},{\"lon\":10.00169237777399,\"lat\":9.9999999957257124},{\"lon\":10.000846192645945,\"lat\":10.001443374679123},{\"lon\":9.9983076222260951,\"lat\":9.9999999957257124},{\"lon\":359.99833333324716,\"lat\":0.0},{\"lon\":359.99916666662358,\"lat\":-0.0014433757476998812},{\"lon\":0.00083333337639550733,\"lat\":-0.0014433757476998814},{\"lon\":0.0016666667528350855,\"lat\":-2.041010695154396E-19},{\"lon\":0.00083333337639550733,\"lat\":0.001443375747699881},{\"lon\":359.99833333324716,\"lat\":0.0}]")
 
     def test_get_region(self):

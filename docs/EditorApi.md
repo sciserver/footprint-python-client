@@ -1,35 +1,35 @@
 # footprint.EditorApi
 
-All URIs are relative to *http://localhost/dobos/footprint-v2.0/Api/*
+All URIs are relative to *http://localhost/dobos/footprint-v2.0/Api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**c_hull_regions**](EditorApi.md#c_hull_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/chull | Generate the convex hull of the regions.
-[**copy_region**](EditorApi.md#copy_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/copy | Copy a region.
-[**create_region**](EditorApi.md#create_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName} | Create a new region.
-[**delete_footprint**](EditorApi.md#delete_footprint) | **DELETE** V1/Editor.svc/footprint | Delete footprint and reset the editor.
-[**delete_region**](EditorApi.md#delete_region) | **DELETE** V1/Editor.svc/footprint/regions/{regionName} | Delete a region.
-[**download_footprint**](EditorApi.md#download_footprint) | **GET** V1/Editor.svc/footprint/raw | Returns the footprint in raw format text or binary.
-[**download_footprint_outline**](EditorApi.md#download_footprint_outline) | **GET** V1/Editor.svc/footprint/outline/raw | Returns the outline of the footprint.
-[**download_region**](EditorApi.md#download_region) | **GET** V1/Editor.svc/footprint/regions/{regionName}/raw | Returns the shape description of the footprint region.
-[**download_region_outline**](EditorApi.md#download_region_outline) | **GET** V1/Editor.svc/footprint/regions/{regionName}/outline/raw | Returns the outline of the footprint.
-[**get_footprint**](EditorApi.md#get_footprint) | **GET** V1/Editor.svc/footprint | Returns the header information of the edited footprint
-[**get_footprint_outline_points**](EditorApi.md#get_footprint_outline_points) | **GET** V1/Editor.svc/footprint/outline/points | Returns the points of the outline of the footprint.
-[**get_region**](EditorApi.md#get_region) | **GET** V1/Editor.svc/footprint/regions/{regionName} | Returns the header information of a region.
-[**get_region_outline_points**](EditorApi.md#get_region_outline_points) | **GET** V1/Editor.svc/footprint/regions/{regionName}/outline/points | Returns the points of the outline of the region.
-[**grow_region**](EditorApi.md#grow_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/grow | Grow region.
-[**intersect_regions**](EditorApi.md#intersect_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/intersect | Compute the intersection of regions.
-[**list_regions**](EditorApi.md#list_regions) | **GET** V1/Editor.svc/footprint/regions | List regions.
-[**modify_footprint**](EditorApi.md#modify_footprint) | **PATCH** V1/Editor.svc/footprint | Modified the properties of the footprint in the editor.
-[**modify_region**](EditorApi.md#modify_region) | **PATCH** V1/Editor.svc/footprint/regions/{regionName} | Modify a region.
-[**plot_footprint**](EditorApi.md#plot_footprint) | **GET** V1/Editor.svc/footprint/plot | Plots the footprint
-[**plot_footprint_advanced**](EditorApi.md#plot_footprint_advanced) | **POST** V1/Editor.svc/footprint/plot | Plots the footprint, with advanced parameters
-[**plot_region**](EditorApi.md#plot_region) | **GET** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the region
-[**plot_region_advanced**](EditorApi.md#plot_region_advanced) | **POST** V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the footprint, with advanced parameters
-[**rename_region**](EditorApi.md#rename_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/rename | Renames a region.
-[**subtract_regions**](EditorApi.md#subtract_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/subtract | Compute the difference of regions.
-[**union_regions**](EditorApi.md#union_regions) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/union | Compute the union of regions.
-[**upload_region**](EditorApi.md#upload_region) | **PUT** V1/Editor.svc/footprint/regions/{regionName}/raw | Upload a region binary or other representation
+[**c_hull_regions**](EditorApi.md#c_hull_regions) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/chull | Generate the convex hull of the regions.
+[**copy_region**](EditorApi.md#copy_region) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/copy | Copy a region.
+[**create_region**](EditorApi.md#create_region) | **PUT** /V1/Editor.svc/footprint/regions/{regionName} | Create a new region.
+[**delete_footprint**](EditorApi.md#delete_footprint) | **DELETE** /V1/Editor.svc/footprint | Delete footprint and reset the editor.
+[**delete_region**](EditorApi.md#delete_region) | **DELETE** /V1/Editor.svc/footprint/regions/{regionName} | Delete a region.
+[**download_footprint**](EditorApi.md#download_footprint) | **GET** /V1/Editor.svc/footprint/raw | Returns the footprint in raw format text or binary.
+[**download_footprint_outline**](EditorApi.md#download_footprint_outline) | **GET** /V1/Editor.svc/footprint/outline/raw | Returns the outline of the footprint.
+[**download_region**](EditorApi.md#download_region) | **GET** /V1/Editor.svc/footprint/regions/{regionName}/raw | Returns the shape description of the footprint region.
+[**download_region_outline**](EditorApi.md#download_region_outline) | **GET** /V1/Editor.svc/footprint/regions/{regionName}/outline/raw | Returns the outline of the footprint.
+[**get_footprint**](EditorApi.md#get_footprint) | **GET** /V1/Editor.svc/footprint | Returns the header information of the edited footprint
+[**get_footprint_outline_points**](EditorApi.md#get_footprint_outline_points) | **GET** /V1/Editor.svc/footprint/outline/points | Returns the points of the outline of the footprint.
+[**get_region**](EditorApi.md#get_region) | **GET** /V1/Editor.svc/footprint/regions/{regionName} | Returns the header information of a region.
+[**get_region_outline_points**](EditorApi.md#get_region_outline_points) | **GET** /V1/Editor.svc/footprint/regions/{regionName}/outline/points | Returns the points of the outline of the region.
+[**grow_region**](EditorApi.md#grow_region) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/grow | Grow region.
+[**intersect_regions**](EditorApi.md#intersect_regions) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/intersect | Compute the intersection of regions.
+[**list_regions**](EditorApi.md#list_regions) | **GET** /V1/Editor.svc/footprint/regions | List regions.
+[**modify_footprint**](EditorApi.md#modify_footprint) | **PATCH** /V1/Editor.svc/footprint | Modified the properties of the footprint in the editor.
+[**modify_region**](EditorApi.md#modify_region) | **PATCH** /V1/Editor.svc/footprint/regions/{regionName} | Modify a region.
+[**plot_footprint**](EditorApi.md#plot_footprint) | **GET** /V1/Editor.svc/footprint/plot | Plots the footprint
+[**plot_footprint_advanced**](EditorApi.md#plot_footprint_advanced) | **POST** /V1/Editor.svc/footprint/plot | Plots the footprint, with advanced parameters
+[**plot_region**](EditorApi.md#plot_region) | **GET** /V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the region
+[**plot_region_advanced**](EditorApi.md#plot_region_advanced) | **POST** /V1/Editor.svc/footprint/regions/{regionName}/plot | Plots the footprint, with advanced parameters
+[**rename_region**](EditorApi.md#rename_region) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/rename | Renames a region.
+[**subtract_regions**](EditorApi.md#subtract_regions) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/subtract | Compute the difference of regions.
+[**union_regions**](EditorApi.md#union_regions) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/union | Compute the union of regions.
+[**upload_region**](EditorApi.md#upload_region) | **PUT** /V1/Editor.svc/footprint/regions/{regionName}/raw | Upload a region binary or other representation
 
 
 # **c_hull_regions**
@@ -47,8 +47,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Generate the convex hull of the regions.
@@ -62,8 +62,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -95,8 +95,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Copy a region.
@@ -110,8 +110,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -143,8 +143,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Create a new region.
@@ -158,8 +158,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -233,7 +233,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
+region_name = 'region_name_example' # str | 
 
 try:
     # Delete a region.
@@ -247,7 +247,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
+ **region_name** | **str**|  | 
 
 ### Return type
 
@@ -265,7 +265,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_footprint**
-> file download_footprint(accept)
+> download_footprint(accept)
 
 Returns the footprint in raw format text or binary.
 
@@ -283,8 +283,7 @@ accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the footprint in raw format text or binary.
-    api_response = api_instance.download_footprint(accept)
-    pprint(api_response)
+    api_instance.download_footprint(accept)
 except ApiException as e:
     print("Exception when calling EditorApi->download_footprint: %s\n" % e)
 ```
@@ -297,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -311,7 +310,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_footprint_outline**
-> file download_footprint_outline(accept)
+> download_footprint_outline(accept)
 
 Returns the outline of the footprint.
 
@@ -329,8 +328,7 @@ accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the outline of the footprint.
-    api_response = api_instance.download_footprint_outline(accept)
-    pprint(api_response)
+    api_instance.download_footprint_outline(accept)
 except ApiException as e:
     print("Exception when calling EditorApi->download_footprint_outline: %s\n" % e)
 ```
@@ -343,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -357,7 +355,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_region**
-> file download_region(region_name, accept)
+> download_region(region_name, accept)
 
 Returns the shape description of the footprint region.
 
@@ -371,13 +369,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
+region_name = 'region_name_example' # str | 
 accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the shape description of the footprint region.
-    api_response = api_instance.download_region(region_name, accept)
-    pprint(api_response)
+    api_instance.download_region(region_name, accept)
 except ApiException as e:
     print("Exception when calling EditorApi->download_region: %s\n" % e)
 ```
@@ -386,12 +383,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
+ **region_name** | **str**|  | 
  **accept** | **str**| File format mime type. | [default to text/plain]
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -405,7 +402,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_region_outline**
-> file download_region_outline(region_name, accept)
+> download_region_outline(region_name, accept)
 
 Returns the outline of the footprint.
 
@@ -419,13 +416,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
+region_name = 'region_name_example' # str | 
 accept = 'text/plain' # str | File format mime type. (default to text/plain)
 
 try:
     # Returns the outline of the footprint.
-    api_response = api_instance.download_region_outline(region_name, accept)
-    pprint(api_response)
+    api_instance.download_region_outline(region_name, accept)
 except ApiException as e:
     print("Exception when calling EditorApi->download_region_outline: %s\n" % e)
 ```
@@ -434,12 +430,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
+ **region_name** | **str**|  | 
  **accept** | **str**| File format mime type. | [default to text/plain]
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -509,11 +505,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-sys = 'sys_example' # str | null (optional)
-rep = 'rep_example' # str | null (optional)
-resolution = 'resolution_example' # str | null (optional)
-reduce = 'reduce_example' # str | null (optional)
-limit = 'limit_example' # str | null (optional)
+sys = 'sys_example' # str |  (optional)
+rep = 'rep_example' # str |  (optional)
+resolution = 1.2 # float |  (optional)
+reduce = 'reduce_example' # str |  (optional)
+limit = 1.2 # float |  (optional)
 
 try:
     # Returns the points of the outline of the footprint.
@@ -527,11 +523,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sys** | **str**| null | [optional] 
- **rep** | **str**| null | [optional] 
- **resolution** | **str**| null | [optional] 
- **reduce** | **str**| null | [optional] 
- **limit** | **str**| null | [optional] 
+ **sys** | **str**|  | [optional] 
+ **rep** | **str**|  | [optional] 
+ **resolution** | **float**|  | [optional] 
+ **reduce** | **str**|  | [optional] 
+ **limit** | **float**|  | [optional] 
 
 ### Return type
 
@@ -563,7 +559,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
+region_name = 'region_name_example' # str | 
 
 try:
     # Returns the header information of a region.
@@ -577,7 +573,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
+ **region_name** | **str**|  | 
 
 ### Return type
 
@@ -609,12 +605,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-sys = 'sys_example' # str | null (optional)
-rep = 'rep_example' # str | null (optional)
-resolution = 'resolution_example' # str | null (optional)
-reduce = 'reduce_example' # str | null (optional)
-limit = 'limit_example' # str | null (optional)
+region_name = 'region_name_example' # str | 
+sys = 'sys_example' # str |  (optional)
+rep = 'rep_example' # str |  (optional)
+resolution = 1.2 # float |  (optional)
+reduce = 'reduce_example' # str |  (optional)
+limit = 1.2 # float |  (optional)
 
 try:
     # Returns the points of the outline of the region.
@@ -628,12 +624,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **sys** | **str**| null | [optional] 
- **rep** | **str**| null | [optional] 
- **resolution** | **str**| null | [optional] 
- **reduce** | **str**| null | [optional] 
- **limit** | **str**| null | [optional] 
+ **region_name** | **str**|  | 
+ **sys** | **str**|  | [optional] 
+ **rep** | **str**|  | [optional] 
+ **resolution** | **float**|  | [optional] 
+ **reduce** | **str**|  | [optional] 
+ **limit** | **float**|  | [optional] 
 
 ### Return type
 
@@ -665,9 +661,9 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
-radius = 'radius_example' # str | null (optional)
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
+radius = 1.2 # float |  (optional)
 
 try:
     # Grow region.
@@ -681,9 +677,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
- **radius** | **str**| null | [optional] 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
+ **radius** | **float**|  | [optional] 
 
 ### Return type
 
@@ -715,8 +711,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Compute the intersection of regions.
@@ -730,8 +726,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -763,9 +759,9 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null (optional)
-_from = '_from_example' # str | null (optional)
-max = 'max_example' # str | null (optional)
+region_name = 'region_name_example' # str |  (optional)
+_from = 56 # int |  (optional)
+max = 56 # int |  (optional)
 
 try:
     # List regions.
@@ -779,9 +775,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | [optional] 
- **_from** | **str**| null | [optional] 
- **max** | **str**| null | [optional] 
+ **region_name** | **str**|  | [optional] 
+ **_from** | **int**|  | [optional] 
+ **max** | **int**|  | [optional] 
 
 ### Return type
 
@@ -813,7 +809,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-footprint = footprint.FootprintRequest() # FootprintRequest | null
+footprint = footprint.FootprintRequest() # FootprintRequest | 
 
 try:
     # Modified the properties of the footprint in the editor.
@@ -827,7 +823,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **footprint** | [**FootprintRequest**](FootprintRequest.md)| null | 
+ **footprint** | [**FootprintRequest**](FootprintRequest.md)|  | 
 
 ### Return type
 
@@ -859,8 +855,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Modify a region.
@@ -874,8 +870,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -893,7 +889,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_footprint**
-> file plot_footprint(accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
+> plot_footprint(accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
 
 Plots the footprint
 
@@ -908,22 +904,21 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = footprint.EditorApi()
 accept = 'image/png' # str | File format mime type. (default to image/png)
-projection = 'projection_example' # str | null (optional)
-sys = 'sys_example' # str | null (optional)
-lon = 'lon_example' # str | null (optional)
-lat = 'lat_example' # str | null (optional)
-width = 'width_example' # str | null (optional)
-height = 'height_example' # str | null (optional)
-color_theme = 'color_theme_example' # str | null (optional)
-auto_zoom = 'auto_zoom_example' # str | null (optional)
-auto_rotate = 'auto_rotate_example' # str | null (optional)
-grid = 'grid_example' # str | null (optional)
-degree_style = 'degree_style_example' # str | null (optional)
+projection = 'projection_example' # str |  (optional)
+sys = 'sys_example' # str |  (optional)
+lon = 1.2 # float |  (optional)
+lat = 1.2 # float |  (optional)
+width = 3.4 # float |  (optional)
+height = 3.4 # float |  (optional)
+color_theme = 'color_theme_example' # str |  (optional)
+auto_zoom = true # bool |  (optional)
+auto_rotate = true # bool |  (optional)
+grid = true # bool |  (optional)
+degree_style = 'degree_style_example' # str |  (optional)
 
 try:
     # Plots the footprint
-    api_response = api_instance.plot_footprint(accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
-    pprint(api_response)
+    api_instance.plot_footprint(accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_footprint: %s\n" % e)
 ```
@@ -933,21 +928,21 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **str**| File format mime type. | [default to image/png]
- **projection** | **str**| null | [optional] 
- **sys** | **str**| null | [optional] 
- **lon** | **str**| null | [optional] 
- **lat** | **str**| null | [optional] 
- **width** | **str**| null | [optional] 
- **height** | **str**| null | [optional] 
- **color_theme** | **str**| null | [optional] 
- **auto_zoom** | **str**| null | [optional] 
- **auto_rotate** | **str**| null | [optional] 
- **grid** | **str**| null | [optional] 
- **degree_style** | **str**| null | [optional] 
+ **projection** | **str**|  | [optional] 
+ **sys** | **str**|  | [optional] 
+ **lon** | **float**|  | [optional] 
+ **lat** | **float**|  | [optional] 
+ **width** | **float**|  | [optional] 
+ **height** | **float**|  | [optional] 
+ **color_theme** | **str**|  | [optional] 
+ **auto_zoom** | **bool**|  | [optional] 
+ **auto_rotate** | **bool**|  | [optional] 
+ **grid** | **bool**|  | [optional] 
+ **degree_style** | **str**|  | [optional] 
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -961,7 +956,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_footprint_advanced**
-> file plot_footprint_advanced(plot, accept)
+> plot_footprint_advanced(plot, accept)
 
 Plots the footprint, with advanced parameters
 
@@ -975,13 +970,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-plot = footprint.PlotRequest() # PlotRequest | null
+plot = footprint.PlotRequest() # PlotRequest | 
 accept = 'image/png' # str | File format mime type. (default to image/png)
 
 try:
     # Plots the footprint, with advanced parameters
-    api_response = api_instance.plot_footprint_advanced(plot, accept)
-    pprint(api_response)
+    api_instance.plot_footprint_advanced(plot, accept)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_footprint_advanced: %s\n" % e)
 ```
@@ -990,12 +984,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **plot** | [**PlotRequest**](PlotRequest.md)| null | 
+ **plot** | [**PlotRequest**](PlotRequest.md)|  | 
  **accept** | **str**| File format mime type. | [default to image/png]
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1009,7 +1003,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_region**
-> file plot_region(region_name, accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
+> plot_region(region_name, accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
 
 Plots the region
 
@@ -1023,24 +1017,23 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
+region_name = 'region_name_example' # str | 
 accept = 'image/png' # str | File format mime type. (default to image/png)
-projection = 'projection_example' # str | null (optional)
-sys = 'sys_example' # str | null (optional)
-lon = 'lon_example' # str | null (optional)
-lat = 'lat_example' # str | null (optional)
-width = 'width_example' # str | null (optional)
-height = 'height_example' # str | null (optional)
-color_theme = 'color_theme_example' # str | null (optional)
-auto_zoom = 'auto_zoom_example' # str | null (optional)
-auto_rotate = 'auto_rotate_example' # str | null (optional)
-grid = 'grid_example' # str | null (optional)
-degree_style = 'degree_style_example' # str | null (optional)
+projection = 'projection_example' # str |  (optional)
+sys = 'sys_example' # str |  (optional)
+lon = 1.2 # float |  (optional)
+lat = 1.2 # float |  (optional)
+width = 3.4 # float |  (optional)
+height = 3.4 # float |  (optional)
+color_theme = 'color_theme_example' # str |  (optional)
+auto_zoom = true # bool |  (optional)
+auto_rotate = true # bool |  (optional)
+grid = true # bool |  (optional)
+degree_style = 'degree_style_example' # str |  (optional)
 
 try:
     # Plots the region
-    api_response = api_instance.plot_region(region_name, accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
-    pprint(api_response)
+    api_instance.plot_region(region_name, accept, projection=projection, sys=sys, lon=lon, lat=lat, width=width, height=height, color_theme=color_theme, auto_zoom=auto_zoom, auto_rotate=auto_rotate, grid=grid, degree_style=degree_style)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_region: %s\n" % e)
 ```
@@ -1049,23 +1042,23 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
+ **region_name** | **str**|  | 
  **accept** | **str**| File format mime type. | [default to image/png]
- **projection** | **str**| null | [optional] 
- **sys** | **str**| null | [optional] 
- **lon** | **str**| null | [optional] 
- **lat** | **str**| null | [optional] 
- **width** | **str**| null | [optional] 
- **height** | **str**| null | [optional] 
- **color_theme** | **str**| null | [optional] 
- **auto_zoom** | **str**| null | [optional] 
- **auto_rotate** | **str**| null | [optional] 
- **grid** | **str**| null | [optional] 
- **degree_style** | **str**| null | [optional] 
+ **projection** | **str**|  | [optional] 
+ **sys** | **str**|  | [optional] 
+ **lon** | **float**|  | [optional] 
+ **lat** | **float**|  | [optional] 
+ **width** | **float**|  | [optional] 
+ **height** | **float**|  | [optional] 
+ **color_theme** | **str**|  | [optional] 
+ **auto_zoom** | **bool**|  | [optional] 
+ **auto_rotate** | **bool**|  | [optional] 
+ **grid** | **bool**|  | [optional] 
+ **degree_style** | **str**|  | [optional] 
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1079,7 +1072,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **plot_region_advanced**
-> file plot_region_advanced(region_name, plot, accept)
+> plot_region_advanced(region_name, plot, accept)
 
 Plots the footprint, with advanced parameters
 
@@ -1093,14 +1086,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-plot = footprint.PlotRequest() # PlotRequest | null
+region_name = 'region_name_example' # str | 
+plot = footprint.PlotRequest() # PlotRequest | 
 accept = 'image/png' # str | File format mime type. (default to image/png)
 
 try:
     # Plots the footprint, with advanced parameters
-    api_response = api_instance.plot_region_advanced(region_name, plot, accept)
-    pprint(api_response)
+    api_instance.plot_region_advanced(region_name, plot, accept)
 except ApiException as e:
     print("Exception when calling EditorApi->plot_region_advanced: %s\n" % e)
 ```
@@ -1109,13 +1101,13 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **plot** | [**PlotRequest**](PlotRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **plot** | [**PlotRequest**](PlotRequest.md)|  | 
  **accept** | **str**| File format mime type. | [default to image/png]
 
 ### Return type
 
-[**file**](file.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1143,8 +1135,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Renames a region.
@@ -1158,8 +1150,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -1191,8 +1183,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Compute the difference of regions.
@@ -1206,8 +1198,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -1239,8 +1231,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
-request = footprint.RegionRequest() # RegionRequest | null
+region_name = 'region_name_example' # str | 
+request = footprint.RegionRequest() # RegionRequest | 
 
 try:
     # Compute the union of regions.
@@ -1254,8 +1246,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
- **request** | [**RegionRequest**](RegionRequest.md)| null | 
+ **region_name** | **str**|  | 
+ **request** | [**RegionRequest**](RegionRequest.md)|  | 
 
 ### Return type
 
@@ -1287,9 +1279,9 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = footprint.EditorApi()
-region_name = 'region_name_example' # str | null
+region_name = 'region_name_example' # str | 
 content_type = 'text/plain' # str | File format mime type. (default to text/plain)
-region = '/path/to/file.txt' # file | null
+region = footprint.null() #  | 
 
 try:
     # Upload a region binary or other representation
@@ -1303,9 +1295,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region_name** | **str**| null | 
+ **region_name** | **str**|  | 
  **content_type** | **str**| File format mime type. | [default to text/plain]
- **region** | **file**| null | 
+ **region** | [****](.md)|  | 
 
 ### Return type
 

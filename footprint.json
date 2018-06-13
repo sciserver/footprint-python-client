@@ -1,27 +1,22 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": null,
-    "title": null
+    "version": "1.0",
+    "title": "SkyQuery REST API"
   },
   "host": "localhost",
-  "basePath": "/dobos/footprint-v2.0/Api/",
+  "basePath": "/dobos/footprint-v2.0/Api",
   "schemes": [
     "http",
     "https"
   ],
   "paths": {
-    "V1/Editor.svc/footprint": {
+    "/V1/Editor.svc/footprint": {
       "get": {
         "summary": "Returns the header information of the edited footprint",
         "operationId": "GetFootprint",
         "tags": [
           "Editor"
-        ],
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "application/xml"
         ],
         "parameters": [],
         "responses": {
@@ -37,7 +32,11 @@
               "$ref": "#/definitions/FootprintResponse"
             }
           }
-        }
+        },
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       },
       "patch": {
         "summary": "Modified the properties of the footprint in the editor.",
@@ -45,19 +44,11 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
-            "name": "footprint",
             "in": "body",
-            "description": null,
+            "name": "footprint",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/FootprintRequest"
@@ -77,7 +68,15 @@
               "$ref": "#/definitions/FootprintResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       },
       "delete": {
         "summary": "Delete footprint and reset the editor.",
@@ -85,8 +84,6 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [],
         "responses": {
           "default": {
@@ -98,26 +95,22 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/raw": {
+    "/V1/Editor.svc/footprint/raw": {
       "get": {
         "summary": "Returns the footprint in raw format text or binary.",
         "operationId": "DownloadFootprint",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "text/plain",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "text/plain"
           }
         ],
         "responses": {
@@ -128,34 +121,27 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
         }
       }
     },
-    "V1/Editor.svc/footprint/outline/raw": {
+    "/V1/Editor.svc/footprint/outline/raw": {
       "get": {
         "summary": "Returns the outline of the footprint.",
         "operationId": "DownloadFootprintOutline",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "text/plain",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "text/plain"
           }
         ],
         "responses": {
@@ -166,73 +152,58 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
         }
       }
     },
-    "V1/Editor.svc/footprint/outline/points": {
+    "/V1/Editor.svc/footprint/outline/points": {
       "get": {
         "summary": "Returns the points of the outline of the footprint.",
         "operationId": "GetFootprintOutlinePoints",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "sys",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/CoordinateSystem"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "rep",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/CoordinateRepresentation"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "resolution",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           },
           {
             "name": "reduce",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/OutlineReduction"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "limit",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           }
         ],
         "responses": {
@@ -251,135 +222,117 @@
               }
             }
           }
-        }
+        },
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/plot": {
+    "/V1/Editor.svc/footprint/plot": {
       "get": {
         "summary": "Plots the footprint",
         "operationId": "PlotFootprint",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [
           {
             "name": "projection",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/Projection"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "sys",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/CoordinateSystem"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "lon",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           },
           {
             "name": "lat",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           },
           {
             "name": "width",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "float"
-            }
+            "type": "number",
+            "format": "float"
           },
           {
             "name": "height",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "float"
-            }
+            "type": "number",
+            "format": "float"
           },
           {
             "name": "colorTheme",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/ColorTheme"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "autoZoom",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
+            "type": "boolean",
+            "format": "boolean"
           },
           {
             "name": "autoRotate",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
+            "type": "boolean",
+            "format": "boolean"
           },
           {
             "name": "grid",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
+            "type": "boolean",
+            "format": "boolean"
           },
           {
             "name": "degreeStyle",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/DegreeStyle"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "image/png",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "image/png"
           }
         ],
         "responses": {
@@ -390,10 +343,7 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
         }
       },
@@ -403,31 +353,24 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [],
         "parameters": [
           {
-            "name": "plot",
             "in": "body",
-            "description": null,
+            "name": "plot",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/PlotRequest"
             }
           },
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "image/png",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "image/png"
           }
         ],
         "responses": {
@@ -438,44 +381,35 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}": {
+    "/V1/Editor.svc/footprint/regions/{regionName}": {
       "put": {
         "summary": "Create a new region.",
         "operationId": "CreateRegion",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -495,7 +429,15 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       },
       "get": {
         "summary": "Returns the header information of a region.",
@@ -503,21 +445,14 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           }
         ],
         "responses": {
@@ -533,7 +468,11 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       },
       "patch": {
         "summary": "Modify a region.",
@@ -541,29 +480,19 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -583,7 +512,15 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       },
       "delete": {
         "summary": "Delete a region.",
@@ -591,18 +528,14 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           }
         ],
         "responses": {
@@ -615,48 +548,37 @@
         }
       }
     },
-    "V1/Editor.svc/footprint/regions": {
+    "/V1/Editor.svc/footprint/regions": {
       "get": {
         "summary": "List regions.",
         "operationId": "ListRegions",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "from",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "integer",
+            "format": "int32"
           },
           {
             "name": "max",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -672,39 +594,37 @@
               "$ref": "#/definitions/RegionListResponse"
             }
           }
-        }
+        },
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/raw": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/raw": {
       "get": {
         "summary": "Returns the shape description of the footprint region.",
         "operationId": "DownloadRegion",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "text/plain",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "text/plain"
           }
         ],
         "responses": {
@@ -715,10 +635,7 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
         }
       },
@@ -728,41 +645,29 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "Content-Type",
             "in": "header",
+            "name": "Content-Type",
             "description": "File format mime type.",
             "default": "text/plain",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "region",
             "in": "body",
-            "description": null,
-            "required": true,
-            "schema": {
-              "type": "file"
-            }
+            "name": "region",
+            "description": "",
+            "required": true
           }
         ],
         "responses": {
@@ -778,39 +683,37 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/outline/raw": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/outline/raw": {
       "get": {
         "summary": "Returns the outline of the footprint.",
         "operationId": "DownloadRegionOutline",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "text/plain",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "text/plain"
           }
         ],
         "responses": {
@@ -821,83 +724,66 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
         }
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/outline/points": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/outline/points": {
       "get": {
         "summary": "Returns the points of the outline of the region.",
         "operationId": "GetRegionOutlinePoints",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "sys",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/CoordinateSystem"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "rep",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/CoordinateRepresentation"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "resolution",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           },
           {
             "name": "reduce",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/OutlineReduction"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "limit",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           }
         ],
         "responses": {
@@ -916,145 +802,125 @@
               }
             }
           }
-        }
+        },
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/plot": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/plot": {
       "get": {
         "summary": "Plots the region",
         "operationId": "PlotRegion",
         "tags": [
           "Editor"
         ],
-        "consumes": [],
-        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "projection",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/Projection"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "sys",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/CoordinateSystem"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "lon",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           },
           {
             "name": "lat",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           },
           {
             "name": "width",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "float"
-            }
+            "type": "number",
+            "format": "float"
           },
           {
             "name": "height",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "float"
-            }
+            "type": "number",
+            "format": "float"
           },
           {
             "name": "colorTheme",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/ColorTheme"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "autoZoom",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
+            "type": "boolean",
+            "format": "boolean"
           },
           {
             "name": "autoRotate",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
+            "type": "boolean",
+            "format": "boolean"
           },
           {
             "name": "grid",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "boolean",
-              "format": "boolean"
-            }
+            "type": "boolean",
+            "format": "boolean"
           },
           {
             "name": "degreeStyle",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "$ref": "#/definitions/DegreeStyle"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "image/png",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "image/png"
           }
         ],
         "responses": {
@@ -1065,10 +931,7 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
         }
       },
@@ -1078,41 +941,32 @@
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "plot",
             "in": "body",
-            "description": null,
+            "name": "plot",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/PlotRequest"
             }
           },
           {
-            "name": "Accept",
             "in": "header",
+            "name": "Accept",
             "description": "File format mime type.",
-            "default": "image/png",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string",
+            "default": "image/png"
           }
         ],
         "responses": {
@@ -1123,44 +977,35 @@
             }
           },
           "200": {
-            "description": "",
-            "schema": {
-              "type": "file"
-            }
+            "description": ""
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/copy": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/copy": {
       "put": {
         "summary": "Copy a region.",
         "operationId": "CopyRegion",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -1180,39 +1025,37 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/rename": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/rename": {
       "put": {
         "summary": "Renames a region.",
         "operationId": "RenameRegion",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -1232,49 +1075,45 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/grow": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/grow": {
       "put": {
         "summary": "Grow region.",
         "operationId": "GrowRegion",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
             "name": "radius",
             "in": "query",
-            "description": null,
+            "description": "",
             "required": false,
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
+            "type": "number",
+            "format": "double"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -1294,39 +1133,37 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/chull": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/chull": {
       "put": {
         "summary": "Generate the convex hull of the regions.",
         "operationId": "CHullRegions",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -1346,39 +1183,37 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/union": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/union": {
       "put": {
         "summary": "Compute the union of regions.",
         "operationId": "UnionRegions",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -1398,39 +1233,37 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/intersect": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/intersect": {
       "put": {
         "summary": "Compute the intersection of regions.",
         "operationId": "IntersectRegions",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -1450,39 +1283,37 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     },
-    "V1/Editor.svc/footprint/regions/{regionName}/subtract": {
+    "/V1/Editor.svc/footprint/regions/{regionName}/subtract": {
       "put": {
         "summary": "Compute the difference of regions.",
         "operationId": "SubtractRegions",
         "tags": [
           "Editor"
         ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
         "parameters": [
           {
             "name": "regionName",
             "in": "path",
-            "description": null,
+            "description": "",
             "required": true,
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
+            "type": "string",
+            "format": "string"
           },
           {
-            "name": "request",
             "in": "body",
-            "description": null,
+            "name": "request",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#/definitions/RegionRequest"
@@ -1502,7 +1333,15 @@
               "$ref": "#/definitions/RegionResponse"
             }
           }
-        }
+        },
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ]
       }
     }
   },
@@ -1517,97 +1356,6 @@
         "subtract",
         "chull",
         "any"
-      ]
-    },
-    "Footprint": {
-      "properties": {
-        "owner": {
-          "type": "string",
-          "format": "string"
-        },
-        "name": {
-          "type": "string",
-          "format": "string"
-        },
-        "combinationMethod": {
-          "$ref": "#/definitions/CombinationMethod"
-        },
-        "comments": {
-          "type": "string",
-          "format": "string"
-        },
-        "public": {
-          "type": "boolean",
-          "format": "boolean"
-        }
-      }
-    },
-    "Links": {
-      "properties": {
-        "self": {
-          "type": "string",
-          "format": "string"
-        },
-        "parent": {
-          "type": "string",
-          "format": "string"
-        },
-        "prev": {
-          "type": "string",
-          "format": "string"
-        },
-        "next": {
-          "type": "string",
-          "format": "string"
-        }
-      }
-    },
-    "FootprintResponse": {
-      "properties": {
-        "footprint": {
-          "$ref": "#/definitions/Footprint"
-        },
-        "links": {
-          "$ref": "#/definitions/Links"
-        }
-      }
-    },
-    "FootprintRequest": {
-      "properties": {
-        "footprint": {
-          "$ref": "#/definitions/Footprint"
-        },
-        "selection": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
-        }
-      }
-    },
-    "CoordinateSystem": {
-      "type": "string",
-      "enum": [
-        "eq",
-        "eqj2000",
-        "gal",
-        "galj2000"
-      ]
-    },
-    "CoordinateRepresentation": {
-      "type": "string",
-      "enum": [
-        "dec",
-        "sexa",
-        "cart"
-      ]
-    },
-    "OutlineReduction": {
-      "type": "string",
-      "enum": [
-        "dp",
-        "chull"
       ]
     },
     "Point": {
@@ -1639,105 +1387,6 @@
         "cz": {
           "type": "number",
           "format": "double"
-        }
-      }
-    },
-    "Projection": {
-      "type": "string",
-      "enum": [
-        "aitoff",
-        "hammer",
-        "mollweide",
-        "stereo",
-        "ortho"
-      ]
-    },
-    "ColorTheme": {
-      "type": "string",
-      "enum": [
-        "light",
-        "dark"
-      ]
-    },
-    "DegreeStyle": {
-      "type": "string",
-      "enum": [
-        "dec",
-        "sexa"
-      ]
-    },
-    "Plot": {
-      "properties": {
-        "width": {
-          "type": "number",
-          "format": "float"
-        },
-        "height": {
-          "type": "number",
-          "format": "float"
-        },
-        "theme": {
-          "$ref": "#/definitions/ColorTheme"
-        },
-        "proj": {
-          "$ref": "#/definitions/Projection"
-        },
-        "sys": {
-          "$ref": "#/definitions/CoordinateSystem"
-        },
-        "lon": {
-          "type": "number",
-          "format": "double"
-        },
-        "lat": {
-          "type": "number",
-          "format": "double"
-        },
-        "zoom": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "rotate": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "grid": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "gridDensity": {
-          "type": "number",
-          "format": "float"
-        },
-        "gridSys": {
-          "$ref": "#/definitions/CoordinateSystem"
-        },
-        "axesVisible": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "axisLabelsVisible": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "degreeStyle": {
-          "$ref": "#/definitions/DegreeStyle"
-        },
-        "fontSize": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "lineWidth": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "regionsVisible": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "outlineVisible": {
-          "type": "boolean",
-          "format": "boolean"
         }
       }
     },
@@ -1846,6 +1495,199 @@
         },
         "chull": {
           "$ref": "#/definitions/CHull"
+        }
+      }
+    },
+    "Footprint": {
+      "properties": {
+        "owner": {
+          "type": "string",
+          "format": "string"
+        },
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "combinationMethod": {
+          "$ref": "#/definitions/CombinationMethod"
+        },
+        "comments": {
+          "type": "string",
+          "format": "string"
+        },
+        "public": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "combinedRegion": {
+          "$ref": "#/definitions/Region"
+        }
+      }
+    },
+    "Links": {
+      "properties": {
+        "self": {
+          "type": "string",
+          "format": "string"
+        },
+        "parent": {
+          "type": "string",
+          "format": "string"
+        },
+        "prev": {
+          "type": "string",
+          "format": "string"
+        },
+        "next": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
+    "FootprintResponse": {
+      "properties": {
+        "footprint": {
+          "$ref": "#/definitions/Footprint"
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        }
+      }
+    },
+    "FootprintRequest": {
+      "properties": {
+        "footprint": {
+          "$ref": "#/definitions/Footprint"
+        },
+        "selection": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      }
+    },
+    "CoordinateSystem": {
+      "type": "string",
+      "enum": [
+        "eq",
+        "eqj2000",
+        "gal",
+        "galj2000"
+      ]
+    },
+    "CoordinateRepresentation": {
+      "type": "string",
+      "enum": [
+        "dec",
+        "sexa",
+        "cart"
+      ]
+    },
+    "OutlineReduction": {
+      "type": "string",
+      "enum": [
+        "dp",
+        "chull"
+      ]
+    },
+    "Projection": {
+      "type": "string",
+      "enum": [
+        "aitoff",
+        "hammer",
+        "mollweide",
+        "stereo",
+        "ortho"
+      ]
+    },
+    "ColorTheme": {
+      "type": "string",
+      "enum": [
+        "light",
+        "dark"
+      ]
+    },
+    "DegreeStyle": {
+      "type": "string",
+      "enum": [
+        "dec",
+        "sexa"
+      ]
+    },
+    "Plot": {
+      "properties": {
+        "width": {
+          "type": "number",
+          "format": "float"
+        },
+        "height": {
+          "type": "number",
+          "format": "float"
+        },
+        "theme": {
+          "$ref": "#/definitions/ColorTheme"
+        },
+        "proj": {
+          "$ref": "#/definitions/Projection"
+        },
+        "sys": {
+          "$ref": "#/definitions/CoordinateSystem"
+        },
+        "lon": {
+          "type": "number",
+          "format": "double"
+        },
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "zoom": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "rotate": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "grid": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "gridDensity": {
+          "type": "number",
+          "format": "float"
+        },
+        "gridSys": {
+          "$ref": "#/definitions/CoordinateSystem"
+        },
+        "axesVisible": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "axisLabelsVisible": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "degreeStyle": {
+          "$ref": "#/definitions/DegreeStyle"
+        },
+        "fontSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "lineWidth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "regionsVisible": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "outlineVisible": {
+          "type": "boolean",
+          "format": "boolean"
         }
       }
     },
