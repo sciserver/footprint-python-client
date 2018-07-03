@@ -20,6 +20,8 @@ from footprint.sciserver_client import SciServerClient
 from footprint.api.editor_api import EditorApi  # noqa: E501
 from footprint.rest import ApiException
 from footprint.models import *
+from astropy.io import fits
+from astropy.wcs import WCS
 
 class TestEditorApi(unittest.TestCase):
     """EditorApi unit test stubs"""
@@ -333,14 +335,14 @@ class TestEditorApi(unittest.TestCase):
         self.api.modify_footprint(req)
         
         r3 = self.api.get_footprint();
-        self.assertEqual(r3.footprint.combination_method, 1)
+        self.assertEqual(r3.footprint.combination_method, 'union')
 
         req.footprint.combination_method = CombinationMethod.INTERSECT
 
         self.api.modify_footprint(req)
         
         r3 = self.api.get_footprint();
-        self.assertEqual(r3.footprint.combination_method, 2)
+        self.assertEqual(r3.footprint.combination_method, 'intersect')
 
     def test_modify_region(self):
         """Test case for modify_region
@@ -399,7 +401,26 @@ class TestEditorApi(unittest.TestCase):
 
         Plots the footprint, with advanced parameters  # noqa: E501
         """
-        self.fail()
+#        self.fail()
+        r1 = Region()
+        r1.region_string = 'CIRCLE J2000 10 10 100'
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 1 11 110'
+        r3 = Region()
+        r3.region_string = 'CIRCLE J2000 40 40 400'
+        self.api.create_region("test1", RegionRequest(r1))
+        self.api.create_region("test2", RegionRequest(r2))
+        self.api.create_region("test3", RegionRequest(r3))
+
+        req = FootprintRequest()
+        req.footprint = Footprint()
+        req.footprint.combination_method = CombinationMethod.UNION
+        self.api.modify_footprint(req)
+
+        self.api.plot_region("test1", "image/png", _preload_content=False)
+        preq = PlotRequest()
+        preq.plot = Plot()
+        self.api.plot_footprint_advanced(preq, "image/png", _preload_content=False)
 
 
     def test_plot_region(self):
@@ -409,6 +430,7 @@ class TestEditorApi(unittest.TestCase):
         """
         r1 = Region()
         r1.region_string = 'CIRCLE J2000 10 10 100'
+        r1.region_string = 'RECT J2000 0 0 10 20'
         self.api.create_region("test", RegionRequest(r1))
         
         res = self.api.plot_region("test", accept="image/png", _preload_content=False)
@@ -421,7 +443,9 @@ class TestEditorApi(unittest.TestCase):
         #_preload_content=False)
         #self.api.plot_region("test", accept='windows/metafile',
         #_preload_content=False)
+        self.api.plot_region("test", accept="image/png",projection="GALJ2000", color_theme="green" , _preload_content=False)
         self.assertEqual("tested","tested")
+
 
     def test_plot_region_advanced(self):
         """Test case for plot_region_advanced
@@ -494,6 +518,126 @@ class TestEditorApi(unittest.TestCase):
         r = self.api.get_region("test")
         self.assertEqual(0.08726640106450838, r.region.area)
 
+    def test_new_galeq(self):
+        r1 = Region()
+        r1.region_string = 'POLY J2000 0 0 0 10 20 0'
+        self.api.create_region("eqtest", RegionRequest(r1))
+
+        r2 = Region()
+        r2.region_string = 'POLY J2000 0 0 0 10 20 0'
+        self.api.create_region("eqtest2", RegionRequest(r2))
+
+        req = RegionRequest(r1)
+        req.sys = CoordinateSystem.GALJ2000
+        self.api.modify_region("eqtest",req)
+
+        reqf = FootprintRequest()
+        reqf.footprint = Footprint()
+        reqf.footprint.combination_method = CombinationMethod.UNION
+        self.api.modify_footprint(reqf)
+
+#        self.api.plot_footprint("image/png", _preload_content=False)
+
+        preq = PlotRequest()
+        preq.plot = Plot()
+        self.api.plot_region("eqtest",  "image/png", color_theme = "blue", _preload_content=False)
+
+    def test_new_astropy_two_image(self):
+        filename1 = "C:/Users/tomshark/Downloads/hspireplw1342246580_20pmp_1463459088096.fits"
+        filename2 = "C:/Users/tomshark/Downloads/hspireplw1342237553_20pmp_1463454955470.fits"
+        w1 = WCS(filename1)
+        w2 = WCS(filename2)
+        image1 = fits.open(filename1)
+        image2 = fits.open(filename2)
+
+        #store header
+        header1 = image1[1].header
+        n1 = header1["NAXIS1"]
+        m1 = header1["NAXIS2"]
+        lon1, lat1 = w1.all_pix2world(0, 0, 0)
+        lon2, lat2 = w1.all_pix2world(n1, 0, 0)
+        lon3, lat3 = w1.all_pix2world(n1, m1, 0)
+        lon4, lat4 = w1.all_pix2world(0, m1, 0)
+        r1 = Region()
+        r1.region_string = 'POLY J2000 ' + str(lon1) + ' ' + str(lat1) + ' ' + str(lon2) + ' ' + str(lat2) + ' ' + str(lon3) + ' ' + str(lat3) + ' ' + str(lon4) + ' ' + str(lat4) 
+        #r1.region_string = 'POLY J2000 ' + str(lon1, lat1) + ' ' + str(lon2, lat2) + ' ' + str(lon3, lat3) + ' ' + str(lon4, lat4) 
+
+        self.api.create_region("test1", RegionRequest(r1))
+        res = self.api.plot_region("test1", accept="image/png", _preload_content=False)
+
+    def test_new_two_image(self):
+        #read fits
+        filename1 = "C:/Users/tomshark/Downloads/hspireplw1342246580_20pmp_1463459088096.fits"
+        filename2 = "C:/Users/tomshark/Downloads/hspireplw1342237553_20pmp_1463454955470.fits"
+        
+        image1 = fits.open(filename1)
+        image2 = fits.open(filename2)
+
+        #store header
+        header1 = image1[1].header
+        #read different parameters from header
+        n1 = header1["NAXIS1"]
+        m1 = header1["NAXIS2"]
+        centerx1 = header1["CRPIX1"]
+        centery1 = header1["CRPIX2"]
+        center_ra1 = header1["CRVAL1"]
+        center_dec1 = header1["CRVAL2"]
+        pix_to_degree1x = header1["CDELT2"]
+        pix_to_degree1y = header1["CDELT2"]
+        rot1 = header1["CROTA2"]
+
+        if centerx1 - round(centerx1) == 0:
+            buttomleftcrx = center_ra1 - (centerx1) * pix_to_degree1x
+            buttomleftcry = center_dec1 - (centery1) * pix_to_degree1y
+        else:
+            buttomleftcrx = center_ra1 - (centerx1 - 0.5) * pix_to_degree1x
+            buttomleftcry = center_dec1 - (centery1 - 0.5) * pix_to_degree1y
+
+        a1 = pix_to_degree1x * n1 + buttomleftcrx
+        b1 = pix_to_degree1y * m1 + buttomleftcry
+
+        r1 = Region()
+        r1.region_string = 'POLY J2000 ' + str(buttomleftcrx) + ' ' +str(buttomleftcry) + ' ' +str(buttomleftcrx+a1) + ' ' + str(buttomleftcry) + ' ' + str(buttomleftcrx+a1) + ' ' + str(buttomleftcry+b1) + ' ' + str(buttomleftcrx) + ' ' + str(buttomleftcry+b1)
+        #r1.region_string = 'POLY J2000  0 0 10 10 0 10'
+        #r1.region_string = 'RECT J2000 5 0 10 10'
+        self.api.create_region("test1", RegionRequest(r1))
+
+        #store header
+        header2 = image2[1].header
+        #read different parameters from header
+        n2 = header2["NAXIS1"]
+        m2 = header2["NAXIS2"]
+        centerx2 = header2["CRPIX1"]
+        centery2 = header2["CRPIX2"]
+        center_ra2 = header2["CRVAL1"]
+        center_dec2 = header2["CRVAL2"]
+        pix_to_degree2x = header2["CDELT2"]
+        pix_to_degree2y = header2["CDELT2"]
+        rot2 = header2["CROTA2"]
+
+        if centerx2 - round(centerx2) == 0:
+            buttomleftcrx = center_ra2 - (centerx2) * pix_to_degree2x
+            buttomleftcry = center_dec2 - (centery2) * pix_to_degree2y
+        else:
+            buttomleftcrx = center_ra2 - (centerx1 - 0.5) * pix_to_degree2x
+            buttomleftcry = center_dec2 - (centery1 - 0.5) * pix_to_degree2y
+
+        a2 = pix_to_degree2x * n2 + buttomleftcrx
+        b2 = pix_to_degree2y * m2 + buttomleftcry
+
+        r2 = Region()
+        r2.region_string = 'POLY J2000 ' + str(buttomleftcrx) + ' ' +str(buttomleftcry) + ' ' +str(buttomleftcrx+a2) + ' ' + str(buttomleftcry) + ' ' + str(buttomleftcrx+a2) + ' ' + str(buttomleftcry+b2) + ' ' + str(buttomleftcrx) + ' ' + str(buttomleftcry+b2)
+
+        self.api.create_region("test2", RegionRequest(r2))
+        
+        #res = self.api.plot_region("test", accept="image/png", _preload_content=False)
+        
+        req = FootprintRequest()
+        req.footprint = Footprint()
+        req.footprint.combination_method = CombinationMethod.UNION
+        self.api.modify_footprint(req)
+
+        self.api.plot_footprint("image/png", _preload_content=False)
 
 if __name__ == '__main__':
     unittest.main()
