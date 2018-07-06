@@ -536,11 +536,11 @@ class TestEditorApi(unittest.TestCase):
         reqf.footprint.combination_method = CombinationMethod.UNION
         self.api.modify_footprint(reqf)
 
-#        self.api.plot_footprint("image/png", _preload_content=False)
+        self.api.plot_footprint("image/png", _preload_content=False)
 
         preq = PlotRequest()
         preq.plot = Plot()
-        self.api.plot_region("eqtest",  "image/png", color_theme = "blue", _preload_content=False)
+        self.api.plot_region("eqtest",  "image/png", projection = "GalJ200", auto_zoom = False ,color_theme = "blue", _preload_content=False)
 
     def test_new_astropy_two_image(self):
         filename1 = "C:/Users/tomshark/Downloads/hspireplw1342246580_20pmp_1463459088096.fits"
@@ -552,8 +552,10 @@ class TestEditorApi(unittest.TestCase):
 
         #store header
         header1 = image1[1].header
+        header2 = image2[1].header
         n1 = header1["NAXIS1"]
         m1 = header1["NAXIS2"]
+
         lon1, lat1 = w1.all_pix2world(0, 0, 0)
         lon2, lat2 = w1.all_pix2world(n1, 0, 0)
         lon3, lat3 = w1.all_pix2world(n1, m1, 0)
@@ -562,8 +564,38 @@ class TestEditorApi(unittest.TestCase):
         r1.region_string = 'POLY J2000 ' + str(lon1) + ' ' + str(lat1) + ' ' + str(lon2) + ' ' + str(lat2) + ' ' + str(lon3) + ' ' + str(lat3) + ' ' + str(lon4) + ' ' + str(lat4) 
         #r1.region_string = 'POLY J2000 ' + str(lon1, lat1) + ' ' + str(lon2, lat2) + ' ' + str(lon3, lat3) + ' ' + str(lon4, lat4) 
 
+        header2 = image2[1].header
+        n1 = header2["NAXIS1"]
+        m1 = header2["NAXIS2"]
+        lon1, lat1 = w2.all_pix2world(0, 0, 0)
+        lon2, lat2 = w2.all_pix2world(n1, 0, 0)
+        lon3, lat3 = w2.all_pix2world(n1, m1, 0)
+        lon4, lat4 = w2.all_pix2world(0, m1, 0)
+        r2 = Region()
+        r2.region_string = 'POLY J2000 ' + str(lon1) + ' ' + str(lat1) + ' ' + str(lon2) + ' ' + str(lat2) + ' ' + str(lon3) + ' ' + str(lat3) + ' ' + str(lon4) + ' ' + str(lat4) 
+
         self.api.create_region("test1", RegionRequest(r1))
+        self.api.create_region("test2", RegionRequest(r2))
+
         res = self.api.plot_region("test1", accept="image/png", _preload_content=False)
+        req = FootprintRequest()
+        req.footprint = Footprint()
+        req.footprint.combination_method = CombinationMethod.UNION
+        self.api.modify_footprint(req)
+
+        self.api.plot_footprint("image/png", _preload_content=False)
+
+        rreq = RegionRequest()
+        rreq.selection = ["test1", "test2"]
+        rreq.keep_original = True
+        self.api.union_regions("testunion", rreq)
+        
+        r1 = self.api.get_region("test1")
+        r2 = self.api.get_region("test2")
+        r3 = self.api.get_region("testunion")
+
+        self.assertGreaterEqual(r3.region.area, r1.region.area)
+        self.assertGreaterEqual(r3.region.area, r2.region.area)
 
     def test_new_two_image(self):
         #read fits
