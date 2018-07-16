@@ -536,11 +536,94 @@ class TestEditorApi(unittest.TestCase):
         reqf.footprint.combination_method = CombinationMethod.UNION
         self.api.modify_footprint(reqf)
 
-        self.api.plot_footprint("image/png", _preload_content=False)
+#        self.api.plot_footprint("image/png", _preload_content=False)
 
         preq = PlotRequest()
         preq.plot = Plot()
-        self.api.plot_region("eqtest",  "image/png", projection = "GalJ200", auto_zoom = False ,color_theme = "blue", _preload_content=False)
+#        self.api.plot_region("eqtest",  "image/png", projection = "GalJ2000", auto_zoom = False, color_theme = "blue", _preload_content=False)
+        self.api.plot_region("eqtest", "image/png", sys = "GALJ2000", auto_zoom = False, color_theme = "blue", _preload_content=False)
+
+    def test_new_galeq2(self):
+        r1 = Region()
+        r1.region_string = 'CONVEX 0.9698463103929541 0.17101007166283433 0.17364817766693033 0.9995769500822006'
+        req = RegionRequest(r1)
+        req.sys = CoordinateSystem.GALJ2000
+        self.api.create_region("eqtest1", req)
+
+        r2 = Region()
+        r2.region_string = 'CIRCLE J2000 10 10 100'
+        self.api.create_region("eqtest2", RegionRequest(r2))
+
+        reqf = FootprintRequest()
+        reqf.footprint = Footprint()
+        reqf.footprint.combination_method = CombinationMethod.UNION
+        self.api.modify_footprint(reqf)
+
+        self.api.plot_footprint("image/png", _preload_content=False)
+        self.api.download_region("eqtest1", accept="text/plain", _preload_content=False)
+        self.api.get_region("eqtest1",_preload_content=False)
+
+    def test_new_rotation(self):
+        r1 = Region()
+        r1.region_string = 'POLY J2000 0 0 0 10 20 0'
+        req = RegionRequest(r1)
+        alp = Rotation()
+        alp.alpha = 20
+        alp.beta = 0
+        alp.gamma = 0
+        req.rotation = alp
+        self.api.create_region("eqtest", req)
+        self.api.plot_region("eqtest",  "image/png",  _preload_content=False)
+
+    def test_modify_rot(self):
+        r1 = Region()
+        r1.region_string = 'POLY J2000 0 0 0 10 20 0'
+        req = RegionRequest(r1)
+        alp = Rotation()
+        alp.alpha = 20
+        alp.beta = 0
+        alp.gamma = 0
+        req.rotation = alp
+        self.api.create_region("modrottest", RegionRequest(r1))
+        self.api.create_region("modrottestinit", RegionRequest(r1))
+        self.api.modify_region("modrottest", req)
+        self.api.plot_region("modrottest",  "image/png",  _preload_content=False)
+        self.api.plot_region("modrottestinit",  "image/png",  _preload_content=False)
+
+    def test_modify_rot2(self):
+        r1 = Region()
+        r1.region_string = 'POLY J2000 0 0 0 10 20 0'
+        req = RegionRequest(r1)
+        alp = Rotation()
+        alp.alpha = 20
+        alp.beta = 0
+        alp.gamma = 0
+        req.rotation = alp
+        self.api.create_region("test1", req)
+        self.api.get_region("test1",_preload_content=False)
+        respget1 = self.ssclient.last_response.data
+        self.api.download_region("test1", accept="text/plain", _preload_content=False)
+        respdow1 = self.ssclient.last_response.data
+
+        self.api.delete_region("test1")
+
+        r2 = Region()
+        r2.region_string = 'POLY J2000 0 0 0 10 20 0'
+        req = RegionRequest(r2)
+        alp = Rotation()
+        alp.alpha = 20
+        alp.beta = 0
+        alp.gamma = 0
+        req.rotation = alp
+        self.api.create_region("test1", RegionRequest(r2))
+        self.api.modify_region("test1", req)
+        self.api.get_region("test1",_preload_content=False)
+        respget2 = self.ssclient.last_response.data
+        self.api.download_region("test1", accept="text/plain", _preload_content=False)
+        respdow2 = self.ssclient.last_response.data
+
+        self.assertEqual(respget1,respget2)
+        self.assertEqual(respdow1,respdow2)
 
     def test_new_astropy_two_image(self):
         filename1 = "C:/Users/tomshark/Downloads/hspireplw1342246580_20pmp_1463459088096.fits"
